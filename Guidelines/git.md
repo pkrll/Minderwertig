@@ -134,10 +134,10 @@ Use the following as a guide for when reviewing someone else's code (but also be
 ##### How do I do it?
 After pushing all your changes to the repository, do the following:
 
-![PR 1](PR-1.png?)
-![PR 2](PR-2.png?)
-![PR 3](PR-3.png?)
-![PR 4](PR-4.png?)
+![PR 1](assets/PR-1.png?)
+![PR 2](assets/PR-2.png?)
+![PR 3](assets/PR-3.png?)
+![PR 4](assets/PR-4.png?)
 
 #### **5)** Issue an issue when a bug is bugging you
 
