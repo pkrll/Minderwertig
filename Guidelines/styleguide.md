@@ -19,10 +19,14 @@
   * [General](#general-2)
   * [Formatting rules](#formatting-rules-2)
 * [Javascript](#javascript)
+  * [General](#general-3)
+  * [Variables and Constants](#variables-and-constants)
+  * [Delete](#delete)
+  * [Naming](#naming)
 
 ## Background
 
-This style guide outlines the coding conventions for the Minderwertig project, and is adapted from [Google's HTML/CSS style guide](https://google.github.io/styleguide/htmlcssguide.html).
+This style guide outlines the coding conventions for the Minderwertig project, and is adapted from Google's [HTML/CSS style guide](https://google.github.io/styleguide/htmlcssguide.html) and [JavaScript style guide](https://google.github.io/styleguide/javascriptguide.xml).
 
 If you come across a case that's not covered here, use Google's style guide. If it's not covered in that document, use common sense, be consistent and communicate with the team.
 
@@ -202,3 +206,52 @@ a {
 ```
 
 ## Javascript
+
+### General
+
+Always use semicolons. Except on function declarations.
+
+```javascript
+// Function expression
+var someFunction = function() {
+  var foo = 42;
+}; // <--- ends with semicolon
+
+// Function declaration
+function someFunction() {
+  var foo = 42;
+} // <--- No semicolon
+```
+
+#### Variables and Constants
+Always declare variables using the ``var`` keyword. This prevents the variable from being placed in a global context.
+
+```javascript
+var foo = bar;
+```
+
+Use uppercase with each word separated by an underscore when naming constants, like this: ``SOME_CONSTANT``.
+
+#### Delete
+
+Do not use ``delete``, instead remove an objects property with ``this.foo = null``, as ``delete`` has a larger overhead.
+
+### Naming
+
+Use camel case when naming functions or variables:
+
+```javascript
+function someFunction() {
+  var someVariable = anotherFunction();
+}
+```
+
+Use pascal case for your own types:
+
+```javascript
+class Foo {
+
+}
+
+var Months = { "January": 1, "February": 2, ... };
+```
