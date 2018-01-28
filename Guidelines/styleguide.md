@@ -24,6 +24,8 @@
 
 This style guide outlines the coding conventions for the Minderwertig project, and is adapted from [Google's HTML/CSS style guide](https://google.github.io/styleguide/htmlcssguide.html).
 
+If you come across a case that's not covered here, use Google's style guide. If it's not covered in that document, use common sense, be consistent and communicate with the team.
+
 ## General
 
 ### Formatting rules
