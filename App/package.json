@@ -1,0 +1,13 @@
+{
+  "name": "Minderwertig",
+  "version": "0.0.1",
+  "description": "Taxi made awesome!",
+  "main": "app.js",
+  "author": "Minderwertig",
+  "license": "",
+  "dependencies": {
+    "express": "^4.16.2",
+    "vue": "^2.5.2",
+    "socket.io": "^2.0.4"
+  }
+}
