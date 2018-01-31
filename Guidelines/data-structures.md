@@ -1,6 +1,6 @@
 # Data structures & socket communication
 ## 1. Containers
-### Server  
+#### Server  
 * accounts[]
 
 #### Client  
@@ -9,7 +9,7 @@
 #### Driver  
 * account
 
-### 2. Objects
+## 2. Objects
 #### account  
 * __int__ uuid  
 * __int__ x, y  
