@@ -6,14 +6,14 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 
-var port = 1337;
+var port = 1336;
 app.set('port', (process.env.PORT || port));
 
 app.use(express.static(path.join(__dirname, 'public/')));
 
 // client route
 app.get('/client', function (req, res) {
-    res.sendFile(path.join(__dirname, 'views/client/index.html'));
+    res.sendFile(path.join(__dirname, 'views/client/login.html'));
 });
 
 // driver route
