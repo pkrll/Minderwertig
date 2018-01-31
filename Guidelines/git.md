@@ -1,6 +1,6 @@
 # Lazy 🐶 for Git – and you can never guess what happens next!
 
-*Version: 1.1.0*
+*Version: 1.2.0*
 
 The following is a short guideline for how we use Github, including common best practices for Git.
 
@@ -147,3 +147,28 @@ When creating ``issues``, be specific. Use a good, clear title and paste in (usi
 
 ##### How do I do it?
 Click on the "Issues" tab in the repository.
+
+#### BONUS ROUND: Branch naming conventions
+
+The following is a list of best practices stolen from the Internet:
+
+* Use grouping tokens (words) at the beginning of your branch names.
+* Define and use short lead tokens to differentiate branches in a way that is meaningful to your workflow.
+* Use slashes to separate parts of your branch names.
+* Do not use bare numbers as leading parts.
+* Avoid long descriptive names for long-lived branches.
+
+
+##### Grouping tokens
+
+In this project, we have three types of grouping tokens:
+
+* ``dev``: For implementations
+* ``bug``: For bug fixes
+* ``issue``: For other issues that are not an implementation or a bug (optimisations, etc)
+
+For example, let's say you want to work on the markup for the login view. As this is an implementation, use the ``dev`` token:
+
+```bash
+$ git checkout -b dev/markup/login
+```
