@@ -3,3 +3,51 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/*
+  L A Y O U T
+*/
+
+html,
+body {
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  padding: 0 10px 10px 10px;
+}
+
+/*
+  T Y P O G R A P H Y
+
+  Design is made with points in mind, in CSS points are usually used for print
+  and not for digital screens. The conversion is approximately correct.
+*/
+
+h1 {
+  font-size: 32px 24pt;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 26px 20pt;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 23px 17pt;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 23px 17pt;
+  line-height: 1.4;
+}
+
+p.small {
+  font-size: 21px 15pt;
+  line-height: 1.4;
+}
