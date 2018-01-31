@@ -6,10 +6,10 @@ We use **Raleway** and **Roboto Mono** as our font family. These are found on Go
 We use **regular** and **semibold** from Raleway and only **regular** from Roboto Mono.
 
 ### 3. Font definitions
-* ## Header (h1), 24pt, line-height: 1.2
-* ### Header (h2), 20pt, line-height: 1.2
-* #### Header/body (h3/p), 17pt, line-height: 1.3
-* ##### Small (p.small), 15pt, line-height: 1.4
+* ### Header (h1), 24pt, line-height: 1.2
+* #### Header (h2), 20pt, line-height: 1.2
+* ##### Header/body (h3/p), 17pt, line-height: 1.4
+* ###### Small (p.small), 15pt, line-height: 1.4
 
 # 🎨 Colours
 ### 1. Predefined colours
