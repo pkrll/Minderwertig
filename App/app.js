@@ -28,4 +28,4 @@ app.get('/dispatcher', function (req, res) {
 
 var server = http.listen(app.get('port'), function () {
     console.log('Server listening on port ' + app.get('port'));
-})
+});
