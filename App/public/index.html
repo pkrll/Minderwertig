@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script src="/vue/vue.js" defer></script>
+    <script src="/js/component.js" defer></script>
+    <script src="/js/client.js" defer></script>
+    <title>USE A DESCRIPTIVE TITLE</title>
+  </head>
+  <body>
+
+    <div id="client">
+
+      <card-v v-for="trip in account.trips"
+              v-bind:trip="trip"
+              v-bind:key="trip.uuid"
+              v-bind:action="[skit, skit]"
+              v-bind:name="['BAJS','NAJS']"
+              v-bind:color="['red','green']"
+              size="small">
+      </card-v>
+
+      <titlebar-v v-bind:account="account"
+                  v-bind:key="account.uuid"
+                  v-bind:menu="menu">
+      </titlebar-v>
+
+      <button-v name="bajs" color="gray" size="normal" v-bind:action="skit"></button-v>
+
+      <button-dual-v v-bind:name="['BAJS','NAJS']"
+                     v-bind:color="['red','green']"
+                     size="small"
+                     v-bind:action="[skit, skit]">
+      </button-dual-v>
+
+    </div>
+
+  </body>
+</html>

@@ -10,6 +10,12 @@ var port = 1336;
 app.set('port', (process.env.PORT || port));
 
 app.use(express.static(path.join(__dirname, 'public/')));
+// Serve vue from node_modules as vue/
+app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')));
+
+// app.get('/', function (req,res) {
+//   res.sendFile(path.join(__dirname, 'public/index.html'));
+// });
 
 // client route
 app.get('/client', function (req, res) {
