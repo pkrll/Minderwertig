@@ -12,6 +12,7 @@ app.set('port', (process.env.PORT || port));
 app.use(express.static(path.join(__dirname, 'public/')));
 // Serve vue from node_modules as vue/
 app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')));
+app.use('/vue-router', express.static(path.join(__dirname, '/node_modules/vue-router/dist/')));
 
 // app.get('/', function (req,res) {
 //   res.sendFile(path.join(__dirname, 'public/index.html'));
@@ -19,7 +20,7 @@ app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')))
 
 // client route
 app.get('/client', function (req, res) {
-    res.sendFile(path.join(__dirname, 'views/client/login.html'));
+    res.sendFile(path.join(__dirname, 'views/client/index.html'));
 });
 
 // driver route

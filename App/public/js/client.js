@@ -1,6 +1,35 @@
+
+var router = new VueRouter({
+  mode: 'history',
+  routes: [
+    {
+      path: '/client/login',
+      components: {
+        titlebar: menu_v,
+        main: order_found_v
+      }
+    }
+  ]
+});
+
+router.push('/client/login');
+
 var app = new Vue({
-  el: '#client',
+  router,
+  el: '#app',
+  methods: {
+    skit: function(e) {
+      console.log("Hej");
+    }
+  },
   data: {
+     page: {
+      button: [
+        { name: "Hej", color: "red", action: function() {
+          console.log("skit");
+        } }
+      ]
+    },
     account: {
       uuid: 0,
       metadata: {
@@ -22,10 +51,6 @@ var app = new Vue({
       { name: "Contact us"},
       { name: "Logout"}
     ]
-  },
-  methods: {
-    skit: function(e) {
-      console.log("Hej");
-    }
-  }
+}
+
 });

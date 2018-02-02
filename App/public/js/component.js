@@ -1,6 +1,16 @@
-Vue.component('card-v', {
-  props: ['trip', 'name', 'color', 'action'],
-  template: '<div class="booking"><meta-v v-bind:trip="trip"></meta-v><h2>{{ trip.name }}</h2><trip-v v-bind:trip="trip"></trip-v><button-dual-v v-bind:name="[name[0], name[1]]" v-bind:color="[color[0], color[1]]" size="small" v-bind:action="[action[0], action[1]]"></button-dual-v></div>'
+const login_view_v = Vue.component('login-view-v', {
+  props: ['data'],
+  template: '<button-v name="Logga in med Facebook"><card-v v-for="trip in data.trips">'
+});
+
+const order_found_v = Vue.component('order-found-v', {
+  props: ['data', 'page'],
+  template: '<div class="order-found-v"><card-v v-for="trip in data.trips" v-bind:trip="trip" v-bind:key="trip.uid" v-bind:page="page"></card-v></div>'
+});
+
+const card_v = Vue.component('card-v', {
+  props: ['trip', 'page'],
+  template: '<div class="booking"><meta-v v-bind:trip="trip"></meta-v><h2>{{ trip.name }}</h2><trip-v v-bind:trip="trip"></trip-v><button-dual-v v-bind:button_name="[page.button[0].name, page.button[0].name]" v-bind:color="[page.button[0].name, page.button[0].name]" size="small" v-bind:action="[page.button[0].action, page.button[0].action]"></button-dual-v></div>'
 });
 
 Vue.component('card-overlay-v', {
@@ -23,17 +33,17 @@ Vue.component('titlebar-v', {
   template: '<nav id="titlebar"><img :src="account.metadata.image_url" alt=""><img src="" alt=""><menu-v v-bind:menu="menu"></menu-v><img src="" alt=""></nav>'
 });
 
-Vue.component('menu-v', {
+const menu_v = Vue.component('menu-v', {
   props: ['menu'],
   template: '<ul><li v-for="item in menu">{{ item.name }}</li></ul>'
 });
 
 Vue.component('button-v', {
-  props: ['name', 'color', 'size', 'action'],
-  template: '<button :class="[color, size]" @click="action">{{ name }}</button>'
+  props: ['button_name', 'color', 'size', 'action'],
+  template: '<button :class="[color, size]" @click="action">{{ button_name }}</button>'
 });
 
 Vue.component('button-dual-v', {
-  props: ['name', 'color', 'action', 'size'],
-  template: '<div class="btn-dual"><button-v v-bind:name="name[0]" v-bind:color="color[0]" v-bind:size="size" v-bind:action="action[0]"></button-v><button-v v-bind:name="name[1]" v-bind:color="color[1]" v-bind:size="size" v-bind:action="action[1]"></button-v></div>'
+  props: ['button_name', 'color', 'action', 'size'],
+  template: '<div class="btn-dual"><button-v v-bind:button_name="button_name[0]" v-bind:color="color[0]" v-bind:size="size" v-bind:action="action[0]"></button-v><button-v v-bind:button_name="button_name[1]" v-bind:color="color[1]" v-bind:size="size" v-bind:action="action[1]"></button-v></div>'
 });
