@@ -17,4 +17,12 @@ const created = function() {
     this.message = message;
     router.push('/client/login/fail');
   }.bind(this));
+  /**
+   * Invoked when received a new booking confirmation.
+   *
+   * @param  {Object} data The booking details.
+   */
+  socket.on('client/booking', function (data) {
+
+  });
 }
