@@ -17,8 +17,8 @@
   </head>
   <body>
     <div id="app">
-      <router-view class="view" name="titlebar" v-bind:menu="menu"></router-view>
-      <router-view class="view" name="main" v-bind:data="account" v-bind:app="this"></router-view>
+      <router-view class="view" name="titlebar" v-bind:app="this"></router-view>
+      <router-view class="view" name="main" v-bind:app="this"></router-view>
     </div>
   </body>
 </html>

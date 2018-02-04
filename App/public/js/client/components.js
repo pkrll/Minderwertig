@@ -35,10 +35,10 @@ const login_email_v = Vue.component('login-email-v', {
 // Temporary
 const order_v = Vue.component('order-v', {
   props: ['app'],
-  template: '<div>WELCOME TO ZOMBOCOM!!</div>'
+  template: '<div>WELCOME TO ZOMBOCOM, {{app.account.metadata.name}}!!</div>'
 });
 
 const menu_v = Vue.component('menu-v', {
-  props: ['menu'],
-  template: '<ul><li v-for="item in menu">{{ item.name }}</li></ul>'
+  props: ['app'],
+  template: '<ul><li v-for="item in app.menu">{{ item.name }}</li></ul>'
 });
