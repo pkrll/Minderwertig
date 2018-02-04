@@ -7,13 +7,18 @@
     <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1">
     <script src="/vue/vue.js" defer></script>
     <script src="/vue-router/vue-router.js" defer></script>
+    <script src="/socket.io/socket.io.js" defer></script>
     <script src="/js/component.js" defer></script>
+    <script src="/js/client/app.router.js" defer></script>
+    <script src="/js/client/app.actions.js" defer></script>
+    <script src="/js/client/app.created.js" defer></script>
+    <script src="/js/client/app.data.js" defer></script>
     <script src="/js/client.js" defer></script>
   </head>
   <body>
     <div id="app">
       <router-view class="view" name="titlebar" v-bind:menu="menu"></router-view>
-      <router-view class="view" name="main" v-bind:data="account" v-bind:page="page"></router-view>
+      <router-view class="view" name="main" v-bind:data="account" v-bind:app="this"></router-view>
     </div>
   </body>
 </html>
