@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const port = 1336;
+const port = 1335;
 
 module.exports = function (app) {
 

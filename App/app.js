@@ -33,6 +33,17 @@ io.on('connection', function (socket) {
     }
   });
 
+  socket.on('client/orderRequest', function (request) {
+    console.log("CLIENT: Order request received...");
+
+    let dispatchers = store.getDispatcherSockets();
+
+    for (dispatcher of dispatchers) {
+      console.log("Sending request to dispatcher");
+      dispatcher.emit('dispatcher/orderRequest', request);
+    }
+  });
+
 });
 
 var server = http.listen(app.get('port'), function () {

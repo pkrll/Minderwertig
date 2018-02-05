@@ -13,8 +13,8 @@ const actions = {
    *
    * @return {Object} order The booking details
    */
-  order: function (booking) {
+  sendOrder: function (order) {
     router.push('');
-    socket.emit('', booking);
+    socket.emit('client/orderRequest', order);
   }
 }

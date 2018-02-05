@@ -1,3 +1,19 @@
+
+const login_view_v = Vue.component('login-view-v', {
+  props: ['app'],
+  template: ' \
+  <div> \
+    <button>Logga in med Facebook</button> \
+    <button v-on:click="loginEmail">Logga in med E-mail</button> \
+  </div>',
+  methods: {
+    loginEmail: function(event) {
+      event.preventDefault();
+      router.push('/client/login/email');
+    }
+  }
+});
+
 // Logging in screen
 const login_load_v = Vue.component('login-email-v', {
   props: ['app'],
@@ -32,10 +48,62 @@ const login_email_v = Vue.component('login-email-v', {
   }
 });
 
+// var myDate = arguments[0]
+// return new Date(myDate.getFullYear(), myDate.getMonth(), myDate.getDate());
+
 // Temporary
-const order_v = Vue.component('order-v', {
+const order_form_v = Vue.component('order-v', {
   props: ['app'],
-  template: '<div>WELCOME TO ZOMBOCOM, {{app.account.metadata.name}}!!</div>'
+  data: function() {
+    // TODO: FIX THIS SHIT
+    var date = new Date();
+    var day = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+    var time = (date.getHours() + 1) + ":" + date.getMinutes();
+
+    return {
+      order: {
+        date: {
+          day: day,
+          time: time
+        }
+      }
+    }
+  },
+  template: '\
+  <div>\
+    <form> \
+      <label for="from">From</label> \
+      <input type="text" name="from" placeholder="From..." v-model="order.from"> \
+      <label for="from">To</label> \
+      <input type="text" name="to" placeholder="To..." v-model="order.to"> \
+      <label for="from">Date</label> \
+      <input type="text" name="date" v-model="order.date.day"> \
+      <input type="text" name="date" v-model="order.date.time"> \
+      <label for="capacity">Capacity</label> \
+      <select class="" name="capacity" v-model="order.capacity"> \
+        <option value="4">4</option> \
+        <option value="7">7</option> \
+        <option value="10">10</option> \
+      </select> \
+      <label for="special-needs">Additional needs</label> \
+      <input type="checkbox" name="special-needs"> \
+      <button class="normal green" v-on:click="sendOrder">Continue</button> \
+    </form> \
+  </div>',
+  methods: {
+    sendOrder: function (event) {
+      event.preventDefault();
+      if (this.validate(this.order)) {
+        app.sendOrder(this.order);
+      } else {
+        alert("Please fill in your order!");
+      }
+    },
+    validate: function (order) {
+      // TODO: Fix validate function so that it also checks date, capacity and additonal needs
+      return (order.from != null && order.to != null);
+    }
+  }
 });
 
 const menu_v = Vue.component('menu-v', {
