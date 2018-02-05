@@ -17,7 +17,9 @@
   </head>
   <body>
     <div id="app">
-      <router-view class="view" name="main" v-bind:app="this"></router-view>
+      <router-view class="view" name="left" v-bind:app="this"></router-view>
+      <router-view class="view" name="center" v-bind:app="this"></router-view>
+      <router-view class="view" name="right" v-bind:app="this"></router-view>
     </div>
   </body>
 </html>

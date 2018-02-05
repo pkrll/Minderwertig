@@ -38,10 +38,21 @@ io.on('connection', function (socket) {
 
     let dispatchers = store.getDispatcherSockets();
 
-    for (dispatcher of dispatchers) {
+    for (var dispatcher of dispatchers) {
       console.log("Sending request to dispatcher");
       dispatcher.emit('dispatcher/orderRequest', request);
     }
+  });
+
+  // ----------------------------------------
+  //  DISPATCHER
+  // ----------------------------------------
+
+  socket.on('dispatcher/login', function (data) {
+    console.log("A dispatcher has logged on!");
+    store.addDispatcherSocket(socket);
+
+    socket.emit("currentQueue", { orders: [], trips: [], cars: []} );
   });
 
 });

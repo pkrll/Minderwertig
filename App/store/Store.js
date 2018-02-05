@@ -33,7 +33,7 @@ class Store {
     return this.sockets['drivers'][id];
   }
 
-  addDispatcherSocket(id, socket) {
+  addDispatcherSocket(socket) {
     this.sockets['dispatchers'].push(socket);
   }
 

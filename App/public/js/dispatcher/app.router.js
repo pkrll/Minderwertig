@@ -4,8 +4,9 @@ const router = new VueRouter({
     {
       path: '/dispatcher',
       components: {
-        titlebar: null,
-        main: null
+        left: orders_view_v,
+        center: null,
+        right: null
       }
     }
   ]
