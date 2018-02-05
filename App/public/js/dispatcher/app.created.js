@@ -6,13 +6,13 @@ const created = function() {
    *
    * @param  {object} data The current data
    */
-  socket.on('currentQueue', function (data) {
+  socket.on('login/success', function (data) {
     this.orders = data.orders;
     this.trips  = data.trips;
     this.cars   = data.cars;
   }.bind(this));
 
-  socket.on('dispatcher/orderRequest', function (data) {
+  socket.on('order/request', function (data) {
     this.orders.push(data);
   }.bind(this));
 

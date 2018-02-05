@@ -7,7 +7,8 @@ class Store {
 
     this.clients = accounts["clients"];
     this.drivers = accounts["drivers"];
-
+    // Holds all the sockets for the different type of users,
+    // driver and client sockets indexed by user id.
     this.sockets = {
       clients: {},
       drivers: {},
@@ -45,6 +46,10 @@ class Store {
     return this.retrieveUser(email, password, this.clients);
   }
 
+  retrieveDriver(email, password) {
+    return this.retrieveUser(email, password, this.drivers);
+  }
+
   retrieveUser(email, password, userList) {
     for (let user of userList) {
       if (user.email == email && user.password == password) {
@@ -73,7 +78,6 @@ class Store {
 
     return null;
   }
-
   /*
    *  Returns a list of all drivers
    */
@@ -95,6 +99,18 @@ class Store {
 
   addOrder(order) {
     this.orders.push(order);
+  }
+
+  getOrders() {
+    return this.orders;
+  }
+
+  addTrip(trip) {
+    this.trips.push(trip);
+  }
+
+  getTrips() {
+    return this.trips;
   }
 
 }

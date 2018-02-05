@@ -14,7 +14,9 @@ const actions = {
    * @return {Object} order The booking details
    */
   sendOrder: function (order) {
+    order.client = this.account;
+    
     router.push('');
-    socket.emit('client/orderRequest', order);
+    socket.emit('client/order/request', order);
   }
 }

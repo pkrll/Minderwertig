@@ -93,6 +93,7 @@ const order_form_v = Vue.component('order-v', {
   methods: {
     sendOrder: function (event) {
       event.preventDefault();
+
       if (this.validate(this.order)) {
         app.sendOrder(this.order);
       } else {

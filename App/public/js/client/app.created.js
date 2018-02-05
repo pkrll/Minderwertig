@@ -1,4 +1,7 @@
 const created = function() {
+
+  socket.emit('client/login', { email: "a@a.se", password: "foo" });
+
   /**
    * Invoked on successful login.
    *
@@ -22,7 +25,7 @@ const created = function() {
    *
    * @param  {Object} data The booking details.
    */
-  socket.on('client/booking', function (data) {
-
+  socket.on('order/booking', function (data) {
+    console.log(data);
   });
 }

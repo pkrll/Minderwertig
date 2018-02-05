@@ -33,14 +33,16 @@ io.on('connection', function (socket) {
     }
   });
 
-  socket.on('client/orderRequest', function (request) {
+  socket.on('client/order/request', function (request) {
     console.log("CLIENT: Order request received...");
+
+    store.addOrder(request);
 
     let dispatchers = store.getDispatcherSockets();
 
     for (var dispatcher of dispatchers) {
       console.log("Sending request to dispatcher");
-      dispatcher.emit('dispatcher/orderRequest', request);
+      dispatcher.emit('order/request', request);
     }
   });
 
@@ -52,7 +54,15 @@ io.on('connection', function (socket) {
     console.log("A dispatcher has logged on!");
     store.addDispatcherSocket(socket);
 
-    socket.emit("currentQueue", { orders: [], trips: [], cars: []} );
+    socket.emit("login/success", { orders: store.getOrders(), trips: store.getTrips(), cars: []} );
+  });
+
+  socket.on('dispatcher/order/booking', function (request) {
+    console.log("DISPATCHER: New booking received...");
+    // FIXME: This may have to change depending on how the data structure ends up looking
+    let client = store.getClientSocket(request.client.id);
+
+    client.emit('order/booking', request);
   });
 
 });
