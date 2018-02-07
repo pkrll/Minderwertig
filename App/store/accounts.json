@@ -1,0 +1,41 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "email": "a@a.se",
+      "password": "foo",
+      "metadata": {
+        "name": "Ardalan Samimi",
+        "image_url": "",
+        "position": { "x": 0, "y": 0 }
+      },
+      "trips": [
+        { "trip_id": 1, "time": "12:00", "from": "Stockholm", "to": "Uppsala" }
+      ]
+    },
+    {
+      "id": 2,
+      "email": "b@a.se",
+      "password": "foo",
+      "metadata": {
+        "name": "Karl Karlsson",
+        "image_url": "",
+        "position": { "x": 0, "y": 0 }
+      },
+      "trips": [ ]
+    }
+  ],
+  "drivers": [
+    {
+      "id": 1,
+      "email": "c@a.se",
+      "password": "foo",
+      "metadata": {
+        "name": "Frank Franksson",
+        "image_url": "",
+        "position": { "x": 0, "y": 0 }
+      },
+      "trips": []
+    }
+  ]
+}

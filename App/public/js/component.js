@@ -1,7 +1,9 @@
-const login_view_v = Vue.component('login-view-v', {
-  props: ['data'],
-  template: '<button-v name="Logga in med Facebook"><card-v v-for="trip in data.trips">'
-});
+
+
+
+
+// OUR OLD STUFF
+
 
 const order_found_v = Vue.component('order-found-v', {
   props: ['data', 'page'],

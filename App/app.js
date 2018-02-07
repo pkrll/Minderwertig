@@ -2,37 +2,71 @@
 
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
+
+var http   = require('http').Server(app);
 var io = require('socket.io')(http);
-var path = require('path');
 
-var port = 1336;
-app.set('port', (process.env.PORT || port));
+var Store = require('./store/Store');
+var store = new Store();
 
-app.use(express.static(path.join(__dirname, 'public/')));
-// Serve vue from node_modules as vue/
-app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')));
-app.use('/vue-router', express.static(path.join(__dirname, '/node_modules/vue-router/dist/')));
+require('./routes.js')(app)
+require('./config.js')(app)
 
-// app.get('/', function (req,res) {
-//   res.sendFile(path.join(__dirname, 'public/index.html'));
-// });
+io.on('connection', function (socket) {
+  socket.emit('connection', { connected: true });
 
-// client route
-app.get('/client', function (req, res) {
-    res.sendFile(path.join(__dirname, 'views/client/index.html'));
-});
+  // ----------------------------------------
+  //  CLIENT
+  // ----------------------------------------
 
-// driver route
-app.get('/driver', function (req, res) {
-    res.sendFile(path.join(__dirname, 'views/driver/index.html'));
-});
+  socket.on('client/login', function (request) {
+    console.log("CLIENT: Attempting to login...");
+    let account = store.retrieveClient(request.email, request.password);
 
-// dispatcher route
-app.get('/dispatcher', function (req, res) {
-    res.sendFile(path.join(__dirname, 'views/dispatcher/index.html'));
+    if (account != null) {
+      socket.emit('login/success', account);
+      store.addClientSocket(account.id, socket);
+      console.log("CLIENT: Login successful!");
+    } else {
+      socket.emit('login/failure', "Wrong e-mail or password!");
+      console.log("CLIENT: Login failed!");
+    }
+  });
+
+  socket.on('client/order/request', function (request) {
+    console.log("CLIENT: Order request received...");
+
+    store.addOrder(request);
+
+    let dispatchers = store.getDispatcherSockets();
+
+    for (var dispatcher of dispatchers) {
+      console.log("Sending request to dispatcher");
+      dispatcher.emit('order/request', request);
+    }
+  });
+
+  // ----------------------------------------
+  //  DISPATCHER
+  // ----------------------------------------
+
+  socket.on('dispatcher/login', function (data) {
+    console.log("A dispatcher has logged on!");
+    store.addDispatcherSocket(socket);
+
+    socket.emit("login/success", { orders: store.getOrders(), trips: store.getTrips(), cars: []} );
+  });
+
+  socket.on('dispatcher/order/booking', function (request) {
+    console.log("DISPATCHER: New booking received...");
+    // FIXME: This may have to change depending on how the data structure ends up looking
+    let client = store.getClientSocket(request.client.id);
+
+    client.emit('order/booking', request);
+  });
+
 });
 
 var server = http.listen(app.get('port'), function () {
-    console.log('Server listening on port ' + app.get('port'));
+  console.log('Server listening on port ' + app.get('port'));
 });
