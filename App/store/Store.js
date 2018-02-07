@@ -1,3 +1,5 @@
+'use strict'
+
 const fs = require('fs');
 
 class Store {
@@ -52,7 +54,7 @@ class Store {
 
   retrieveUser(email, password, userList) {
     for (let user of userList) {
-      if (user.email == email && user.password == password) {
+      if (user.username == email && user.password == password) {
         return user;
       }
     }
