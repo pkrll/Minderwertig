@@ -66,6 +66,7 @@ class Store {
   getAllClients() {
     return this.clients;
   }
+
   /*
    *  Returns the client with the specified id
    */
@@ -78,12 +79,14 @@ class Store {
 
     return null;
   }
+
   /*
    *  Returns a list of all drivers
    */
   getAllDrivers() {
     return this.drivers;
   }
+
   /*
    *  Returns the driver with the specified id
    */

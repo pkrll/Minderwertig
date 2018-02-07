@@ -15,7 +15,7 @@ const actions = {
    */
   sendOrder: function (order) {
     order.client = this.account;
-    
+
     router.push('');
     socket.emit('client/order/request', order);
   }
