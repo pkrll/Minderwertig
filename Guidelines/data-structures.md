@@ -1,4 +1,91 @@
 # Data structures & socket communication
+
+### Socket Messages
+
+###### Client messages
+
+* ``client/login``
+    * Data: [``login``](#)
+* ``client/order/request``
+    * Data: [``order request``](#)
+* ``client/order/confirmation``
+    * Data: [``order confirmation``](#)
+
+###### Driver messages
+
+* ``driver/login``
+    * Data: [``login``](#)
+
+###### Dispatcher messages
+
+* ``dispatcher/login``
+* ``dispatcher/order/proposal``
+    * Data: [``order proposal``](#)
+
+###### Server messages
+
+* ``login/success`` (**Driver/Client**)
+    * Data: [``account``](#)
+* ``login/success`` (**Dispatcher**)
+    * Data: { orders: [[ ``order request`` ]](#), trips: [[ ``trip`` ]](#), cars: [[ ``car`` ]](#) }
+* ``login/failure``
+    * Data: { message: ``String`` }
+* ``order/request`` (**Dispatcher only**)
+    * Data: [``order request``](#)
+* ``order/proposal`` (**Client only**)
+  * Data: [``order proposal``](#)
+
+## Order / Booking system
+
+When the user books a taxi, a ``client/order/request`` message is sent to the server, along with an ``order request`` object, detailed below:
+
+###### Order request
+
+```json
+{
+  "route": {
+    "from": String,
+    "to": String,
+    "time": Int
+  },
+  "client": Account
+}
+```
+
+This data is passed to the dispatchers, who in turn sends back an ``order proposal``:
+
+###### Order proposal
+
+```json
+{
+  "id": Int,
+  "price": Double,
+  "route": {
+    "from": String,
+    "to": String,
+    "time": Int
+  },
+  "driver": Account
+}
+```
+
+##### Trip
+
+```json
+{
+  "id": Int,
+  "price": Double,
+  "route": {
+    "from": String,
+    "to": String,
+    "time": Int
+  },
+  "client": Account,
+  "driver": Account
+}
+```
+
+
 ## 1. Containers
 #### Server  
 * accounts[]
