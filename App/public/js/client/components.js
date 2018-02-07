@@ -116,6 +116,16 @@ const order_form_v = Vue.component('order-form-v', {
   }
 });
 
+const order_confirmation_v = Vue.component('order-confirmation-v', {
+  props: ['app'],
+  template: '<h2 v-on:click="confirmOrder">CLICK HERE TO CONFIRM</h2>',
+  methods: {
+    confirmOrder: function () {
+      app.sendConfirmation();
+    }
+  }
+});
+
 const menu_v = Vue.component('menu-v', {
   props: ['app'],
   template: '<ul><li v-for="item in app.menu">{{ item.name }}</li></ul>'

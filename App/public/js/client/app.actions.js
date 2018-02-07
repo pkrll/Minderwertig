@@ -18,5 +18,15 @@ const actions = {
 
     router.push('');
     socket.emit('client/order/request', order);
+  },
+  /**
+   * Send a confirmation of the current order, stored in the Vue instance's
+   * data property 'currentBooking'.
+   */
+  sendConfirmation: function (response) {
+    router.push(''); // TODO
+    
+    let message = { id: this.currentBooking.id, response: response  };
+    socket.emit('client/order/confirm', message);
   }
 }
