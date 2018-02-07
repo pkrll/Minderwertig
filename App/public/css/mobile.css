@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,51 +15,52 @@ body {
 }
 
 body {
-    padding: 0 10px 10px 10px;
-    background: #f9f9f9;
+  padding: 0 10px 10px 10px;
+  background: #f9f9f9;
 }
 
 #menu {
-    width: 100%;
-    height: 64px;
-    padding: 0 15px 0 15px;
-    background: #fff;
+  width: 100%;
+  height: 64px;
+  padding: 0 15px 0 15px;
+  background: #fff;
 }
 
 #sub-menu {
-    width: 100%;
-    height: 40px;
-    background: #f9f9f9; 
+  width: 100%;
+  height: 40px;
+  background: #f9f9f9;
 }
 
 .client-order {
-    width: 100%;
-    background: #f9f9f9;
-    padding-left: 10px;
+  width: 100%;
+  background: #f9f9f9;
+  padding-left: 10px;
 }
 
 .client-order div {
-    width: 100%;
-    overflow: hidden;
-    padding: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .client-order div label {
-    margin-bottom: 10px;
-    color: rgba(0, 0, 0, 0.5);
-    float: left;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  float: left;
 }
 
 .client-order div input {
-    border: none;
-    clear: both;
-    float: left;
+  border: none;
+  clear: both;
+  float: left;
 }
 
-.client-order div input:nth-child(0) {
-    clear: none;
+.client-order div {
+  clear: none;
 }
+
 /*
   T Y P O G R A P H Y
 
