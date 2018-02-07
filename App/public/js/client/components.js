@@ -81,8 +81,8 @@ const order_form_v = Vue.component('order-v', {
       </div> \
       <div> \
         <label for="from">Date</label> \
-        <input type="text" name="date" v-model="order.date.day"> \
-        <input type="text" name="date" v-model="order.date.time"> \
+        <input class="mono" type="text" name="date" v-model="order.date.day"> \
+        <input class="mono" type="text" name="date" v-model="order.date.time"> \
       </div> \
       <div> \
         <label for="capacity">Capacity</label> \

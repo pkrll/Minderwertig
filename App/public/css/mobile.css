@@ -1,7 +1,32 @@
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+/*
+  C O L O R S
+*/
+
+.green {
+    background-color: #36c04d;
+}
+
+.red {
+    background-color: #c45125;
+}
+
+.orange {
+    background-color: #e39416;
+}
+
+.blue {
+    background-color: #e39416;
+}
+
+.grey {
+    background-color: #f9f9f9;
 }
 
 /*
@@ -15,50 +40,74 @@ body {
 }
 
 body {
-  padding: 0 10px 10px 10px;
-  background: #f9f9f9;
+    background: #f9f9f9;
+}
+
+button,
+button.small {
+    width: 100%;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+button.small {
+    height: 48px;
 }
 
 #menu {
-  width: 100%;
-  height: 64px;
-  padding: 0 15px 0 15px;
-  background: #fff;
+    width: 100%;
+    height: 64px;
+    padding: 0 15px 0 15px;
+    background: #fff;
 }
 
 #sub-menu {
-  width: 100%;
-  height: 40px;
-  background: #f9f9f9;
+    width: 100%;
+    height: 40px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .client-order {
-  width: 100%;
-  background: #f9f9f9;
-  padding-left: 10px;
+    width: 100%;
+    background: #fff;
+    padding: 0 10px 10px 10px;
 }
 
 .client-order div {
-  width: 100%;
-  overflow: hidden;
-  padding: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    overflow: hidden;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .client-order div label {
-  margin-bottom: 10px;
-  color: rgba(0, 0, 0, 0.5);
-  float: left;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    float: left;
 }
 
 .client-order div input {
-  border: none;
-  clear: both;
-  float: left;
+    border: none;
+    clear: both;
+    float: left;
 }
 
-.client-order div {
-  clear: none;
+.client-order div input:nth-child(0) {
+    clear: none;
+}
+
+.client-order div select {
+    clear: both;
+    float: left;
+}
+
+.client-order button {
+    margin-top: 10px;
 }
 
 /*
@@ -67,6 +116,10 @@ body {
   Design is made with points in mind, in CSS points are usually used for print
   and not for digital screens. The conversion is approximately correct.
 */
+
+.mono {
+  font-family: 'Roboto Mono', monospace;
+}
 
 h1 {
   font-size: 32px;
@@ -83,10 +136,12 @@ h2 {
 h3 {
   font-size: 23px;
   line-height: 1.2;
+  font-weight: 600;
 }
 
 p,
-.client-order div input {
+.client-order div input,
+button {
   font-size: 23px;
   line-height: 1.4;
 }
