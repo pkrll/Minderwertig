@@ -34,10 +34,12 @@ const login_email_v = Vue.component('login-email-v', {
     }
   },
   template: '\
-  <div> \
-    <input type="email" v-model="credentials.email"> \
-    <input type="password" v-model="credentials.password"> \
-    <button v-on:click="login">Logga in</button> \
+  <div class="login-email-v"> \
+    <img src="#" alt=""> \
+    <h2>Welcome to Minderwertig. Simply a more convenient travel!</h2>\
+    <input type="email" placeholder="E-mail..." v-model="credentials.email"> \
+    <input type="password" placeholder="Password..."  v-model="credentials.password"> \
+    <button class="green" v-on:click="login">Logga in</button> \
   </div>',
   methods: {
     login: function (event) {
@@ -51,7 +53,7 @@ const login_email_v = Vue.component('login-email-v', {
 // return new Date(myDate.getFullYear(), myDate.getMonth(), myDate.getDate());
 
 // Temporary
-const order_form_v = Vue.component('order-v', {
+const order_form_v = Vue.component('order-form-v', {
   props: ['app'],
   data: function () {
     // TODO: FIX THIS SHIT
@@ -69,35 +71,33 @@ const order_form_v = Vue.component('order-v', {
     }
   },
   template: '\
-  <div> \
-    <form class="client-order"> \
-      <div> \
-        <label for="from">From</label> \
-        <input type="text" name="from" placeholder="From..." v-model="order.from"> \
-      </div> \
-      <div> \
-        <label for="from">To</label> \
-        <input type="text" name="to" placeholder="To..." v-model="order.to"> \
-      </div> \
-      <div> \
-        <label for="from">Date</label> \
-        <input class="mono" type="text" name="date" v-model="order.date.day"> \
-        <input class="mono" type="text" name="date" v-model="order.date.time"> \
-      </div> \
-      <div> \
-        <label for="capacity">Capacity</label> \
-        <select class="" name="capacity" v-model="order.capacity"> \
-          <option value="4">4</option> \
-          <option value="7">7</option> \
-          <option value="10">10</option> \
-        </select> \
-      </div> \
-      <div> \
-        <label for="special-needs">Additional needs</label> \
-        <input type="checkbox" name="special-needs"> \
-      </div> \
-      <button class="normal green" v-on:click="sendOrder">Continue</button> \
-    </form> \
+  <div class="order-form-v"> \
+    <div> \
+      <label for="from">From</label> \
+      <input type="text" name="from" placeholder="From..." v-model="order.from"> \
+    </div> \
+    <div> \
+      <label for="from">To</label> \
+      <input type="text" name="to" placeholder="To..." v-model="order.to"> \
+    </div> \
+    <div> \
+      <label for="from">Date</label> \
+      <input class="mono" type="text" name="date" v-model="order.date.day"> \
+      <input class="mono" type="text" name="date" v-model="order.date.time"> \
+    </div> \
+    <div> \
+      <label for="capacity">Capacity</label> \
+      <select class="" name="capacity" v-model="order.capacity"> \
+        <option value="4">4</option> \
+        <option value="7">7</option> \
+        <option value="10">10</option> \
+      </select> \
+    </div> \
+    <div> \
+      <label for="special-needs">Additional needs</label> \
+      <input type="checkbox" name="special-needs"> \
+    </div> \
+    <button class="normal green" v-on:click="sendOrder">Continue</button> \
   </div>',
   methods: {
     sendOrder: function (event) {

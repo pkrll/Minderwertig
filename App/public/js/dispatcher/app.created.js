@@ -1,4 +1,4 @@
-const created = function() {
+const created = function () {
 
   socket.emit('dispatcher/login', {});
   /**
@@ -8,14 +8,13 @@ const created = function() {
    */
   socket.on('login/success', function (data) {
     this.orders = data.orders;
-    this.trips  = data.trips;
-    this.cars   = data.cars;
+    this.trips = data.trips;
+    this.cars = data.cars;
   }.bind(this));
 
   socket.on('order/request', function (data) {
     this.orders.push(data);
   }.bind(this));
-
 
 
 }
