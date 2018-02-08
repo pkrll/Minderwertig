@@ -32,6 +32,36 @@
 /*
   L A Y O U T
 */
+#top {
+  padding: 1em;
+  color: black;
+  background-color: #ffffff;
+  height: 65px;
+}
+
+#checkbox {
+  color: black;
+  height: 10%;
+}
+
+#mid {
+  color: white;
+  text-align: center;
+  background-color: #36c04d;
+  padding-top: 17%;
+  height: 539px;
+}
+
+#continue {
+  background-color: #2f9941;
+  height: ;
+}
+
+#bottom{
+  height: 100%;
+}
+
+
 
 html,
 body {
