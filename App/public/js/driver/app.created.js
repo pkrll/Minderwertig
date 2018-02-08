@@ -1,5 +1,4 @@
 const created = function() {
-router.push('/driver');
   //socket.emit('driver/login', { email: "c@a.se", password: "foo" });
 
   /**

@@ -3,7 +3,7 @@ const login_view_v = Vue.component('login-view-v', {
   template: ' \
   <div> \
   <h2>Kontrollpanel för chaufför</h2> \
-    <button v-on:click="login">Logga in</button> \
+    <button class="green" v-on:click="login">Logga in</button> \
   </div>',
   methods: {
     login: function(event) {
@@ -38,7 +38,7 @@ const login_v = Vue.component('login-v', {
   <div> \
     <input type="username" v-model="credentials.username"> \
     <input type="password" v-model="credentials.password"> \
-    <button v-on:click="login">Logga in</button> \
+    <button class="green" v-on:click="login">Logga in</button> \
   </div>',
   methods: {
     login: function (event) {
@@ -63,7 +63,40 @@ const assignments_v = Vue.component('assignments-v', {
       <li>{{ item.from }}</li> \
       <li>{{ item.to }}</li> \
       <li>{{ item.time }}</li> \
-      <button>Detaljer</button> \
+      <button v-on:click="viewDetails(item, $event)" class="green">Detaljer</button> \
     </ul> \
-  </div>'
+  </div>',
+  methods: {
+    viewDetails: function(customer, event) {
+      app.viewAssignment(customer);
+    }
+  },
+});
+
+const details_v = Vue.component('details-v', {
+  props: ['app'],
+  data: function () {
+    return {
+      details: {
+        name: app.assignmentDisplay.name,
+        from: app.assignmentDisplay.from,
+        to: app.assignmentDisplay.to,
+        time: app.assignmentDisplay.time
+      }
+    }
+  },
+  template: '\
+  <div>\
+  <h2>Orderdetaljer</h2>\
+  <p>{{details.name}}</p>\
+  <p>From: {{details.from}}</p>\
+  <p>To: {{details.to}}</p>\
+  <p>{{details.time}}</p>\
+  <button v-on:click="returnToAssignments" class="green">Tillbaka</button>\
+  </div>',
+  methods: {
+    returnToAssignments: function() {
+      router.push('/driver/assignments');
+    }
+  }
 });

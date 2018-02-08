@@ -16,7 +16,7 @@ const router = new VueRouter({
       }
     },
     {
-      path: '/driver/wait',
+      path: '/driver/login/wait',
       components: {
         titlebar: null,
         main: login_load_v
@@ -32,8 +32,15 @@ const router = new VueRouter({
     {
       path: '/driver/assignments',
       components: {
-        titlebar: null,
+        titlebar: menu_v,
         main: assignments_v
+      }
+    },
+    {
+      path: '/driver/assignments/:id',
+      components: {
+        titlebar: menu_v,
+        main: details_v
       }
     },
   ]
