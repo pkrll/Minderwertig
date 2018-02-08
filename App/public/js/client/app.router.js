@@ -23,6 +23,13 @@ const router = new VueRouter({
       }
     },
     {
+      path: '/client/order/confirmation',
+      components: {
+        titlebar: menu_v,
+        main: order_confirmation_v
+      }
+    },
+    {
       path: '/client/login/fail',
       components: {
         titlebar: null,

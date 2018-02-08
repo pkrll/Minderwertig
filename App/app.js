@@ -46,6 +46,11 @@ io.on('connection', function (socket) {
     }
   });
 
+  socket.on('client/order/confirmation', function (response) {
+    console.log("CLIENT: Order confirmation received");
+    console.log(response);
+  });
+
   // ----------------------------------------
   //  DISPATCHER
   // ----------------------------------------

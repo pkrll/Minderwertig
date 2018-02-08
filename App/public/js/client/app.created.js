@@ -9,7 +9,7 @@ const created = function () {
    */
   socket.on('login/success', function (account) {
     this.account = account;
-    //router.push('/client/order');
+    router.push('/client/order');
   }.bind(this));
   /**
    * Invoked when login has failed.
@@ -26,6 +26,7 @@ const created = function () {
    * @param  {Object} data The booking details.
    */
   socket.on('order/booking', function (data) {
-    console.log(data);
+    this.currentOrder = data;
+    router.push('/client/order/confirmation');
   });
 }
