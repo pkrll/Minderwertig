@@ -21,10 +21,6 @@
   background-color: #e39416;
 }
 
-.blue {
-  background-color: #e39416;
-}
-
 .grey {
   background-color: #f9f9f9;
 }
@@ -155,6 +151,31 @@ button.small {
 
 .order-form-v button {
   margin-top: 10px;
+}
+
+.order-wait-v {
+  padding: 10px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.order-wait-v h1,
+.order-wait-v h2 {
+  text-align: center;
+  margin: 10px;
+}
+
+.order-wait-v h2 {
+  color: grey;
+}
+
+.order-wait-v button {
+    margin-top: 20px;
 }
 
 /*
