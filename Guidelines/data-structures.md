@@ -19,7 +19,7 @@
 ###### Dispatcher messages
 
 * ``dispatcher/login``
-* ``dispatcher/order/proposal``
+* ``dispatcher/trip/proposal``
     * Data: [``trip``](#trip)
 
 ###### Server messages
@@ -32,7 +32,9 @@
     * Data: { message: ``String`` }
 * ``order/request`` (**Dispatcher only**)
     * Data: [``order request``](#order-request)
-* ``order/proposal`` (**Client only**)
+* ``trip/proposal`` (**Client only**)
+  * Data: [``trip``](#trip)
+* ``trip/new``
   * Data: [``trip``](#trip)
 
 ### Order / Booking system
