@@ -8,7 +8,7 @@ const orders_view_v = Vue.component('orders-view-v', {
   </div>',
   methods: {
     // TODO: Refactor needed
-    handle: function(order) {
+    handle: function (order) {
       app.handleOrder(order);
     }
   }

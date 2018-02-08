@@ -1,7 +1,3 @@
-
-
-
-
 // OUR OLD STUFF
 
 

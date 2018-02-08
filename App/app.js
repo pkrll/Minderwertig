@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 
-var http   = require('http').Server(app);
+var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var Store = require('./store/Store');
@@ -13,7 +13,7 @@ require('./routes.js')(app)
 require('./config.js')(app)
 
 io.on('connection', function (socket) {
-  socket.emit('connection', { connected: true });
+  socket.emit('connection', {connected: true});
 
   // ----------------------------------------
   //  CLIENT
@@ -54,7 +54,7 @@ io.on('connection', function (socket) {
     console.log("A dispatcher has logged on!");
     store.addDispatcherSocket(socket);
 
-    socket.emit("login/success", { orders: store.getOrders(), trips: store.getTrips(), cars: []} );
+    socket.emit("login/success", {orders: store.getOrders(), trips: store.getTrips(), cars: []});
   });
 
   socket.on('dispatcher/order/booking', function (request) {

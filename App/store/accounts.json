@@ -7,10 +7,18 @@
       "metadata": {
         "name": "Ardalan Samimi",
         "image_url": "",
-        "position": { "x": 0, "y": 0 }
+        "position": {
+          "x": 0,
+          "y": 0
+        }
       },
       "trips": [
-        { "trip_id": 1, "time": "12:00", "from": "Stockholm", "to": "Uppsala" }
+        {
+          "trip_id": 1,
+          "time": "12:00",
+          "from": "Stockholm",
+          "to": "Uppsala"
+        }
       ]
     },
     {
@@ -20,9 +28,12 @@
       "metadata": {
         "name": "Karl Karlsson",
         "image_url": "",
-        "position": { "x": 0, "y": 0 }
+        "position": {
+          "x": 0,
+          "y": 0
+        }
       },
-      "trips": [ ]
+      "trips": []
     }
   ],
   "drivers": [
@@ -33,7 +44,10 @@
       "metadata": {
         "name": "Frank Franksson",
         "image_url": "",
-        "position": { "x": 0, "y": 0 }
+        "position": {
+          "x": 0,
+          "y": 0
+        }
       },
       "trips": []
     }
