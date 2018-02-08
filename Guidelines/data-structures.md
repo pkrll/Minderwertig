@@ -1,43 +1,101 @@
 # Data structures & socket communication
 
-### Socket Messages
+## Socket Messages
 
 ###### Client messages
 
 * ``client/login``
-    * Data: [``login``](#)
+    * Data: [``login``](#login)
 * ``client/order/request``
-    * Data: [``order request``](#)
+    * Data: [``order request``](#order-request)
 * ``client/order/confirmation``
-    * Data: [``order confirmation``](#)
+    * Data: [``order confirmation``](#order-confirmation)
 
 ###### Driver messages
 
 * ``driver/login``
-    * Data: [``login``](#)
+    * Data: [``login``](#login)
 
 ###### Dispatcher messages
 
 * ``dispatcher/login``
 * ``dispatcher/order/proposal``
-    * Data: [``order proposal``](#)
+    * Data: [``trip``](#trip)
 
 ###### Server messages
 
 * ``login/success`` (**Driver/Client**)
-    * Data: [``account``](#)
+    * Data: [``account``](#account)
 * ``login/success`` (**Dispatcher**)
-    * Data: { orders: [[ ``order request`` ]](#), trips: [[ ``trip`` ]](#), cars: [[ ``car`` ]](#) }
+    * Data: { orders: [[ ``order request`` ]](#order-request), trips: [[ ``trip`` ]](#trip), vehicles: [[ ``vehicle`` ]](#vehicle) }
 * ``login/failure``
     * Data: { message: ``String`` }
 * ``order/request`` (**Dispatcher only**)
-    * Data: [``order request``](#)
+    * Data: [``order request``](#order-request)
 * ``order/proposal`` (**Client only**)
-  * Data: [``order proposal``](#)
+  * Data: [``trip``](#trip)
 
-## Order / Booking system
+### Order / Booking system
 
-When the user books a taxi, a ``client/order/request`` message is sent to the server, along with an ``order request`` object, detailed below:
+* When the user books a taxi, a ``client/order/request`` message is sent to the server, along with an [``order request``](#order-request) object.
+
+* This data is passed on to the dispatchers to handle. When a taxi has been assigned to the order, the dispatcher sends a ``dispatcher/order/proposal`` with a [``trip``](#trip) object.
+
+* The user must confirm the trip by sending a ``client/order/confirmation`` message, with an [``order confirmation``](#order-confirmation) object.
+
+* If the user confirms the trip, it should be saved to the users trips. The server should also add it to the array containing ongoing trips.
+
+## Data Structures
+
+#### Account
+
+###### Account (Client)
+
+```json
+{
+  "id": Int,
+  "email": String,
+  "password": String,
+  "metadata": {
+    "name": String,
+    "image_url": String,
+    "position": {
+      "x": Double,
+      "y": Double
+    },
+  },
+  "trips": [Trip]
+}
+```
+
+###### Account (Driver)
+
+```json
+{
+  "id": Int,
+  "email": String,
+  "password": String,
+  "metadata": {
+    "name": String,
+    "image_url": String,
+    "position": {
+      "x": Double,
+      "y": Double
+    },
+  },
+  "assignments": [Trip],
+  "vehicle": Vehicle
+}
+```
+
+###### Vehicle
+```json
+{
+  "name": String
+}
+```
+
+#### Order / Trips
 
 ###### Order request
 
@@ -52,24 +110,15 @@ When the user books a taxi, a ``client/order/request`` message is sent to the se
 }
 ```
 
-This data is passed to the dispatchers, who in turn sends back an ``order proposal``:
-
-###### Order proposal
-
+###### Order confirmation
 ```json
 {
-  "id": Int,
-  "price": Double,
-  "route": {
-    "from": String,
-    "to": String,
-    "time": Int
-  },
-  "driver": Account
+  "id": Int (The trip id),
+  "response": Boolean
 }
 ```
 
-##### Trip
+###### Trip
 
 ```json
 {
@@ -84,75 +133,3 @@ This data is passed to the dispatchers, who in turn sends back an ``order propos
   "driver": Account
 }
 ```
-
-
-## 1. Containers
-#### Server  
-* accounts[]
-
-#### Client  
-* account
-
-#### Driver  
-* account
-
-## 2. Objects
-#### account  
-* __int__ uuid  
-* __int__ x, y  
-* __metadata__ agent  
-* trips[]
-
-#### metadata  
-* __string__ name  
-* __string__ url  
-* ...
-
-#### trip  
-* __int__ uuid  
-* __address__ from, to  
-* __metadata__ agent  
-* __status__ status
-
-#### status  
-* __enum__ WAITING  
-* __enum__ ACCEPTED  
-* __enum__ DENIED  
-* __enum__ ACTIVE  
-* __enum__ PAUSED  
-* __enum__ TERMINATED
-
-## 3. Sockets
-### Send
-
-#### login  
-*Send a login request from client or taxi to the server.*  
-* __string__ username  
-* __string__ password
-
-#### order  
-*Send an order (trip) to the server.*  
-* __address__ from, to  
-* __date__ date  
-* ...
-
-#### confirmation  
-*Send a confirmation on a trip to the server.*  
-* __int__ uuid  
-* __status__ status
-
-#### location
-*Send your current location to the server.*  
-* __int__ uuid  
-* __int__ x, y
-
-### Receive
-
-#### login  
-*Receive a login object containing an account object if login was successful.*  
-* __status__ status  
-* __account__ account
-
-#### trip
-*Receive a trip from the server if earlier sent confirmation contains status ACCEPTED.*  
-* __trip__ trip
