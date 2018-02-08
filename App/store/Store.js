@@ -104,8 +104,6 @@ class Store {
   addOrder(order) {
     order.id = this.getNewOrderId();
     this.orders[order.id] = order;
-
-    console.log("ORDERS: " + this.orders);
   }
 
   getOrder(id) {

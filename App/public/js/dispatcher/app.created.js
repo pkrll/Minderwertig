@@ -16,5 +16,12 @@ const created = function () {
     this.orders[order.id] = order;
   }.bind(this));
 
+  socket.on('order/remove', function (id) {
+    delete this.orders[id];
+  }.bind(this));
+
+  socket.on('trip/new', function (trip) {
+    this.trips[trip.id] = trip;
+  }.bind(this));
 
 }

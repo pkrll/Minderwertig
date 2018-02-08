@@ -12,6 +12,17 @@ var store = new Store();
 require('./routes.js')(app)
 require('./config.js')(app)
 
+// TODO: Add this somewhere else?
+
+function sendToDispatchers(message, data) {
+  let dispatchers = store.getDispatcherSockets();
+
+  for (var dispatcher of dispatchers) {
+    console.log("Sending request to dispatcher");
+    dispatcher.emit(message, data);
+  }
+}
+
 io.on('connection', function (socket) {
   socket.emit('connection', {connected: true});
 
@@ -35,25 +46,22 @@ io.on('connection', function (socket) {
 
   socket.on('client/order/request', function (data) {
     console.log("CLIENT: Order request received...");
-
     store.addOrder(data);
-
-    let dispatchers = store.getDispatcherSockets();
-
-    for (var dispatcher of dispatchers) {
-      console.log("Sending request to dispatcher");
-      dispatcher.emit('order/request', data);
-    }
+    sendToDispatchers('order/request', data);
   });
 
   socket.on('client/order/confirmation', function (data) {
     console.log("CLIENT: Order confirmation received");
 
     if (data.response == true) {
+      // Retrieve the order and add it as a trip
+      // This will change the object's id when adding as a trip
       var order = store.getOrder(data.id);
       store.addTrip(order);
+      sendToDispatchers('trip/new', order);
+      socket.emit('trip/new', order);
     }
-
+    // Remove the order from the list of orders in store
     store.removeOrder(data.id);
   });
 
@@ -72,8 +80,9 @@ io.on('connection', function (socket) {
     console.log("DISPATCHER: New trip proposal received...");
     // FIXME: This may have to change depending on how the data structure ends up looking
     let client = store.getClientSocket(request.client.id);
-    console.log(request);
     client.emit('trip/proposal', request);
+    // Remove the order from all dispatcher's order list
+    sendToDispatchers('order/remove', request.id);
   });
 
 });
