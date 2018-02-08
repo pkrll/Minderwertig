@@ -13,15 +13,18 @@ const created = function () {
   }.bind(this));
 
   socket.on('order/request', function (order) {
-    this.orders[order.id] = order;
+    // This ensures that the orders property is reactive
+    Vue.set(this.orders, order.id, order);
   }.bind(this));
 
   socket.on('order/remove', function (id) {
-    delete this.orders[id];
+    // This ensures that the orders property is reactive
+    Vue.delete(this.orders, id);
   }.bind(this));
 
   socket.on('trip/new', function (trip) {
-    this.trips[trip.id] = trip;
+    // This ensures that the trips property is reactive
+    Vue.set(this.trips, trip.id, trip);
   }.bind(this));
 
 }
