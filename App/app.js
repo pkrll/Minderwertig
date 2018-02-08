@@ -65,7 +65,25 @@ io.on('connection', function (socket) {
     client.emit('order/booking', request);
   });
 
+  // ----------------------------------------
+  //  DRIVER
+  // ----------------------------------------
+
+    socket.on('driver/login', function(request) {
+      console.log("A driver has logged on!");
+      let account = store.retrieveDriver(request.username, request.password);
+
+      if (account != null) {
+        socket.emit('login/success', account);
+        store.addDriverSocket(account.id, socket);
+        console.log("DRIVER: Login successful!");
+      } else {
+        socket.emit('login/failure', "Wrong username or password!");
+        console.log("DRIVER: Login failed!");
+      }
+    });
 });
+
 
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));
