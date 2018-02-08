@@ -5,7 +5,7 @@ const actions = {
    * @param  {Object} order The proposal
    */
   handleOrder: function (order) {
-    socket.emit('dispatcher/order/booking', order);
+    socket.emit('dispatcher/trip/proposal', order);
   }
 
 }

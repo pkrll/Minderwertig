@@ -1,5 +1,4 @@
 const created = function () {
-
   //socket.emit('client/login', {email: "a@a.se", password: "foo"});
 
   /**
@@ -25,7 +24,7 @@ const created = function () {
    *
    * @param  {Object} data The booking details.
    */
-  socket.on('order/booking', function (data) {
+  socket.on('trip/proposal', function (data) {
     this.currentOrder = data;
     router.push('/client/order/confirmation');
   });

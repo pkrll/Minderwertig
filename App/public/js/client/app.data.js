@@ -1,5 +1,6 @@
 const data = {
   account: {},
+  currentOrder: {},
   menu: [
     {name: "Order trip"},
     {name: "My bookings"},

@@ -15,7 +15,8 @@ class Store {
       dispatchers: []
     };
 
-    this.orders = [];
+    this.orders = {};
+    this.trips = {};
   }
 
   addClientSocket(id, socket) {
@@ -101,7 +102,8 @@ class Store {
   }
 
   addOrder(order) {
-    this.orders.push(order);
+    order.id = this.getNewOrderId();
+    this.orders[order.id] = order;
   }
 
   getOrders() {
@@ -109,11 +111,29 @@ class Store {
   }
 
   addTrip(trip) {
-    this.trips.push(trip);
+    trip.id = this.getNewTripId();
+    this.trips[trip.id] = trip;
   }
 
   getTrips() {
     return this.trips;
+  }
+
+
+  getNewTripId() {
+    return this.getNewId(this.trips);
+  }
+
+  getNewOrderId() {
+    return this.getNewId(this.orders);
+  }
+
+  getNewId(object) {
+    var lastOrder = Object.keys(object).reduce(function (last, next) {
+      return Math.max(last, next);
+    }, 0);
+
+    return lastOrder + 1;
   }
 
 }

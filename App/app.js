@@ -62,12 +62,12 @@ io.on('connection', function (socket) {
     socket.emit("login/success", {orders: store.getOrders(), trips: store.getTrips(), cars: []});
   });
 
-  socket.on('dispatcher/order/booking', function (request) {
-    console.log("DISPATCHER: New booking received...");
+  socket.on('dispatcher/trip/proposal', function (request) {
+    console.log("DISPATCHER: New trip proposal received...");
     // FIXME: This may have to change depending on how the data structure ends up looking
     let client = store.getClientSocket(request.client.id);
-
-    client.emit('order/booking', request);
+    console.log(request);
+    client.emit('trip/proposal', request);
   });
 
 });

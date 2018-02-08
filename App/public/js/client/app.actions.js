@@ -14,6 +14,9 @@ const actions = {
    * @return {Object} order The booking details
    */
   sendOrder: function (order) {
+    // The order needs to have an account before sending it to the server
+    // Although, the server could add the client property itself, by matching
+    // socket to client in Store.js, but that needs a lot more logic.
     order.client = this.account;
 
     router.push('');
@@ -25,8 +28,7 @@ const actions = {
    */
   sendConfirmation: function (response) {
     router.push(''); // TODO
-    
-    let message = { id: this.currentBooking.id, response: response  };
-    socket.emit('client/order/confirm', message);
+    let message = { id: this.$data.currentOrder.id, response: response  };
+    socket.emit('client/order/confirmation', message);
   }
 }

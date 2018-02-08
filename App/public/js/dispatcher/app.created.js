@@ -12,8 +12,8 @@ const created = function () {
     this.cars = data.cars;
   }.bind(this));
 
-  socket.on('order/request', function (data) {
-    this.orders.push(data);
+  socket.on('order/request', function (order) {
+    this.orders[order.id] = order;
   }.bind(this));
 
 
