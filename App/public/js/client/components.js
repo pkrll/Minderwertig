@@ -22,7 +22,7 @@ const login_load_v = Vue.component('login-email-v', {
 // Login failure
 const login_fail_v = Vue.component('login-fail-v', {
   props: ['app'],
-  template: '<h2>Login failure: {{app.message}}</h2>'
+  template: '<h2>Login failure: {{app.temporary.message}}</h2>'
 });
 
 // Login e-mail form
@@ -118,9 +118,9 @@ const order_form_v = Vue.component('order-form-v', {
 
 const order_confirmation_v = Vue.component('order-confirmation-v', {
   props: ['app'],
-  template: '<h2 v-on:click="confirmOrder(true)">CLICK HERE TO CONFIRM</h2>',
+  template: '<button v-on:click="confirmOrder(true, $event)">CLICK HERE TO CONFIRM</button>',
   methods: {
-    confirmOrder: function (response) {
+    confirmOrder: function(response, event) {
       app.sendConfirmation(response);
     }
   }

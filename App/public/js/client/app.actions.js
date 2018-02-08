@@ -15,8 +15,8 @@ const actions = {
    */
   sendOrder: function (order) {
     // The order needs to have an account before sending it to the server
-    // Although, the server could add the client property itself, by matching
-    // socket to client in Store.js, but that needs a lot more logic.
+    // The server could add the client property itself, by matching socket
+    // to client from the Store, but that requires a lot more logic.
     order.client = this.account;
 
     router.push('');
@@ -24,11 +24,12 @@ const actions = {
   },
   /**
    * Send a confirmation of the current order, stored in the Vue instance's
-   * data property 'currentBooking'.
+   * data property 'currentOrder'.
    */
   sendConfirmation: function (response) {
     router.push(''); // TODO
-    let message = { id: this.$data.currentOrder.id, response: response  };
+    let message = { id: this.temporary.currentOrder.id, response: response  };
     socket.emit('client/order/confirmation', message);
+    // TODO: Add currentOrder to our trips array or whatnot, y'all
   }
 }

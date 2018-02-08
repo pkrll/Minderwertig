@@ -19,9 +19,9 @@ io.on('connection', function (socket) {
   //  CLIENT
   // ----------------------------------------
 
-  socket.on('client/login', function (request) {
+  socket.on('client/login', function (data) {
     console.log("CLIENT: Attempting to login...");
-    let account = store.retrieveClient(request.email, request.password);
+    let account = store.retrieveClient(data.email, data.password);
 
     if (account != null) {
       socket.emit('login/success', account);
@@ -33,22 +33,28 @@ io.on('connection', function (socket) {
     }
   });
 
-  socket.on('client/order/request', function (request) {
+  socket.on('client/order/request', function (data) {
     console.log("CLIENT: Order request received...");
 
-    store.addOrder(request);
+    store.addOrder(data);
 
     let dispatchers = store.getDispatcherSockets();
 
     for (var dispatcher of dispatchers) {
       console.log("Sending request to dispatcher");
-      dispatcher.emit('order/request', request);
+      dispatcher.emit('order/request', data);
     }
   });
 
-  socket.on('client/order/confirmation', function (response) {
+  socket.on('client/order/confirmation', function (data) {
     console.log("CLIENT: Order confirmation received");
-    console.log(response);
+
+    if (data.response == true) {
+      var order = store.getOrder(data.id);
+      store.addTrip(order);
+    }
+
+    store.removeOrder(data.id);
   });
 
   // ----------------------------------------
