@@ -104,21 +104,40 @@ class Store {
   addOrder(order) {
     order.id = this.getNewOrderId();
     this.orders[order.id] = order;
+
+    console.log("ORDERS: " + this.orders);
+  }
+
+  getOrder(id) {
+    return this.orders[id];
   }
 
   getOrders() {
     return this.orders;
   }
 
+  removeOrder(id) {
+    delete this.orders[id];
+  }
+
   addTrip(trip) {
     trip.id = this.getNewTripId();
     this.trips[trip.id] = trip;
+
+    console.log("TRIPS: " + this.trips);
+  }
+
+  getTrip(id) {
+    return this.trips[id];
   }
 
   getTrips() {
     return this.trips;
   }
 
+  removeTrip(id) {
+    delete this.trips[id]
+  }
 
   getNewTripId() {
     return this.getNewId(this.trips);
