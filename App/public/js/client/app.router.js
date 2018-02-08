@@ -5,7 +5,8 @@ const router = new VueRouter({
       path: '/client',
       components: {
         titlebar: null,
-        main: login_email_v
+          //main: login_email_v
+        main: trip_done_v,
       }
     },
     {

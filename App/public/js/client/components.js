@@ -120,3 +120,24 @@ const menu_v = Vue.component('menu-v', {
   props: ['app'],
   template: '<ul><li v-for="item in app.menu">{{ item.name }}</li></ul>'
 });
+
+const trip_done_v = Vue.component('trip-done-v', {
+  props: ['app'],
+  template: '\
+  <div> \
+    <div> \
+        <div id="top"class="grey"> \
+          <h2> Minderwertig </h2> \
+        </div> \
+      </div> \
+      <div id="mid"> \
+          <h5 id="checkbox"> En bild på typ en checkbox </h5> \
+          <h3> Resa avklarad! </h3> \
+        </div> \
+      <div class="green" id="bottom"> \
+        <button id="continue" class="green"> \
+          <h3> Fortsätt </h3> \
+         </button> \
+      </div> \
+  </div>'
+})
