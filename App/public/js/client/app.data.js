@@ -1,5 +1,6 @@
 const data = {
-  account: {},
+  account: {},              // The clients account, will be updated upon login
+  temporary: {},            // Temporary data, will be populated with temp stuff!
   menu: [
     {name: "Order trip"},
     {name: "My bookings"},

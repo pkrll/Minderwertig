@@ -34,7 +34,7 @@ const login_load_v = Vue.component('login-email-v', {
 // Login failure
 const login_fail_v = Vue.component('login-fail-v', {
   props: ['app'],
-  template: '<h2>Login failure: {{app.message}}</h2>'
+  template: '<h2>Login failure: {{app.temporary.message}}</h2>'
 });
 
 // Login e-mail form
@@ -124,6 +124,16 @@ const order_form_v = Vue.component('order-form-v', {
     validate: function (order) {
       // TODO: Fix validate function so that it also checks date, capacity and additonal needs
       return (order.from != null && order.to != null);
+    }
+  }
+});
+
+const order_confirmation_v = Vue.component('order-confirmation-v', {
+  props: ['app'],
+  template: '<button v-on:click="confirmOrder(true, $event)">CLICK HERE TO CONFIRM</button>',
+  methods: {
+    confirmOrder: function(response, event) {
+      app.sendConfirmation(response);
     }
   }
 });
