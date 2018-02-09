@@ -13,6 +13,18 @@ const login_view_v = Vue.component('login-view-v', {
   }
 });
 
+// Client waiting for taxi to be found
+const order_wait_v = Vue.component('order-wait-v', {
+    props: ['app'],
+    template: '\
+    <div class="order-wait-v"> \
+        <img src=""> \
+        <h1>Searching for trip</h1> \
+        <h2>This could take several minutes...</h2> \
+      <button class="orange">Cancel</button> \
+    </div>'
+});    
+
 // Logging in screen
 const login_load_v = Vue.component('login-email-v', {
   props: ['app'],
