@@ -180,7 +180,9 @@ button.small {
   overflow:      auto;
 }
 
-.trip-v .meta .time, .trip-v .meta img, .trip-v .meta p {
+.trip-v .meta .time,
+.trip-v .meta img,
+.trip-v .meta p {
   float: left;
 }
 
