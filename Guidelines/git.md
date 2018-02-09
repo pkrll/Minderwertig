@@ -113,6 +113,10 @@ When you're satisfied with your changes and want to incorporate those to the ``m
 
 But always have someone else to review your changes before merging them.
 
+If a pull request contains changes that addresses an ``issue``, you can set that issue to automatically close when the pull requests has been approved and merged. There are several keywords to use, for example ``close #issueNO``.
+
+Put the line ``close #12`` in the PRs description, to close issue #12. The full list of keywords can [be found here](https://help.github.com/articles/closing-issues-using-keywords/).
+
 ##### What to look at when reviewing?
 
 Use the following as a guide for when reviewing someone else's code (but also before creating a pull request).
