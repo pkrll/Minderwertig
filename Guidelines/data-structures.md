@@ -1,71 +1,137 @@
 # Data structures & socket communication
-## 1. Containers
-#### Server  
-* accounts[]
 
-#### Client  
-* account
+## Socket Messages
 
-#### Driver  
-* account
+###### Client messages
 
-## 2. Objects
-#### account  
-* __int__ uuid  
-* __int__ x, y  
-* __metadata__ agent  
-* trips[]
+* ``client/login``
+    * Data: [``login``](#login)
+* ``client/order/request``
+    * Data: [``order request``](#order-request)
+* ``client/order/confirmation``
+    * Data: [``order confirmation``](#order-confirmation)
 
-#### metadata  
-* __string__ name  
-* __string__ url  
-* ...
+###### Driver messages
 
-#### trip  
-* __int__ uuid  
-* __address__ from, to  
-* __metadata__ agent  
-* __status__ status
+* ``driver/login``
+    * Data: [``login``](#login)
 
-#### status  
-* __enum__ WAITING  
-* __enum__ ACCEPTED  
-* __enum__ DENIED  
-* __enum__ ACTIVE  
-* __enum__ PAUSED  
-* __enum__ TERMINATED
+###### Dispatcher messages
 
-## 3. Sockets
-### Send
+* ``dispatcher/login``
+* ``dispatcher/trip/proposal``
+    * Data: [``trip``](#trip)
 
-#### login  
-*Send a login request from client or taxi to the server.*  
-* __string__ username  
-* __string__ password
+###### Server messages
 
-#### order  
-*Send an order (trip) to the server.*  
-* __address__ from, to  
-* __date__ date  
-* ...
+* ``login/success`` (**Driver/Client**)
+    * Data: [``account``](#account)
+* ``login/success`` (**Dispatcher**)
+    * Data: { orders: [[ ``order request`` ]](#order-request), trips: [[ ``trip`` ]](#trip), vehicles: [[ ``vehicle`` ]](#vehicle) }
+* ``login/failure``
+    * Data: { message: ``String`` }
+* ``order/request`` (**Dispatcher only**)
+    * Data: [``order request``](#order-request)
+* ``trip/proposal`` (**Client only**)
+  * Data: [``trip``](#trip)
+* ``trip/new``
+  * Data: [``trip``](#trip)
 
-#### confirmation  
-*Send a confirmation on a trip to the server.*  
-* __int__ uuid  
-* __status__ status
+### Order / Booking system
 
-#### location
-*Send your current location to the server.*  
-* __int__ uuid  
-* __int__ x, y
+* When the user books a taxi, a ``client/order/request`` message is sent to the server, along with an [``order request``](#order-request) object.
 
-### Receive
+* This data is passed on to the dispatchers to handle. When a taxi has been assigned to the order, the dispatcher sends a ``dispatcher/order/proposal`` with a [``trip``](#trip) object.
 
-#### login  
-*Receive a login object containing an account object if login was successful.*  
-* __status__ status  
-* __account__ account
+* The user must confirm the trip by sending a ``client/order/confirmation`` message, with an [``order confirmation``](#order-confirmation) object.
 
-#### trip
-*Receive a trip from the server if earlier sent confirmation contains status ACCEPTED.*  
-* __trip__ trip
+* If the user confirms the trip, it should be saved to the users trips. The server should also add it to the array containing ongoing trips.
+
+## Data Structures
+
+#### Account
+
+###### Account (Client)
+
+```json
+{
+  "id": Int,
+  "email": String,
+  "password": String,
+  "metadata": {
+    "name": String,
+    "image_url": String,
+    "position": {
+      "x": Double,
+      "y": Double
+    },
+  },
+  "trips": [Trip]
+}
+```
+
+###### Account (Driver)
+
+```json
+{
+  "id": Int,
+  "email": String,
+  "password": String,
+  "metadata": {
+    "name": String,
+    "image_url": String,
+    "position": {
+      "x": Double,
+      "y": Double
+    },
+  },
+  "assignments": [Trip],
+  "vehicle": Vehicle
+}
+```
+
+###### Vehicle
+```json
+{
+  "name": String
+}
+```
+
+#### Order / Trips
+
+###### Order request
+
+```json
+{
+  "route": {
+    "from": String,
+    "to": String,
+    "time": Int
+  },
+  "client": Account
+}
+```
+
+###### Order confirmation
+```json
+{
+  "id": Int (The trip id),
+  "response": Boolean
+}
+```
+
+###### Trip
+
+```json
+{
+  "id": Int,
+  "price": Double,
+  "route": {
+    "from": String,
+    "to": String,
+    "time": Int
+  },
+  "client": Account,
+  "driver": Account
+}
+```
