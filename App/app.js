@@ -12,8 +12,12 @@ var store = new Store();
 require('./routes.js')(app)
 require('./config.js')(app)
 
-// TODO: Add this somewhere else?
-
+/**
+ * Broadcasts to all dispatchers.
+ *
+ * @param  {String} message The message to sent.
+ * @param  {Object} data    The data to send.
+ */
 function sendToDispatchers(message, data) {
   let dispatchers = store.getDispatcherSockets();
 
@@ -30,9 +34,18 @@ io.on('connection', function (socket) {
   //  CLIENT
   // ----------------------------------------
 
-  socket.on('client/login', function (data) {
+  /**
+   * Listener for ``client/login``.
+   *
+   * This function checks the user credentials, and sends
+   * back the account to the user if it exists, otherwise
+   * the user will receive a failure message.
+   *
+   * @param  {Object} credentials The user credentials.
+   */
+  socket.on('client/login', function (credentials) {
     console.log("CLIENT: Attempting to login...");
-    let account = store.retrieveClient(data.email, data.password);
+    let account = store.retrieveClient(credentials.email, credentials.password);
 
     if (account != null) {
       socket.emit('login/success', account);
@@ -43,20 +56,33 @@ io.on('connection', function (socket) {
       console.log("CLIENT: Login failed!");
     }
   });
-
-  socket.on('client/order/request', function (data) {
+  /**
+   * Listener for ``client/order/request``.
+   *
+   * Adds the order request to the store and sends it
+   * all connected dispatchers.
+   *
+   * @param  {Object} order The order request.
+   */
+  socket.on('client/order/request', function (order) {
     console.log("CLIENT: Order request received...");
-    store.addOrder(data);
-    sendToDispatchers('order/request', data);
+    store.addOrder(order);
+    sendToDispatchers('order/request', order);
   });
-
-  socket.on('client/order/confirmation', function (data) {
+  /**
+   * Listener for ``client/order/confirmation``.
+   *
+   * Confirms or removes an order.
+   *
+   * @param  {Object} confirmation The confirmation object.
+   */
+  socket.on('client/order/confirmation', function (confirmation) {
     console.log("CLIENT: Order confirmation received");
 
-    if (data.response == true) {
+    if (confirmation.response == true) {
       // Retrieve the order and add it as a trip
       // This will change the object's id when adding as a trip
-      var order = store.getOrder(data.id);
+      var order = store.getOrder(confirmation.id);
       store.addTrip(order);
       sendToDispatchers('trip/new', order);
       socket.emit('trip/new', order);
@@ -69,24 +95,34 @@ io.on('connection', function (socket) {
   //  DISPATCHER
   // ----------------------------------------
 
+  /**
+   * Listener for ``dispatcher/login``.
+   */
   socket.on('dispatcher/login', function (data) {
     console.log("A dispatcher has logged on!");
     store.addDispatcherSocket(socket);
 
     socket.emit("login/success", {orders: store.getOrders(), trips: store.getTrips(), cars: []});
   });
-
-  socket.on('dispatcher/trip/proposal', function (request) {
+  /**
+   * Listener for ``dispatcher/trip/proposal``.
+   *
+   * Sends a trip proposal to a client.
+   *
+   * @param  {Object} proposal The trip proposal
+   */
+  socket.on('dispatcher/trip/proposal', function (proposal) {
     console.log("DISPATCHER: New trip proposal received...");
     // FIXME: This may have to change depending on how the data structure ends up looking
-    let client = store.getClientSocket(request.client.id);
-    client.emit('trip/proposal', request);
+    let client = store.getClientSocket(proposal.client.id);
+    client.emit('trip/proposal', proposal);
     // Remove the order from all dispatcher's order list
-    sendToDispatchers('order/remove', request.id);
+    sendToDispatchers('order/remove', proposal.id);
   });
 
 });
 
+// Start the server
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));
 });
