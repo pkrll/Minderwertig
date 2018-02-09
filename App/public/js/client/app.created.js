@@ -1,6 +1,5 @@
 const created = function () {
-
-  //socket.emit('client/login', {email: "a@a.se", password: "foo"});
+  // socket.emit('client/login', {email: "a@a.se", password: "foo"});
 
   /**
    * Invoked on successful login.
@@ -9,7 +8,7 @@ const created = function () {
    */
   socket.on('login/success', function (account) {
     this.account = account;
-    //router.push('/client/order');
+    router.push('/client/order');
   }.bind(this));
   /**
    * Invoked when login has failed.
@@ -17,15 +16,16 @@ const created = function () {
    * @param  {Object} message The reason for failure.
    */
   socket.on('login/failure', function (message) {
-    this.message = message;
+    this.temporary.message = message;
     router.push('/client/login/fail');
   }.bind(this));
   /**
-   * Invoked when received a new booking confirmation.
+   * Invoked when receiving a new booking confirmation.
    *
    * @param  {Object} data The booking details.
    */
-  socket.on('order/booking', function (data) {
-    console.log(data);
-  });
+  socket.on('trip/proposal', function (data) {
+    this.temporary.currentOrder = data;
+    router.push('/client/order/confirmation');
+  }.bind(this));
 }
