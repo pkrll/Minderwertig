@@ -23,6 +23,13 @@ const router = new VueRouter({
       }
     },
     {
+      path: '/client/order/wait',
+      components: {
+        titlebar: menu_v,
+        main: order_wait_v
+      }
+    },
+    {
       path: '/client/order/confirmation',
       components: {
         titlebar: menu_v,

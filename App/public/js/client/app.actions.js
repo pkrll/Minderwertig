@@ -19,7 +19,7 @@ const actions = {
     // to client from the Store, but that requires a lot more logic.
     order.client = this.account;
 
-    router.push('');
+    router.push('/client/order/wait');
     socket.emit('client/order/request', order);
   },
   /**
