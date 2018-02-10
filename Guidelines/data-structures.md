@@ -8,8 +8,8 @@
     * Data: [``login``](#login)
 * ``client/order/request``
     * Data: [``order request``](#order-request)
-* ``client/order/confirmation``
-    * Data: [``order confirmation``](#order-confirmation)
+* ``client/trip/confirmation``
+    * Data: [``trip confirmation``](#trip-confirmation)
 
 ###### Driver messages
 
@@ -41,11 +41,13 @@
 
 * When the user books a taxi, a ``client/order/request`` message is sent to the server, along with an [``order request``](#order-request) object.
 
-* This data is passed on to the dispatchers to handle. When a taxi has been assigned to the order, the dispatcher sends a ``dispatcher/order/proposal`` with a [``trip``](#trip) object.
+* The client will be redirected to a wait screen, where the order can be cancelled. This action will send a ``client/order/cancel`` message.
 
-* The user must confirm the trip by sending a ``client/order/confirmation`` message, with an [``order confirmation``](#order-confirmation) object.
+* The order is passed from the server on to the dispatchers to handle. When a taxi has been assigned to the order, the dispatcher sends a ``dispatcher/trip/proposal`` with a [``trip``](#trip) object.
 
-* If the user confirms the trip, it should be saved to the users trips. The server should also add it to the array containing ongoing trips.
+* The user must confirm the trip by sending a ``client/trip/confirmation`` message, with an [``trip confirmation``](#trip-confirmation) object.
+
+* If the user confirms the trip, it should be saved to the users trips. The server should also add it to the array containing ongoing trips. Otherwise, the order should just be removed.
 
 ## Data Structures
 
@@ -75,7 +77,7 @@
 ```json
 {
   "id": Int,
-  "email": String,
+  "username": String,
   "password": String,
   "metadata": {
     "name": String,
@@ -112,7 +114,7 @@
 }
 ```
 
-###### Order confirmation
+###### Trip confirmation
 ```json
 {
   "id": Int (The trip id),
