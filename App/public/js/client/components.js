@@ -61,41 +61,34 @@ const login_email_v = Vue.component('login-email-v', {
   }
 });
 
-// var myDate = arguments[0]
-// return new Date(myDate.getFullYear(), myDate.getMonth(), myDate.getDate());
-
 // Temporary
 const order_form_v = Vue.component('order-form-v', {
   props: ['app'],
   data: function () {
-    // TODO: FIX THIS SHIT
-    var date = new Date();
-    var day = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-    var time = (date.getHours() + 1) + ":" + date.getMinutes();
-
     return {
       order: {
-        date: {
-          day: day,
-          time: time
-        }
-      }
+        route: {}
+      },
+      date: {}
     }
+  },
+  mounted: function() {
+    const picker = flatpickr("#datepicker", {});
   },
   template: '\
   <div class="order-form-v"> \
     <div> \
       <label for="from">From</label> \
-      <input type="text" name="from" placeholder="From..." v-model="order.from"> \
+      <input type="text" name="from" placeholder="From..." v-model="order.route.from"> \
     </div> \
     <div> \
       <label for="from">To</label> \
-      <input type="text" name="to" placeholder="To..." v-model="order.to"> \
+      <input type="text" name="to" placeholder="To..." v-model="order.route.to"> \
     </div> \
     <div> \
       <label for="from">Date</label> \
-      <input class="mono" type="text" name="date" v-model="order.date.day"> \
-      <input class="mono" type="text" name="date" v-model="order.date.time"> \
+      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date"> \
+      <input class="mono" type="text" name="date" v-model="date.time"> \
     </div> \
     <div> \
       <label for="capacity">Capacity</label> \
@@ -116,6 +109,10 @@ const order_form_v = Vue.component('order-form-v', {
       event.preventDefault();
 
       if (this.validate(this.order)) {
+        var date = this.date.date.split("-");
+        var time = this.date.time.split(":");
+        this.order.route.time = new Date(date[0], date[1], date[2], time[0], time[1]);
+
         app.sendOrder(this.order);
       } else {
         alert("Please fill in your order!");
@@ -123,7 +120,7 @@ const order_form_v = Vue.component('order-form-v', {
     },
     validate: function (order) {
       // TODO: Fix validate function so that it also checks date, capacity and additonal needs
-      return (order.from != null && order.to != null);
+      return (order.route.from != null && order.route.to != null);
     }
   }
 });
@@ -139,34 +136,34 @@ const order_confirmation_v = Vue.component('order-confirmation-v', {
 });
 
 const trips_v = Vue.component('trips-v', {
+  props: ['app'],
   template: '\
   <div class="trips-v">\
-    <trip-v></trip-v>\
-    <trip-v></trip-v>\
-    <trip-v></trip-v>\
+    <trip-v v-for="(trip, index) in app.trips" :key="trip.id" v-bind:trip="trip"></trip-v>\
   </div>'
 });
 
 const trip_v = Vue.component('trip-v', {
+  props: ['trip'],
   template: '\
   <div class="trip-v">\
     <div class="tab red"></div>\
     <div class="content">\
       <div class="meta">\
         <div class="time">\
-          <img src="img/pin.svg" alt="">\
-          <h3 class="mono">12:35</h3>\
+          <img src="/img/pin.svg" alt="">\
+          <h3 class="mono">{{trip.route.time}}</h3>\
         </div>\
         <div class="timeLeft">\
-          <img src="img/clock.svg" alt="">\
+          <img src="/img/clock.svg" alt="">\
           <h3 class="mono">04:23</h3>\
         </div>\
       </div>\
       <h3 class="name">name</h3>\
       <div class="route">\
         <div class="path"><div></div></div>\
-        <p class="small">from</p>\
-        <p class="small">to</p>\
+        <p class="small">{{trip.route.from}}</p>\
+        <p class="small">{{trip.route.to}}</p>\
       </div>\
     </div>\
   </div>'
