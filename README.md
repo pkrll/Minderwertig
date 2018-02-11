@@ -1,3 +1,4 @@
+![](hero.jpg)
 # Minderwertig
 A taxi booking system created as a student project for the course *System Design with a User Perspective* at Uppsala University.
 
