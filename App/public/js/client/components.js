@@ -172,6 +172,48 @@ const trip_v = Vue.component('trip-v', {
   </div>'
 });
 
+const order_found_v = Vue.component('order-found-v', {
+  template: '\
+  <div class="order-found-v">\
+    <div class="car">\
+      <h1>Taxi found!</h1>\
+      <img src="img/mercedes.jpg" alt="">\
+      <div>\
+        <label>Car model</label>\
+        <input type="text" value="Mercedes SUV" disabled>\
+      </div>\
+      <div class="meta">\
+        <div>\
+          <label>Arrival time</label>\
+          <input type="text" value="22 minutes" disabled>\
+        </div>\
+        <div>\
+          <label>Total travel time</label>\
+          <input type="text" value="1:05" disabled>\
+        </div>\
+      </div>\
+    </div>\
+    <div class="map"></div>\
+    <div>\
+      <label for="from">From</label>\
+      <input type="text" name="from" value="From...">\
+    </div>\
+    <div>\
+      <label for="to">To</label>\
+      <input type="text" name="to" value="To...">\
+    </div>\
+    <div>\
+      <label for="date">Date</label>\
+      <input type="text" name="to" value="24th January">\
+    </div>\
+    <div>\
+      <label for="date">Price</label>\
+      <input type="text" name="to" value="500 :-">\
+    </div>\
+    <button class="normal green">Order</button>\
+  </div>'
+});
+
 const menu_v = Vue.component('menu-v', {
   props: ['app'],
   template: '<ul><li v-for="item in app.menu">{{ item.name }}</li></ul>'

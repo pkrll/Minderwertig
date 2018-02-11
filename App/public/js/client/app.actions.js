@@ -28,7 +28,7 @@ const actions = {
    */
   sendConfirmation: function (response) {
     router.push(''); // TODO
-    let message = { id: this.temporary.currentOrder.id, response: response  };
+    let message = {id: this.temporary.currentOrder.id, response: response};
     socket.emit('client/order/confirmation', message);
     // TODO: Add currentOrder to our trips array or whatnot, y'all
   }
