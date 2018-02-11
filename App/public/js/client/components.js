@@ -15,15 +15,15 @@ const login_view_v = Vue.component('login-view-v', {
 
 // Client waiting for taxi to be found
 const order_wait_v = Vue.component('order-wait-v', {
-    props: ['app'],
-    template: '\
+  props: ['app'],
+  template: '\
     <div class="order-wait-v"> \
         <img src=""> \
         <h1>Searching for trip</h1> \
         <h2>This could take several minutes...</h2> \
       <button class="orange">Cancel</button> \
     </div>'
-});    
+});
 
 // Logging in screen
 const login_load_v = Vue.component('login-email-v', {
@@ -132,10 +132,44 @@ const order_confirmation_v = Vue.component('order-confirmation-v', {
   props: ['app'],
   template: '<button v-on:click="confirmOrder(true, $event)">CLICK HERE TO CONFIRM</button>',
   methods: {
-    confirmOrder: function(response, event) {
+    confirmOrder: function (response, event) {
       app.sendConfirmation(response);
     }
   }
+});
+
+const trips_v = Vue.component('trips-v', {
+  template: '\
+  <div class="trips-v">\
+    <trip-v></trip-v>\
+    <trip-v></trip-v>\
+    <trip-v></trip-v>\
+  </div>'
+});
+
+const trip_v = Vue.component('trip-v', {
+  template: '\
+  <div class="trip-v">\
+    <div class="tab red"></div>\
+    <div class="content">\
+      <div class="meta">\
+        <div class="time">\
+          <img src="img/pin.svg" alt="">\
+          <h3 class="mono">12:35</h3>\
+        </div>\
+        <div class="timeLeft">\
+          <img src="img/clock.svg" alt="">\
+          <h3 class="mono">04:23</h3>\
+        </div>\
+      </div>\
+      <h3 class="name">name</h3>\
+      <div class="route">\
+        <div class="path"><div></div></div>\
+        <p class="small">from</p>\
+        <p class="small">to</p>\
+      </div>\
+    </div>\
+  </div>'
 });
 
 const menu_v = Vue.component('menu-v', {

@@ -153,15 +153,17 @@ button.small {
   margin-top: 10px;
 }
 
+/* component: order-wait-v */
+
 .order-wait-v {
-  padding:            10px;
-  position:           relative;
-  top:                50%;
-  -webkit-transform:  translateY(-50%);
-  -moz-transform:     translateY(-50%);
-  -ms-transform:      translateY(-50%);
-  -o-transform:       translateY(-50%);
-  transform:          translateY(-50%);
+  padding:           10px;
+  position:          relative;
+  top:               50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform:    translateY(-50%);
+  -ms-transform:     translateY(-50%);
+  -o-transform:      translateY(-50%);
+  transform:         translateY(-50%);
 }
 
 .order-wait-v h1,
@@ -175,21 +177,25 @@ button.small {
 }
 
 .order-wait-v button {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* component: trip-v */
 
 .trip-v {
-  padding:       10px;
   overflow:      auto;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position:      relative;
 }
 
 .trip-v .tab {
-  width:      10px;
-  height:     100%;
-  background: red;
+  width:    8px;
+  height:   100%;
+  position: absolute;
+}
+
+.trip-v .content {
+  padding: 10px 10px 10px 18px;
 }
 
 .trip-v p.small {
@@ -203,20 +209,22 @@ button.small {
 
 .trip-v .meta .time,
 .trip-v .meta img,
-.trip-v .meta p {
-  float: left;
+.trip-v .meta h3 {
+  float:       left;
+  font-weight: normal;
 }
 
 .trip-v .meta img {
-  height:       20px;
-  margin-right: 10px;
+  height:       15px;
+  margin-right: 8px;
+  margin-top:   2px;
 }
 
 .trip-v .meta .timeLeft {
   float: right;
 }
 
-.trip-v h3 {
+.trip-v .name {
   margin-bottom: 5px;
 }
 
@@ -225,8 +233,8 @@ button.small {
 }
 
 .trip-v .route .path {
-  width:         12px;
-  height:        48px;
+  width:         8px;
+  height:        33px;
   background:    rgba(0, 0, 0, 0.1);
   float:         left;
   border-radius: 6px;
@@ -235,8 +243,8 @@ button.small {
 }
 
 .trip-v .route .path div {
-  width:         12px;
-  height:        12px;
+  width:         8px;
+  height:        8px;
   background:    rgba(0, 0, 0, 0.4);
   border-radius: 50%;
   position:      absolute;
@@ -255,19 +263,19 @@ button.small {
 }
 
 h1 {
-  font-size:   32px;
+  font-size:   24px;
   line-height: 1.2;
   font-weight: normal;
 }
 
 h2 {
-  font-size:   26px;
+  font-size:   20px;
   line-height: 1.2;
   font-weight: normal;
 }
 
 h3 {
-  font-size:   23px;
+  font-size:   17px;
   line-height: 1.2;
   font-weight: 600;
 }
@@ -275,12 +283,12 @@ h3 {
 p,
 input,
 button {
-  font-size:   23px;
+  font-size:   17px;
   line-height: 1.4;
 }
 
 p.small,
 label {
-  font-size:   21px;
+  font-size:   15px;
   line-height: 1.4;
 }
