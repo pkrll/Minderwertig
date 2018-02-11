@@ -251,6 +251,18 @@ button.small {
   bottom:        0;
 }
 
+/* component: client-menu-v */
+
+.client-menu-v h1 {
+  margin:        10px;
+}
+
+.client-menu-v h2 {
+ margin:        10px 10px 30px 10px;
+ color:         grey;
+}
+    
+
 /*
   T Y P O G R A P H Y
 

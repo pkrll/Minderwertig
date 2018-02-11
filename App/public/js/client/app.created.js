@@ -1,5 +1,5 @@
 const created = function () {
-  // socket.emit('client/login', {email: "a@a.se", password: "foo"});
+  socket.emit('client/login', {email: "a@a.se", password: "foo"});
 
   /**
    * Invoked on successful login.
@@ -8,7 +8,7 @@ const created = function () {
    */
   socket.on('login/success', function (account) {
     this.account = account;
-    router.push('/client/order');
+    router.push('/client/menu');
   }.bind(this));
   /**
    * Invoked when login has failed.

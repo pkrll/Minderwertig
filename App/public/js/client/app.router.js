@@ -9,6 +9,13 @@ const router = new VueRouter({
       }
     },
     {
+      path: '/client/menu',
+      components: {
+        titlebar: null,
+        main: client_menu_v
+       }
+    },
+    {
       path: '/client/wait',
       components: {
         titlebar: null,
