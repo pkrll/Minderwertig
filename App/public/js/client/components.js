@@ -173,6 +173,16 @@ const trip_v = Vue.component('trip-v', {
 });
 
 const order_found_v = Vue.component('order-found-v', {
+  props: ['app'],
+  data: function () {
+    var order = this.app.temporary.currentOrder;
+    var date  = this.app.formatDate(order.route.time);
+    return {
+      from: order.route.from,
+      to: order.route.to,
+      date: date.date + ", " + date.time
+    }
+  },
   template: '\
   <div class="order-found-v">\
     <div class="car">\
@@ -196,15 +206,15 @@ const order_found_v = Vue.component('order-found-v', {
     <div class="map"></div>\
     <div>\
       <label for="from">From</label>\
-      <input type="text" name="from" value="From...">\
+      <input type="text" name="from" value="{{from}}" disabled>\
     </div>\
     <div>\
       <label for="to">To</label>\
-      <input type="text" name="to" value="To...">\
+      <input type="text" name="to" value="{{to}}" disabled>\
     </div>\
     <div>\
       <label for="date">Date</label>\
-      <input type="text" name="to" value="24th January">\
+      <input type="text" name="to" value="{{date}}">\
     </div>\
     <div>\
       <label for="date">Price</label>\
