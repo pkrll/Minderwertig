@@ -112,7 +112,7 @@ const order_form_v = Vue.component('order-form-v', {
         var date = this.date.date.split("-");
         var time = this.date.time.split(":");
 
-        this.order.route.time = app.getUnixTime(date, time);
+        this.order.route.time = MWDate.toUnixTime(date, time);
 
         app.sendOrder(this.order);
       } else {
@@ -145,7 +145,15 @@ const trips_v = Vue.component('trips-v', {
 });
 
 const trip_v = Vue.component('trip-v', {
-  props: ['trip', 'app'],
+  props: ['trip'],
+  data: function () {
+    const date = MWDate.format(this.trip.route.time);
+    return {
+      date: date.date,
+      time: date.time,
+      eta: MWDate.timeUntil(this.trip.route.time)
+    }
+  },
   template: '\
   <div class="trip-v">\
     <div class="tab red"></div>\
@@ -153,14 +161,14 @@ const trip_v = Vue.component('trip-v', {
       <div class="meta">\
         <div class="time">\
           <img src="/img/pin.svg" alt="">\
-          <h3 class="mono">{{app.formatDate(trip.route.time).time}}</h3>\
+          <h3 class="mono">{{time}}</h3>\
         </div>\
         <div class="timeLeft">\
           <img src="/img/clock.svg" alt="">\
-          <h3 class="mono">{{app.calculateTimeUntil(trip.route.time)}}</h3>\
+          <h3 class="mono">{{eta}}</h3>\
         </div>\
       </div>\
-      <h3 class="name">{{app.formatDate(trip.route.time).date}}</h3>\
+      <h3 class="name">{{date}}</h3>\
       <div class="route">\
         <div class="path"><div></div></div>\
         <p class="small">{{trip.route.from}}</p>\
