@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="11px" height="15px" viewBox="0 0 11 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="11px" height="15px" viewBox="0 0 11 15" version="1.1" xmlns="http://www.w3.org/2000/svg"
+>
     <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
     <title>Shape</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="card-active" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-18.000000, -13.000000)" opacity="0.4">
+    <g id="card-active" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+       transform="translate(-18.000000, -13.000000)" opacity="0.4">
         <g fill="#000000" fill-rule="nonzero" id="time-destination">
             <g transform="translate(18.000000, 10.000000)">
                 <g id="iconmonstr-location-1" transform="translate(0.000000, 3.000000)">
-                    <path d="M5.07874016,0 C2.41367126,0 0,2.126875 0,4.75125 C0,7.375 2.2022687,10.5075 5.07874016,15 C7.95521161,10.5075 10.1574803,7.375 10.1574803,4.75125 C10.1574803,2.126875 7.7444439,0 5.07874016,0 Z M5.07874016,6.875 C4.0268061,6.875 3.1742126,6.035625 3.1742126,5 C3.1742126,3.964375 4.0268061,3.125 5.07874016,3.125 C6.13067421,3.125 6.98326772,3.964375 6.98326772,5 C6.98326772,6.035625 6.13067421,6.875 5.07874016,6.875 Z" id="Shape"></path>
+                    <path d="M5.07874016,0 C2.41367126,0 0,2.126875 0,4.75125 C0,7.375 2.2022687,10.5075 5.07874016,15 C7.95521161,10.5075 10.1574803,7.375 10.1574803,4.75125 C10.1574803,2.126875 7.7444439,0 5.07874016,0 Z M5.07874016,6.875 C4.0268061,6.875 3.1742126,6.035625 3.1742126,5 C3.1742126,3.964375 4.0268061,3.125 5.07874016,3.125 C6.13067421,3.125 6.98326772,3.964375 6.98326772,5 C6.98326772,6.035625 6.13067421,6.875 5.07874016,6.875 Z"
+                          id="Shape"></path>
                 </g>
             </g>
         </g>

@@ -5,7 +5,7 @@ const router = new VueRouter({
       path: '/client',
       components: {
         titlebar: null,
-        main: trips_v
+        main: order_found_v
       }
     },
     {
