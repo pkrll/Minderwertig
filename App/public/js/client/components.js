@@ -111,7 +111,8 @@ const order_form_v = Vue.component('order-form-v', {
       if (this.validate(this.order)) {
         var date = this.date.date.split("-");
         var time = this.date.time.split(":");
-        this.order.route.time = new Date(date[0], date[1], date[2], time[0], time[1]);
+
+        this.order.route.time = app.getUnixTime(date, time);
 
         app.sendOrder(this.order);
       } else {
@@ -139,12 +140,12 @@ const trips_v = Vue.component('trips-v', {
   props: ['app'],
   template: '\
   <div class="trips-v">\
-    <trip-v v-for="(trip, index) in app.trips" :key="trip.id" v-bind:trip="trip"></trip-v>\
+    <trip-v v-for="(trip, index) in app.account.trips" :key="trip.id" v-bind:trip="trip" v-bind:app="app"></trip-v>\
   </div>'
 });
 
 const trip_v = Vue.component('trip-v', {
-  props: ['trip'],
+  props: ['trip', 'app'],
   template: '\
   <div class="trip-v">\
     <div class="tab red"></div>\
@@ -152,14 +153,14 @@ const trip_v = Vue.component('trip-v', {
       <div class="meta">\
         <div class="time">\
           <img src="/img/pin.svg" alt="">\
-          <h3 class="mono">{{trip.route.time}}</h3>\
+          <h3 class="mono">{{app.formatDate(trip.route.time).time}}</h3>\
         </div>\
         <div class="timeLeft">\
           <img src="/img/clock.svg" alt="">\
-          <h3 class="mono">04:23</h3>\
+          <h3 class="mono">{{app.calculateTimeUntil(trip.route.time)}}</h3>\
         </div>\
       </div>\
-      <h3 class="name">name</h3>\
+      <h3 class="name">{{app.formatDate(trip.route.time).date}}</h3>\
       <div class="route">\
         <div class="path"><div></div></div>\
         <p class="small">{{trip.route.from}}</p>\
