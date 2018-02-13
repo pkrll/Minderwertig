@@ -88,12 +88,12 @@ const order_form_v = Vue.component('order-form-v', {
     <div> \
       <label for="from">Date</label> \
       <input class="mono" type="text" name="date" id="datepicker" v-model="date.date"> \
-      <input class="mono" type="text" name="date" v-model="date.time"> \
+      <input class="mono" type="time" name="time" v-model="date.time"> \
     </div> \
     <div> \
       <label for="capacity">Capacity</label> \
       <select class="" name="capacity" v-model="order.capacity"> \
-        <option value="4">4</option> \
+        <option value="4" selected>4</option> \
         <option value="7">7</option> \
         <option value="10">10</option> \
       </select> \
@@ -108,7 +108,7 @@ const order_form_v = Vue.component('order-form-v', {
     sendOrder: function (event) {
       event.preventDefault();
 
-      if (this.validate(this.order)) {
+      if (this.validate(this.order) && this.date.date != undefined && this.date.time != undefined) {
         var date = this.date.date.split("-");
         var time = this.date.time.split(":");
 
@@ -120,8 +120,7 @@ const order_form_v = Vue.component('order-form-v', {
       }
     },
     validate: function (order) {
-      // TODO: Fix validate function so that it also checks date, capacity and additonal needs
-      return (order.route.from != null && order.route.to != null);
+      return (order.route.from != '' && order.route.to != '');
     }
   }
 });
@@ -176,7 +175,7 @@ const order_found_v = Vue.component('order-found-v', {
     const eta = MWDate.timeUntil(trip.route.time).split(":");
     return {
       trip: trip,
-      date: date.date + ',' + date.time,
+      date: date.date + ' ' + date.time,
       eta: eta[0] + ' hours, ' + eta[1] + ' minutes'
     }
   },
@@ -203,19 +202,19 @@ const order_found_v = Vue.component('order-found-v', {
     <div class="map"></div>\
     <div>\
       <label for="from">From</label>\
-      <input type="text" name="from" :value="trip.route.from">\
+      <input type="text" name="from" :value="trip.route.from" disabled>\
     </div>\
     <div>\
       <label for="to">To</label>\
-      <input type="text" name="to" :value="trip.route.to">\
+      <input type="text" name="to" :value="trip.route.to" disabled>\
     </div>\
     <div>\
       <label for="date">Date</label>\
-      <input type="text" name="date" :value="date">\
+      <input type="text" name="date" :value="date" disabled>\
     </div>\
     <div>\
       <label for="date">Price</label>\
-      <input type="text" name="price" :value="trip.price">\
+      <input type="text" name="price" :value="trip.price" disabled>\
     </div>\
     <button class="normal green" v-on:click="confirmOrder(true, $event)">Order</button>\
   </div>',
