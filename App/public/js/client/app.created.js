@@ -35,7 +35,7 @@ const created = function () {
    */
   socket.on('trip/new', function (trip) {
     delete this.temporary.currentOrder;
-    this.trips.push(trip);
+    this.account.trips.push(trip);
     router.push('/client/trips');
   }.bind(this));
   /**

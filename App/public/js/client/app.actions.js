@@ -2,7 +2,7 @@ const actions = {
   /**
    * Attempts to login with the specified credentials
    *
-   * @param  {Object} credentials The email and password of the user
+   * @param   {Object} credentials The email and password of the user
    */
   login: function (credentials) {
     router.push('/client/wait');
@@ -11,7 +11,7 @@ const actions = {
   /**
    * Sends a booking request to the server.
    *
-   * @return {Object} order The booking details
+   * @param   {Object} order The booking details
    */
   sendOrder: function (order) {
     // The order needs to have an account before sending it to the server

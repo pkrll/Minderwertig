@@ -37,6 +37,13 @@ const router = new VueRouter({
       }
     },
     {
+      path: '/client/trips',
+      components: {
+        titlebar: null,
+        main: trips_v
+      }
+    },
+    {
       path: '/client/login/fail',
       components: {
         titlebar: null,

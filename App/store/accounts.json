@@ -12,14 +12,7 @@
           "y": 0
         }
       },
-      "trips": [
-        {
-          "trip_id": 1,
-          "time": "12:00",
-          "from": "Stockholm",
-          "to": "Uppsala"
-        }
-      ]
+      "trips": []
     },
     {
       "id": 2,
