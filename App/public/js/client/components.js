@@ -4,6 +4,7 @@ const client_menu_v = Vue.component('client-menu-v', {
   template: '\
       <div class="client-menu-v" :class="{ active: app.isMenuActive }"> \
       <img class="close" src="/img/exit.svg" @click="toggleMenu">\
+      <img class="logo" src="/img/logo_black.svg" alt="">\
          <h2>Menu</h2> \
          <h1 v-on:click="orderTripRedirect">Order trip</h1> \
          <h1 v-on:click="myBookingsRedirect">My bookings</h1> \
