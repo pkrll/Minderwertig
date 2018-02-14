@@ -26,7 +26,11 @@ const order_wait_v = Vue.component('order-wait-v', {
   props: ['app'],
   template: '\
     <div class="order-wait-v"> \
-        <img src=""> \
+        <svg id="loading" viewBox="0 0 139 33" version="1.1" xmlns="http://www.w3.org/2000/svg">\
+          <circle id="left" opacity="0" cx="16.5" cy="16.5" r="16.5"></circle>\
+          <circle id="mid" opacity="0" cx="69.5" cy="16.5" r="16.5"></circle>\
+          <circle id="right" opacity="0" cx="122.5" cy="16.5" r="16.5"></circle>\
+        </svg> \
         <h1>Searching for trip</h1> \
         <p>This could take several minutes...</p> \
       <button class="orange">Cancel</button> \
@@ -316,11 +320,15 @@ const order_found_v = Vue.component('order-found-v', {
 const order_done_v = Vue.component('order-done-v', {
   template: '\
     <div class="order-wait-v"> \
-        <img src=""> \
-        <h1>Trip ordered!</h1> \
-        <p>Your trip is saved under my bookings.</p> \
-      <button class="green">Continue</button> \
-    </div>'
+          <svg viewBox="0 0 139 33" version="1.1" xmlns="http://www.w3.org/2000/svg">\
+            <circle id="left" opacity="0.6" cx="16.5" cy="16.5" r="16.5"></circle>\
+            <circle id="mid" opacity="0.6" cx="69.5" cy="16.5" r="16.5"></circle>\
+            <circle id="right" opacity="0.6" cx="122.5" cy="16.5" r="16.5"></circle>\
+          </svg>\
+          <h1>Trip ordered!</h1> \
+          <p>Your trip is saved under my bookings.</p> \
+        <button class="green">Continue</button> \
+      </div>'
 });
 
 const titlebar_v = Vue.component('titlebar-v', {

@@ -290,6 +290,38 @@ button.small {
   margin-top: 20px;
 }
 
+.order-wait-v svg#loading {
+  width:   136px;
+  margin:  40px auto 20px auto;
+  display: block;
+}
+
+circle#left {
+  animation: pulse 1.75s ease infinite;
+}
+
+circle#mid {
+  animation:       pulse 1.75s ease infinite;
+  animation-delay: 0.25s;
+}
+
+circle#right {
+  animation:       pulse 1.75s ease infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* component: trip-v */
 
 .trip-v {
