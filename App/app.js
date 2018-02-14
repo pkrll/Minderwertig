@@ -153,11 +153,6 @@ io.on('connection', function (socket) {
     });
 });
 
-<<<<<<< HEAD
-// Start the server
-=======
-
->>>>>>> master
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));
 });
