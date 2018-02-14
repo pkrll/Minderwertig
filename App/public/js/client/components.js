@@ -1,3 +1,26 @@
+// Client menu
+const client_menu_v = Vue.component('client-menu-v', {
+    props: ['app'],
+    template: '\
+      <div class="client-menu-v"> \
+         <h2>Menu</h2> \
+         <h1 v-on:click="orderTripRedirect">Order trip</h1> \
+         <h1 v-on:click="myBookingsRedirect">My bookings</h1> \
+         <h1 v-on:click="logoutRedirect">Log out</h1> \
+      </div>',
+      methods: {
+        myBookingsRedirect: function (event) {
+            router.push('/client/trips');
+        },
+        logoutRedirect: function (event) {
+            router.push('/client/logout');
+        },
+        orderTripRedirect: function (event) {
+          router.push('/client/order');
+        }
+      }
+});
+
 // Client waiting for taxi to be found
 const order_wait_v = Vue.component('order-wait-v', {
   props: ['app'],
@@ -51,8 +74,13 @@ const order_form_v = Vue.component('order-form-v', {
   props: ['app'],
   data: function () {
     return {
+      show_additional_needs: false,
       order: {
-        route: {}
+        route: {},
+        additional_needs: {
+          wheelchair: false,
+          pet: false
+        }
       },
       date: {}
     }
@@ -72,8 +100,8 @@ const order_form_v = Vue.component('order-form-v', {
     </div> \
     <div> \
       <label for="from">Date</label> \
-      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date"> \
-      <input class="mono" type="time" name="time" v-model="date.time"> \
+      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date" placeholder="Tap to pick date"> \
+      <input class="mono" type="time" name="date" v-model="date.time" placeholder="Tap to pick time"> \
     </div> \
     <div> \
       <label for="capacity">Capacity</label> \
@@ -85,8 +113,16 @@ const order_form_v = Vue.component('order-form-v', {
     </div> \
     <div> \
       <label for="special-needs">Additional needs</label> \
-      <input type="checkbox" name="special-needs"> \
+      <input type="checkbox" name="special-needs" v-model="show_additional_needs"> \
     </div> \
+    <div v-show="show_additional_needs"> \
+      <label for="pet">Pet</label> \
+      <input type="checkbox" name="pet" v-model="order.additional_needs.pet"> \
+    </div> \
+    <div v-show="show_additional_needs"> \
+      <label for="wheelchair">Wheelchair</label> \
+      <input type="checkbox" name="wheelchair" v-model="order.additional_needs.wheelchair"> \
+    </div>  \
     <button class="normal green" v-on:click="sendOrder">Continue</button> \
   </div>',
   methods: {
