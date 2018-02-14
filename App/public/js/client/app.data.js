@@ -7,5 +7,6 @@ const data = {
     {name: "Settings"},
     {name: "Contact us"},
     {name: "Logout"}
-  ]
-}
+  ],
+  isMenuActive: false
+};

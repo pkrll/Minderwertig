@@ -1,21 +1,29 @@
 // Client menu
 const client_menu_v = Vue.component('client-menu-v', {
-  props: ['app'],
+  props: ['app', 'show'],
   template: '\
-      <div class="client-menu-v"> \
+      <div class="client-menu-v" :class="{ active: app.isMenuActive }"> \
+      <img class="close" src="/img/exit.svg" @click="toggleMenu">\
+      <img class="logo" src="/img/logo_black.svg" alt="">\
          <h2>Menu</h2> \
          <h1 v-on:click="orderTripRedirect">Order trip</h1> \
          <h1 v-on:click="myBookingsRedirect">My bookings</h1> \
          <h1 v-on:click="logoutRedirect">Log out</h1> \
       </div>',
   methods: {
+    toggleMenu: function () {
+      this.app.isMenuActive = !this.app.isMenuActive;
+    },
     myBookingsRedirect: function (event) {
+      this.toggleMenu();
       router.push('/client/trips');
     },
     logoutRedirect: function (event) {
+      this.toggleMenu();
       this.app.logout();
     },
     orderTripRedirect: function (event) {
+      this.toggleMenu();
       router.push('/client/order');
     }
   }
@@ -69,7 +77,6 @@ const login_email_v = Vue.component('login-email-v', {
   }
 });
 
-// Temporary
 const order_form_v = Vue.component('order-form-v', {
   props: ['app'],
   data: function () {
@@ -187,7 +194,7 @@ const trip_v = Vue.component('trip-v', {
     </div>\
   </div>',
   methods: {
-    displayTripDetails: function() {
+    displayTripDetails: function () {
       app.displayTripDetails(this.trip);
     }
   }
@@ -195,9 +202,9 @@ const trip_v = Vue.component('trip-v', {
 
 const trip_details_v = Vue.component('trip-details-v', {
   props: ['app'],
-  data: function() {
+  data: function () {
     const date = MWDate.format(this.app.temporary.currentTrip.route.time);
-    return{
+    return {
       trip: this.app.temporary.currentTrip,
       date: date.date,
       time: date.time,
@@ -248,7 +255,7 @@ const trip_details_v = Vue.component('trip-details-v', {
   <button class="normal red" v-on:click="cancelReservation">Cancel</button>\
   </div>',
   methods: {
-    cancelReservation: function() {
+    cancelReservation: function () {
       app.removeTrip(this.trip.id);
       router.push('/client/trips/');
     }
@@ -326,10 +333,13 @@ const order_done_v = Vue.component('order-done-v', {
 const titlebar_v = Vue.component('titlebar-v', {
   props: ['app'],
   template: '\
+  <div>\
   <div class="titlebar">\
     <img class="user" src="/img/kevin.jpg" alt="">\
     <img class="logo" src="/img/logo_black.svg" alt="">\
-    <img class="menu" src="/img/menu.svg" alt="">\
+    <img class="menu" src="/img/menu.svg" v-on:click="app.toggleMenu" alt="">\
+  </div>\
+  <client-menu-v :app="app"></client-menu-v>\
   </div>'
 });
 

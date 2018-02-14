@@ -358,15 +358,55 @@ button.small {
 }
 
 /* component: client-menu-v */
+.client-menu-v {
+  background:         white;
+  height:             100%;
+  width:              90%;
+  position:           absolute;
+  top:                0;
+  z-index:            999;
+  right:              0;
+  padding:            25px;
+  -webkit-transform:  translateX(100%);
+  -moz-transform:     translateX(100%);
+  -ms-transform:      translateX(100%);
+  -o-transform:       translateX(100%);
+  transform:          translateX(100%);
+  -webkit-transition: transform 0.5s ease;
+  -moz-transition:    transform 0.5s ease;
+  -ms-transition:     transform 0.5s ease;
+  -o-transition:      transform 0.5s ease;
+  transition:         transform 0.5s ease;
+}
+
+.client-menu-v .close {
+  position: absolute;
+  top:      25px;
+  right:    25px;
+}
+
+.client-menu-v .logo {
+  position: absolute;
+  bottom:   25px;
+  left:     25px;
+}
+
+.active {
+  -webkit-transform: translateX(0%);
+  -moz-transform:    translateX(0%);
+  -ms-transform:     translateX(0%);
+  -o-transform:      translateX(0%);
+  transform:         translateX(0%);
+}
 
 .client-menu-v h1 {
-  margin: 10px;
-  cursor: pointer;
+  line-height: 1.75;
+  cursor:      pointer;
 }
 
 .client-menu-v h2 {
-  margin: 10px 10px 30px 10px;
-  color:  grey;
+  margin-bottom: 30px;
+  color:         grey;
 }
 
 /*

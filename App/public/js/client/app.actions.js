@@ -41,12 +41,16 @@ const actions = {
     // TODO: Add currentOrder to our trips array or whatnot, y'all
   },
 
-  displayTripDetails: function(trip) {
+  displayTripDetails: function (trip) {
     this.temporary.currentTrip = trip;
     router.push('/client/trip');
   },
 
-  removeTrip: function(id) {
+  removeTrip: function (id) {
     delete this.account.trips[id];
+  },
+
+  toggleMenu: function () {
+    this.isMenuActive = !this.isMenuActive;
   }
-}
+};
