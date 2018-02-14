@@ -2,7 +2,7 @@
 const client_menu_v = Vue.component('client-menu-v', {
   props: ['app'],
   template: '\
-      <div class="client-menu-v"> \
+      <div class="client-menu-v" v-class="active: isActive"> \
          <h2>Menu</h2> \
          <h1 v-on:click="orderTripRedirect">Order trip</h1> \
          <h1 v-on:click="myBookingsRedirect">My bookings</h1> \
@@ -316,11 +316,15 @@ const order_found_v = Vue.component('order-found-v', {
 const titlebar_v = Vue.component('titlebar-v', {
   props: ['app'],
   template: '\
+  <div>\
   <div class="titlebar">\
     <img class="user" src="/img/kevin.jpg" alt="">\
     <img class="logo" src="/img/logo_black.svg" alt="">\
-    <img class="menu" src="/img/menu.svg" alt="">\
-  </div>'
+    <img class="menu" v-on:click="displayMenu" src="/img/menu.svg" alt="">\
+  </div>\
+  <client-menu-v :isActive="isActive" :app="app"></client-menu-v>\
+  </div>',
+  }
 });
 
 const submenu_v = Vue.component('submenu-v', {

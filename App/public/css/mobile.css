@@ -365,6 +365,21 @@ button.small {
 }
 
 /* component: client-menu-v */
+.client-menu-v {
+  background: white;
+  height:     100%;
+  width:      88%;
+  position:   absolute;
+  top:        0;
+  z-index:    999;
+  right:      0;
+  transform:  translateX(100%);
+  transition: transform 0.5s ease;
+}
+
+.active {
+  transform: translateX(0%);
+}
 
 .client-menu-v h1 {
   margin: 10px;
