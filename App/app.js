@@ -116,22 +116,19 @@ io.on('connection', function (socket) {
    *
    * Sends a trip proposal to a client.
    *
-   * @param  {Object} proposal The trip proposal
+   * @param  {Object} request The trip proposal
    */
-  socket.on('dispatcher/trip/proposal', function (proposal) {
+  socket.on('dispatcher/trip/proposal', function (request) {
     console.log("DISPATCHER: New trip proposal received...");
     // FIXME: This may have to change depending on how the data structure ends up looking
-<<<<<<< HEAD
-    let client = store.getClientSocket(proposal.client.id);
-    client.emit('trip/proposal', proposal);
-=======
+
     let client = store.getClientSocket(request.client.id);
     // Update the order
     store.updateOrder(request);
     client.emit('trip/proposal', request);
->>>>>>> master
+
     // Remove the order from all dispatcher's order list
-    sendToDispatchers('order/remove', proposal.id);
+    sendToDispatchers('order/remove', request.id);
   });
 
   // ----------------------------------------
