@@ -128,7 +128,11 @@ const order_form_v = Vue.component('order-form-v', {
 
 const order_confirmation_v = Vue.component('order-confirmation-v', {
   props: ['app'],
-  template: '<button v-on:click="confirmOrder(true, $event)">CLICK HERE TO CONFIRM</button>',
+  template: '\
+  <div class="order-confirmation">\
+    <h1>Taxi ordered!</h1>\
+    <button class="green" v-on:click="confirmOrder(true, $event)">CLICK HERE TO CONFIRM</button>\
+  </div>',
   methods: {
     confirmOrder: function (response, event) {
       app.sendConfirmation(response);
@@ -140,7 +144,7 @@ const trips_v = Vue.component('trips-v', {
   props: ['app'],
   template: '\
   <div class="trips-v">\
-    <trip-v v-for="(trip, index) in app.account.trips" :key="trip.id" v-bind:trip="trip" v-bind:app="app"></trip-v>\
+    <trip-v v-for="trip in app.account.trips" :key="trip.id" v-bind:trip="trip" v-bind:app="app"></trip-v>\
   </div>'
 });
 
@@ -155,7 +159,7 @@ const trip_v = Vue.component('trip-v', {
     }
   },
   template: '\
-  <div class="trip-v">\
+  <div class="trip-v" v-on:click="displayTripDetails">\
     <div class="tab red"></div>\
     <div class="content">\
       <div class="meta">\
@@ -175,8 +179,75 @@ const trip_v = Vue.component('trip-v', {
         <p class="small">{{trip.route.to}}</p>\
       </div>\
     </div>\
-  </div>'
+  </div>',
+  methods: {
+    displayTripDetails: function() {
+      app.displayTripDetails(this.trip);
+    }
+  }
 });
+
+const trip_details_v = Vue.component('trip-details-v', {
+  props: ['app'],
+  data: function() {
+    const date = MWDate.format(this.app.temporary.currentTrip.route.time);
+    return{
+      trip: this.app.temporary.currentTrip,
+      date: date.date,
+      time: date.time,
+      eta: MWDate.timeUntil(this.app.temporary.currentTrip.route.time)
+    }
+  },
+  template: '\
+  <div class="order-found-v">\
+  <div class="car">\
+    <h1>Booking details</h1>\
+    <img src="trip.driver.vehicle.image_url" alt="">\
+    <div>\
+      <label>Car model</label>\
+      <input type="text" value="trip.driver.vehicle.name" disabled>\
+    </div>\
+    <div class="meta">\
+      <div>\
+        <label>Arrival time</label>\
+        <input type="text" :value="eta" disabled>\
+      </div>\
+      <div>\
+        <label>Total travel time</label>\
+        <input type="text" :value="trip.duration" disabled>\
+      </div>\
+    </div>\
+  </div>\
+  <div class="map"></div>\
+  <div>\
+    <label for="from">From</label>\
+    <input type="text" name="from" :value="trip.route.from" disabled>\
+  </div>\
+  <div>\
+    <label for="to">To</label>\
+    <input type="text" name="to" :value="trip.route.to" disabled>\
+  </div>\
+  <div>\
+    <label for="date">Date</label>\
+    <input type="text" name="to" :value="date">\
+  </div>\
+  <div>\
+    <label for="time">Time</label>\
+    <input type="text" name="to" :value="time">\
+  </div>\
+  <div>\
+    <label for="date">Price</label>\
+    <input type="number" name="to" :value="trip.price">\
+  </div>\
+  <button class="normal red" v-on:click="cancelReservation">Cancel</button>\
+  </div>',
+  methods: {
+    cancelReservation: function() {
+      app.removeTrip(this.trip.id);
+      router.push('/client/trips/');
+    }
+  }
+})
 
 const order_found_v = Vue.component('order-found-v', {
   template: '\

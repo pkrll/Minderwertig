@@ -5,7 +5,7 @@ const router = new VueRouter({
       path: '/client',
       components: {
         titlebar: null,
-        main: order_found_v
+        main: login_email_v
       }
     },
     {
@@ -39,7 +39,7 @@ const router = new VueRouter({
     {
       path: '/client/trips',
       components: {
-        titlebar: null,
+        titlebar: menu_v,
         main: trips_v
       }
     },
@@ -50,5 +50,12 @@ const router = new VueRouter({
         main: login_fail_v
       }
     },
+    {
+      path: '/client/trip/',
+      components: {
+        titlebar: menu_v,
+        main: trip_details_v
+      }
+    }
   ]
 });

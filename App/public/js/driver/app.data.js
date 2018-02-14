@@ -1,6 +1,7 @@
 const data = {
   account: {},
-  customerDisplay: {},
+  assignmentDisplay: {},
+  currentTrip: {},
   assignments: [
     { id: 1,
       name: "Karl Andersson",

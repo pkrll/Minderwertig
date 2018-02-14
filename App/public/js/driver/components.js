@@ -63,13 +63,13 @@ const assignments_v = Vue.component('assignments-v', {
       <li>{{ item.from }}</li> \
       <li>{{ item.to }}</li> \
       <li>{{ item.time }}</li> \
-      <button v-on:click="viewDetails(item, $event)" class="green">Detaljer</button> \
+      <button v-on:click="viewDetails(item, $event)" class="orange">Detaljer</button> \
     </ul> \
   </div>',
   methods: {
     viewDetails: function(customer, event) {
       app.viewAssignment(customer);
-    }
+    },
   },
 });
 
@@ -92,11 +92,50 @@ const details_v = Vue.component('details-v', {
   <p>From: {{details.from}}</p>\
   <p>To: {{details.to}}</p>\
   <p>{{details.time}}</p>\
-  <button v-on:click="returnToAssignments" class="green">Tillbaka</button>\
+  <button v-on:click="beginTrip(details, $event)" class="green">Starta resa</button> \
+  <button v-on:click="returnToAssignments" class="orange">Tillbaka</button>\
   </div>',
   methods: {
     returnToAssignments: function() {
       router.push('/driver/assignments');
+    },
+    beginTrip: function(assignment, event) {
+      console.log(assignment.name);
+      app.beginTrip(assignment);
     }
+  }
+});
+
+const trip_v = Vue.component('trip-v', {
+  props: ['app'],
+  data: function () {
+    return {
+      timer: {
+        seconds: 0,
+        minutes: 0,
+        hours: 0,
+      },
+      trip: {
+        name: app.currentTrip.name,
+        from: app.currentTrip.from,
+        to:   app.currentTrip.to,
+        time: app.currentTrip.time
+      }
+    }
+  },
+  template: '\
+  <div>\
+  <h2>Pågående resa</h2>\
+  <h2><time>00:00:00</time></h2>\
+  <p>{{trip.name}}</p>\
+  <p>From: {{trip.from}}</p>\
+  <p>To: {{trip.to}}</p>\
+  <p>{{trip.time}}</p>\
+  <button v-on:click="finishTrip" class="green">Avsluta resa</button>\
+  </div>',
+  methods: {
+    finishTrip: function () {
+      console.log("bajs");
+    },
   }
 });

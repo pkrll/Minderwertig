@@ -43,5 +43,13 @@ const router = new VueRouter({
         main: details_v
       }
     },
+
+    {
+      path: '/driver/trip',
+      components: {
+        titlebar: menu_v,
+        main: trip_v
+      }
+    }
   ]
 });

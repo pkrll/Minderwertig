@@ -33,7 +33,9 @@ io.on('connection', function (socket) {
   socket.on('client/login', function (data) {
     console.log("CLIENT: Attempting to login...");
     let account = store.retrieveClient(data.email, data.password);
+    console.log(account);
 
+    console.log(data);
     if (account != null) {
       socket.emit('login/success', account);
       store.addClientSocket(account.id, socket);

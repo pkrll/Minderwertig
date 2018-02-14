@@ -55,7 +55,7 @@ class Store {
 
   retrieveUser(email, password, userList) {
     for (let user of userList) {
-      if (user.username == email && user.password == password) {
+      if (user.email == email && user.password == password) {
         return user;
       }
     }
