@@ -28,7 +28,7 @@ const order_wait_v = Vue.component('order-wait-v', {
     <div class="order-wait-v"> \
         <img src=""> \
         <h1>Searching for trip</h1> \
-        <h2>This could take several minutes...</h2> \
+        <p>This could take several minutes...</p> \
       <button class="orange">Cancel</button> \
     </div>'
 });
@@ -55,11 +55,11 @@ const login_email_v = Vue.component('login-email-v', {
   },
   template: '\
   <div class="login-email-v"> \
-    <img src="#" alt=""> \
+    <img src="/img/logo_black_full.svg" alt=""> \
     <h2>Welcome to Minderwertig. Simply a more convenient travel!</h2>\
     <input type="email" placeholder="E-mail..." v-model="credentials.email"> \
     <input type="password" placeholder="Password..."  v-model="credentials.password"> \
-    <button class="green" v-on:click="login">Logga in</button> \
+    <button class="green" v-on:click="login">Log in</button> \
   </div>',
   methods: {
     login: function (event) {
@@ -187,7 +187,7 @@ const trip_v = Vue.component('trip-v', {
     </div>\
   </div>',
   methods: {
-    displayTripDetails: function() {
+    displayTripDetails: function () {
       app.displayTripDetails(this.trip);
     }
   }
@@ -195,9 +195,9 @@ const trip_v = Vue.component('trip-v', {
 
 const trip_details_v = Vue.component('trip-details-v', {
   props: ['app'],
-  data: function() {
+  data: function () {
     const date = MWDate.format(this.app.temporary.currentTrip.route.time);
-    return{
+    return {
       trip: this.app.temporary.currentTrip,
       date: date.date,
       time: date.time,
@@ -245,10 +245,10 @@ const trip_details_v = Vue.component('trip-details-v', {
     <label for="date">Price</label>\
     <input type="number" name="to" :value="trip.price">\
   </div>\
-  <button class="normal red" v-on:click="cancelReservation">Cancel</button>\
+  <button class="normal red" v-on:click="cancelReservation">Cancel trip</button>\
   </div>',
   methods: {
-    cancelReservation: function() {
+    cancelReservation: function () {
       app.removeTrip(this.trip.id);
       router.push('/client/trips/');
     }
@@ -318,7 +318,7 @@ const order_done_v = Vue.component('order-done-v', {
     <div class="order-wait-v"> \
         <img src=""> \
         <h1>Trip ordered!</h1> \
-        <h2>Your trip is saved under my bookings.</h2> \
+        <p>Your trip is saved under my bookings.</p> \
       <button class="green">Continue</button> \
     </div>'
 });
