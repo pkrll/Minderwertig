@@ -1,21 +1,28 @@
 // Client menu
 const client_menu_v = Vue.component('client-menu-v', {
-  props: ['app'],
+  props: ['app', 'show'],
   template: '\
-      <div class="client-menu-v" v-class="active: isActive"> \
+      <div class="client-menu-v" v-if="show"> \
+      <button class="red" v-on:click="toggleMenu">Close</button>\
          <h2>Menu</h2> \
          <h1 v-on:click="orderTripRedirect">Order trip</h1> \
          <h1 v-on:click="myBookingsRedirect">My bookings</h1> \
          <h1 v-on:click="logoutRedirect">Log out</h1> \
       </div>',
   methods: {
+    toggleMenu: function() {
+      this.$emit('closedMenu')
+    },
     myBookingsRedirect: function (event) {
+      this.toggleMenu();
       router.push('/client/trips');
     },
     logoutRedirect: function (event) {
+      this.toggleMenu();
       this.app.logout();
     },
     orderTripRedirect: function (event) {
+      this.toggleMenu();
       router.push('/client/order');
     }
   }
@@ -315,16 +322,25 @@ const order_found_v = Vue.component('order-found-v', {
 
 const titlebar_v = Vue.component('titlebar-v', {
   props: ['app'],
+  data: function() {
+    return {
+      show: false
+    }
+  },
+  methods: {
+    displayMenu: function() {
+      this.show = !this.show;
+    }
+  },
   template: '\
   <div>\
   <div class="titlebar">\
     <img class="user" src="/img/kevin.jpg" alt="">\
     <img class="logo" src="/img/logo_black.svg" alt="">\
-    <img class="menu" v-on:click="displayMenu" src="/img/menu.svg" alt="">\
+    <img class="menu" src="/img/menu.svg" v-on:click="displayMenu" alt="">\
   </div>\
-  <client-menu-v :isActive="isActive" :app="app"></client-menu-v>\
-  </div>',
-  }
+  <client-menu-v :app="app" :show="show" v-on:closedMenu="displayMenu"></client-menu-v>\
+  </div>'
 });
 
 const submenu_v = Vue.component('submenu-v', {
