@@ -21,7 +21,7 @@ const actions = {
         },
         "vehicle": {
           "name": "Volvo V70",
-          "image_url": "/img/mercedes.png"
+          "image_url": "/img/mercedes.jpg"
         }
     }
 
