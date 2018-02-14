@@ -9,20 +9,20 @@ const actions = {
 
     const driver = {
       "id": 1,
-        "username": "ulfi",
-        "password": "foo",
-        "metadata": {
-          "name": "Ulf Sigvardsson",
-          "image_url": "",
-          "position": {
-            "x": 0,
-            "y": 0
-          },
+      "username": "ulfi",
+      "password": "foo",
+      "metadata": {
+        "name": "Ulf Sigvardsson",
+        "image_url": "",
+        "position": {
+          "x": 0,
+          "y": 0
         },
-        "vehicle": {
-          "name": "Volvo V70",
-          "image_url": "/img/mercedes.jpg"
-        }
+      },
+      "vehicle": {
+        "name": "Volvo V70",
+        "image_url": "/img/mercedes.jpg"
+      }
     }
 
     order.driver = driver;
