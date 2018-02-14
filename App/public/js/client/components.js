@@ -19,12 +19,23 @@ const client_menu_v = Vue.component('client-menu-v', {
     template: '\
       <div class="client-menu-v"> \
          <h2>Menu</h2> \
-         <h1>Order trip</h1> \
-         <h1>My bookings</h1> \
-         <h1>Log out</h1> \
-      </div>'
+         <h1 v-on:click="orderTripRedirect">Order trip</h1> \
+         <h1 v-on:click="myBookingsRedirect">My bookings</h1> \
+         <h1 v-on:click="logoutRedirect">Log out</h1> \
+      </div>',
+      methods: {
+        myBookingsRedirect: function (event) {
+            router.push('/client/trips');
+        },
+        logoutRedirect: function (event) {
+            router.push('/client/logout');
+        },
+        orderTripRedirect: function (event) {
+          router.push('/client/order');
+        }
+      }
 });
-    
+
 // Client waiting for taxi to be found
 const order_wait_v = Vue.component('order-wait-v', {
   props: ['app'],
