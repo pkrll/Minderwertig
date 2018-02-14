@@ -367,15 +367,14 @@ button.small {
 /* component: client-menu-v */
 
 .client-menu-v h1 {
-  margin:        10px;
-  cursor:        pointer;
+  margin: 10px;
+  cursor: pointer;
 }
 
 .client-menu-v h2 {
- margin:        10px 10px 30px 10px;
- color:         grey;
+  margin: 10px 10px 30px 10px;
+  color:  grey;
 }
-
 
 /*
   T Y P O G R A P H Y

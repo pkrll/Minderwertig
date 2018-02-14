@@ -9,12 +9,12 @@ const actions = {
     socket.emit('client/login', credentials);
   },
   /**
-  * Logs out the current account and redirects back to the login screen
-  *
-  */
+   * Logs out the current account and redirects back to the login screen
+   *
+   */
   logout: function () {
-      this.account = null;
-      router.push('/client/login');
+    this.account = null;
+    router.push('/client/login');
   },
   /**
    * Sends a booking request to the server.
