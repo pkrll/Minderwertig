@@ -110,6 +110,7 @@
     "to": String,
     "time": Int
   },
+  "duration": Int,
   "client": Account
 }
 ```
@@ -133,6 +134,7 @@
     "to": String,
     "time": Int
   },
+  "duration": Int,
   "client": Account,
   "driver": Account
 }
