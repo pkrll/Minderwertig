@@ -72,7 +72,7 @@ const order_form_v = Vue.component('order-form-v', {
       date: {}
     }
   },
-  mounted: function() {
+  mounted: function () {
     const picker = flatpickr("#datepicker", {});
   },
   template: '\
@@ -87,8 +87,8 @@ const order_form_v = Vue.component('order-form-v', {
     </div> \
     <div> \
       <label for="from">Date</label> \
-      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date"> \
-      <input class="mono" type="text" name="date" v-model="date.time"> \
+      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date" placeholder="Tap to pick date"> \
+      <input class="mono" type="text" name="date" v-model="date.time" placeholder="Tap to pick time"> \
     </div> \
     <div> \
       <label for="capacity">Capacity</label> \
@@ -102,6 +102,15 @@ const order_form_v = Vue.component('order-form-v', {
       <label for="special-needs">Additional needs</label> \
       <input type="checkbox" name="special-needs"> \
     </div> \
+    <div> \
+      <label for="pet">Pet</label> \
+      <input type="checkbox" name="pet"> \    \
+     </div> \
+     <div> \
+      <label for="wheelchair">Wheelchair</label> \
+      <input type="checkbox" name="wheelchair"> \
+    </div>  \
+    <input type="checkbox" \
     <button class="normal green" v-on:click="sendOrder">Continue</button> \
   </div>',
   methods: {
