@@ -1,5 +1,5 @@
 const created = function () {
-  socket.emit('client/login', {email: "a@a.se", password: "foo"});
+  // socket.emit('client/login', {email: "a@a.se", password: "foo"});
 
   /**
    * Invoked on successful login.
@@ -35,7 +35,7 @@ const created = function () {
    */
   socket.on('trip/new', function (trip) {
     delete this.temporary.currentOrder;
-    this.account.trips.push(trip);
+    this.account.trips[trip.id] = trip;
     router.push('/client/trips');
   }.bind(this));
   /**

@@ -26,7 +26,8 @@ const actions = {
     }
 
     order.driver = driver;
-
+    order.duration = "02:25";
+    order.price = 540.0;
     socket.emit('dispatcher/trip/proposal', order);
   }
 

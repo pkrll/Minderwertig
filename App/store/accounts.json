@@ -12,7 +12,7 @@
           "y": 0
         }
       },
-      "trips": []
+      "trips": {}
     },
     {
       "id": 2,
@@ -32,7 +32,7 @@
   "drivers": [
     {
       "id": 1,
-      "email": "c@a.se",
+      "username": "frank",
       "password": "foo",
       "metadata": {
         "name": "Frank Franksson",

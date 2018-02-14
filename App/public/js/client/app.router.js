@@ -57,5 +57,13 @@ const router = new VueRouter({
         main: login_fail_v
       }
     },
+    {
+      path: '/client/trip/',
+      components: {
+        titlebar: titlebar_v,
+        submenu: submenu_v,
+        main: trip_details_v
+      }
+    }
   ]
 });

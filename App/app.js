@@ -87,12 +87,32 @@ io.on('connection', function (socket) {
     console.log("DISPATCHER: New trip proposal received...");
     // FIXME: This may have to change depending on how the data structure ends up looking
     let client = store.getClientSocket(request.client.id);
+    // Update the order
+    store.updateOrder(request);
     client.emit('trip/proposal', request);
     // Remove the order from all dispatcher's order list
     sendToDispatchers('order/remove', request.id);
   });
 
+  // ----------------------------------------
+  //  DRIVER
+  // ----------------------------------------
+
+    socket.on('driver/login', function(request) {
+      console.log("A driver has logged on!");
+      let account = store.retrieveDriver(request.username, request.password);
+
+      if (account != null) {
+        socket.emit('login/success', account);
+        store.addDriverSocket(account.id, socket);
+        console.log("DRIVER: Login successful!");
+      } else {
+        socket.emit('login/failure', "Wrong username or password!");
+        console.log("DRIVER: Login failed!");
+      }
+    });
 });
+
 
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));

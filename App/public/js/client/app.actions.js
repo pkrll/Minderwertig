@@ -39,5 +39,14 @@ const actions = {
     let message = {id: this.temporary.currentOrder.id, response: response};
     socket.emit('client/order/confirmation', message);
     // TODO: Add currentOrder to our trips array or whatnot, y'all
+  },
+
+  displayTripDetails: function(trip) {
+    this.temporary.currentTrip = trip;
+    router.push('/client/trip');
+  },
+
+  removeTrip: function(id) {
+    delete this.account.trips[id];
   }
 }
