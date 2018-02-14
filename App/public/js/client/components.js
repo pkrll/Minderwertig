@@ -326,11 +326,12 @@ const order_found_v = Vue.component('order-found-v', {
 
 const order_done_v = Vue.component('order-done-v', {
   template: '\
-    <div class="order-wait-v"> \
-          <h1>Trip ordered!</h1> \
-          <p>Your trip is saved under my bookings.</p> \
-        <button class="green">Continue</button> \
-      </div>'
+    <div class="order-done-v order-wait-v"> \
+        <img src="/img/checkbox.svg" alt=""> \
+        <h1>Trip ordered!</h1> \
+        <p>Your trip is saved under my bookings.</p> \
+      <button class="green">Continue</button> \
+    </div>'
 });
 
 const titlebar_v = Vue.component('titlebar-v', {
