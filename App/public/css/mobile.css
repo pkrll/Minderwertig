@@ -1,7 +1,7 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin:      0;
+  padding:     0;
+  box-sizing:  border-box;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -21,10 +21,6 @@
   background-color: #e39416;
 }
 
-.blue {
-  background-color: #e39416;
-}
-
 .grey {
   background-color: #f9f9f9;
 }
@@ -35,8 +31,8 @@
 
 html,
 body {
-  width: 100%;
-  height: 100%;
+  width:    100%;
+  height:   100%;
   overflow: hidden;
 }
 
@@ -46,12 +42,12 @@ body {
 
 button,
 button.small {
-  width: 100%;
-  height: 64px;
-  line-height: 64px;
-  text-align: center;
-  color: #fff;
-  border: none;
+  width:         100%;
+  height:        64px;
+  line-height:   64px;
+  text-align:    center;
+  color:         #fff;
+  border:        none;
   border-radius: 5px;
 }
 
@@ -60,23 +56,25 @@ button.small {
 }
 
 #menu {
-  width: 100%;
-  height: 64px;
-  padding: 0 15px 0 15px;
+  width:      100%;
+  height:     64px;
+  padding:    0 15px 0 15px;
   background: #fff;
 }
 
 #sub-menu {
-  width: 100%;
-  height: 40px;
-  background: #f9f9f9;
+  width:         100%;
+  height:        40px;
+  background:    #f9f9f9;
   border-bottom: 1px solid #e5e5e5;
 }
 
 #app {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
+  width:                      100%;
+  height:                     100%;
+  overflow-y:                 scroll;
+  overflow-x:                 hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /*
@@ -86,62 +84,62 @@ button.small {
 /* component: login-email-v */
 
 .login-email-v {
-  padding: 10px;
-  position: relative;
-  top: 50%;
+  padding:           10px;
+  position:          relative;
+  top:               50%;
   -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
+  -moz-transform:    translateY(-50%);
+  -ms-transform:     translateY(-50%);
+  -o-transform:      translateY(-50%);
+  transform:         translateY(-50%);
 }
 
 .login-email-v img {
-  width: 180px;
-  margin: 0 auto;
-  display: block;
+  width:         180px;
+  margin:        0 auto;
+  display:       block;
   margin-bottom: 40px;
 }
 
 .login-email-v h2 {
-  text-align: center;
+  text-align:    center;
   margin-bottom: 20px;
 }
 
 .login-email-v input {
   padding: 10px;
-  width: 100%;
+  width:   100%;
 }
 
 .login-email-v button {
   margin-top: 20px;
 }
 
-/* component: order-form-v */
+/* component: order-form-v & order-found-v */
 
 .order-form-v {
-  width: 100%;
+  width:      100%;
   background: #fff;
-  padding: 0 10px 10px 10px;
+  padding:    0 10px 10px 10px;
 }
 
-.order-form-v div {
-  width: 100%;
-  overflow: hidden;
-  padding: 10px;
+.order-form-v div, .order-found-v div {
+  width:         100%;
+  overflow:      hidden;
+  padding:       10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.order-form-v div label {
-  margin-bottom: 10px;
-  color: rgba(0, 0, 0, 0.5);
-  float: left;
+.order-form-v div label, .order-found-v label {
+  margin-bottom: 5px;
+  color:         rgba(0, 0, 0, 0.5);
+  float:         left;
 }
 
-.order-form-v div input {
+.order-form-v div input, .order-found-v input {
   border: none;
-  clear: both;
-  float: left;
+  clear:  both;
+  float:  left;
 }
 
 .order-form-v div input:nth-child(0) {
@@ -157,6 +155,167 @@ button.small {
   margin-top: 10px;
 }
 
+/* component: order-found-v */
+
+.order-found-v {
+  padding: 10px;
+}
+
+.order-found-v img {
+  margin:  0 auto;
+  display: block;
+}
+
+.order-found-v .car {
+  width:         100%;
+  background:    #fff;
+  overflow:      auto;
+  padding:       20px;
+  border-radius: 5px;
+  box-shadow:    rgba(0, 0, 0, 0.05) 0 5px 8px;
+}
+
+.order-found-v .car h1 {
+  text-align: center;
+}
+
+.order-found-v div {
+  padding-left: 0;
+}
+
+.order-found-v input {
+  background: inherit;
+}
+
+.order-found-v input:disabled {
+  opacity: 1;
+  color:   #000;
+}
+
+.order-found-v .meta {
+  border-bottom: none;
+  float:         left;
+  margin-bottom: 0;
+  padding:       10px 0 0 0;
+}
+
+.order-found-v .meta div {
+  float:         left;
+  width:         50%;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding:       0;
+}
+
+.order-found-v .map {
+  width:      100%;
+  height:     150px;
+  background: rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
+}
+
+.order-found-v button {
+  margin-top: 20px;
+}
+
+/* component: order-wait-v */
+
+.order-wait-v {
+  padding:           10px;
+  position:          relative;
+  top:               50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform:    translateY(-50%);
+  -ms-transform:     translateY(-50%);
+  -o-transform:      translateY(-50%);
+  transform:         translateY(-50%);
+}
+
+.order-wait-v h1,
+.order-wait-v h2 {
+  text-align: center;
+  margin:     10px;
+}
+
+.order-wait-v h2 {
+  color: grey;
+}
+
+.order-wait-v button {
+  margin-top: 20px;
+}
+
+/* component: trip-v */
+
+.trip-v {
+  overflow:      auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position:      relative;
+}
+
+.trip-v .tab {
+  width:    8px;
+  height:   100%;
+  position: absolute;
+}
+
+.trip-v .content {
+  padding: 10px 10px 10px 18px;
+}
+
+.trip-v p.small {
+  line-height: 1;
+}
+
+.trip-v .meta {
+  margin-bottom: 5px;
+  overflow:      auto;
+}
+
+.trip-v .meta .time,
+.trip-v .meta img,
+.trip-v .meta h3 {
+  float:       left;
+  font-weight: normal;
+}
+
+.trip-v .meta img {
+  height:       15px;
+  margin-right: 8px;
+  margin-top:   2px;
+}
+
+.trip-v .meta .timeLeft {
+  float: right;
+}
+
+.trip-v .name {
+  margin-bottom: 5px;
+}
+
+.trip-v .route p.small {
+  line-height: 1.2;
+}
+
+.trip-v .route .path {
+  width:         8px;
+  height:        33px;
+  background:    rgba(0, 0, 0, 0.1);
+  float:         left;
+  border-radius: 6px;
+  position:      relative;
+  margin-right:  10px;
+}
+
+.trip-v .route .path div {
+  width:         8px;
+  height:        8px;
+  background:    rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  position:      absolute;
+  bottom:        0;
+}
+
 /*
   T Y P O G R A P H Y
 
@@ -169,19 +328,19 @@ button.small {
 }
 
 h1 {
-  font-size: 32px;
+  font-size:   24px;
   line-height: 1.2;
   font-weight: normal;
 }
 
 h2 {
-  font-size: 26px;
+  font-size:   20px;
   line-height: 1.2;
   font-weight: normal;
 }
 
 h3 {
-  font-size: 23px;
+  font-size:   17px;
   line-height: 1.2;
   font-weight: 600;
 }
@@ -189,12 +348,12 @@ h3 {
 p,
 input,
 button {
-  font-size: 23px;
+  font-size:   17px;
   line-height: 1.4;
 }
 
 p.small,
 label {
-  font-size: 21px;
+  font-size:   15px;
   line-height: 1.4;
 }

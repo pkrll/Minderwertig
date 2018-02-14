@@ -5,7 +5,7 @@ const router = new VueRouter({
       path: '/client',
       components: {
         titlebar: null,
-        main: login_email_v
+        main: order_found_v
       }
     },
     {
@@ -23,10 +23,24 @@ const router = new VueRouter({
       }
     },
     {
+      path: '/client/order/wait',
+      components: {
+        titlebar: menu_v,
+        main: order_wait_v
+      }
+    },
+    {
       path: '/client/order/confirmation',
       components: {
         titlebar: menu_v,
         main: order_confirmation_v
+      }
+    },
+    {
+      path: '/client/trips',
+      components: {
+        titlebar: null,
+        main: trips_v
       }
     },
     {

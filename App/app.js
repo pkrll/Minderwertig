@@ -57,6 +57,13 @@ io.on('connection', function (socket) {
       // Retrieve the order and add it as a trip
       // This will change the object's id when adding as a trip
       var order = store.getOrder(data.id);
+
+      // If the order does not exists, send back an error.
+      if (order == undefined) {
+        socket.emit('error', {message: "An error has occurred. Order was not found"});
+        return;
+      }
+
       store.addTrip(order);
       sendToDispatchers('trip/new', order);
       socket.emit('trip/new', order);

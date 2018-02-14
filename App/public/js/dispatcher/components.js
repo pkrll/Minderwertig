@@ -3,7 +3,7 @@ const orders_view_v = Vue.component('orders-view-v', {
   template: '\
   <div>Orders: \
     <ul> \
-      <li v-for="order in app.orders" v-on:click="handle(order)"> {{ order.from }} - {{ order.to }}</li> \
+      <li v-for="order in app.orders" v-on:click="handle(order)"> {{ order.route.from }} - {{ order.route.to }}</li> \
     </ul> \
   </div>',
   methods: {
@@ -19,7 +19,7 @@ const trips_view_v = Vue.component('trips-view-v', {
   template: '\
   <div>Trips:  \
     <ul> \
-      <li v-for="trip in app.trips"> {{ trip.from }} - {{ trip.to }}</li> \
+      <li v-for="trip in app.trips"> {{ trip.route.from }} - {{ trip.route.to }}</li> \
     </ul> \
   </div>'
 });

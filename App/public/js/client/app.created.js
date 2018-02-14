@@ -28,4 +28,22 @@ const created = function () {
     this.temporary.currentOrder = data;
     router.push('/client/order/confirmation');
   }.bind(this));
+  /**
+   * Invoked when client receives a new trip.
+   *
+   * @param  {Object} trip The trip.
+   */
+  socket.on('trip/new', function (trip) {
+    delete this.temporary.currentOrder;
+    this.account.trips.push(trip);
+    router.push('/client/trips');
+  }.bind(this));
+  /**
+   * Invoked when client receives an error from the server.
+   *
+   * @param  {Object} data.message The error message
+   */
+  socket.on('error', function (data) {
+    alert(data.message);
+  });
 }
