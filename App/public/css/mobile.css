@@ -269,14 +269,7 @@ button.small {
 /* component: order-wait-v */
 
 .order-wait-v {
-  padding:           10px;
-  position:          relative;
-  top:               50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform:    translateY(-50%);
-  -ms-transform:     translateY(-50%);
-  -o-transform:      translateY(-50%);
-  transform:         translateY(-50%);
+  padding: 10px;
 }
 
 .order-wait-v h1,

@@ -246,6 +246,16 @@ const order_found_v = Vue.component('order-found-v', {
   }
 });
 
+const order_done_v = Vue.component('order-done-v', {
+  template: '\
+    <div class="order-wait-v"> \
+        <img src=""> \
+        <h1>Trip ordered!</h1> \
+        <h2>Your trip is saved under my bookings.</h2> \
+      <button class="green">Continue</button> \
+    </div>'
+});
+
 const titlebar_v = Vue.component('titlebar-v', {
   props: ['app'],
   template: '\
