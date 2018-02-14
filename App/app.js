@@ -89,6 +89,8 @@ io.on('connection', function (socket) {
     console.log("DISPATCHER: New trip proposal received...");
     // FIXME: This may have to change depending on how the data structure ends up looking
     let client = store.getClientSocket(request.client.id);
+    // Update the order
+    store.updateOrder(request);
     client.emit('trip/proposal', request);
     // Remove the order from all dispatcher's order list
     sendToDispatchers('order/remove', request.id);

@@ -55,18 +55,66 @@ button.small {
   height: 48px;
 }
 
-#menu {
-  width:      100%;
-  height:     64px;
-  padding:    0 15px 0 15px;
-  background: #fff;
+.titlebar {
+  width:         100%;
+  height:        64px;
+  padding:       0 15px 0 15px;
+  background:    #fff;
+  position:      relative;
+  overflow:      hidden;
+  border-bottom: 1px solid #e5e5e5;
 }
 
-#sub-menu {
+.titlebar .user {
+  width:         30px;
+  height:        30px;
+  border-radius: 50%;
+  top:           17px;
+  left:          15px;
+  position:      absolute;
+}
+
+.titlebar .logo {
+  display: block;
+  margin:  27px auto 0 auto;
+  height:  10px;
+}
+
+.titlebar .menu {
+  width:    35px;
+  height:   22px;
+  position: absolute;
+  top:      21px;
+  right:    15px;
+}
+
+.submenu {
   width:         100%;
   height:        40px;
   background:    #f9f9f9;
   border-bottom: 1px solid #e5e5e5;
+  position:      relative;
+}
+
+.submenu p.small {
+  color:       #7B7B7B;
+  text-align:  center;
+  line-height: 40px;
+}
+
+.submenu img {
+  height:   18px;
+  position: absolute;
+}
+
+.submenu .left {
+  top:  11px;
+  left: 15px;
+}
+
+.submenu .right {
+  top:   11px;
+  right: 15px;
 }
 
 #app {
@@ -314,6 +362,18 @@ button.small {
   border-radius: 50%;
   position:      absolute;
   bottom:        0;
+}
+
+/* component: client-menu-v */
+
+.client-menu-v h1 {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.client-menu-v h2 {
+  margin: 10px 10px 30px 10px;
+  color:  grey;
 }
 
 /*

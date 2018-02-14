@@ -1,14 +1,22 @@
-const login_view_v = Vue.component('login-view-v', {
+// Client menu
+const client_menu_v = Vue.component('client-menu-v', {
   props: ['app'],
-  template: ' \
-  <div> \
-    <button>Logga in med Facebook</button> \
-    <button v-on:click="loginEmail">Logga in med E-mail</button> \
-  </div>',
+  template: '\
+      <div class="client-menu-v"> \
+         <h2>Menu</h2> \
+         <h1 v-on:click="orderTripRedirect">Order trip</h1> \
+         <h1 v-on:click="myBookingsRedirect">My bookings</h1> \
+         <h1 v-on:click="logoutRedirect">Log out</h1> \
+      </div>',
   methods: {
-    loginEmail: function (event) {
-      event.preventDefault();
-      router.push('/client/login/email');
+    myBookingsRedirect: function (event) {
+      router.push('/client/trips');
+    },
+    logoutRedirect: function (event) {
+      this.app.logout();
+    },
+    orderTripRedirect: function (event) {
+      router.push('/client/order');
     }
   }
 });
@@ -66,13 +74,18 @@ const order_form_v = Vue.component('order-form-v', {
   props: ['app'],
   data: function () {
     return {
+      show_additional_needs: false,
       order: {
-        route: {}
+        route: {},
+        additional_needs: {
+          wheelchair: false,
+          pet: false
+        }
       },
       date: {}
     }
   },
-  mounted: function() {
+  mounted: function () {
     const picker = flatpickr("#datepicker", {});
   },
   template: '\
@@ -87,28 +100,36 @@ const order_form_v = Vue.component('order-form-v', {
     </div> \
     <div> \
       <label for="from">Date</label> \
-      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date"> \
-      <input class="mono" type="text" name="date" v-model="date.time"> \
+      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date" placeholder="Tap to pick date"> \
+      <input class="mono" type="time" name="date" v-model="date.time" placeholder="Tap to pick time"> \
     </div> \
     <div> \
       <label for="capacity">Capacity</label> \
       <select class="" name="capacity" v-model="order.capacity"> \
-        <option value="4">4</option> \
+        <option value="4" selected>4</option> \
         <option value="7">7</option> \
         <option value="10">10</option> \
       </select> \
     </div> \
     <div> \
       <label for="special-needs">Additional needs</label> \
-      <input type="checkbox" name="special-needs"> \
+      <input type="checkbox" name="special-needs" v-model="show_additional_needs"> \
     </div> \
+    <div v-show="show_additional_needs"> \
+      <label for="pet">Pet</label> \
+      <input type="checkbox" name="pet" v-model="order.additional_needs.pet"> \
+    </div> \
+    <div v-show="show_additional_needs"> \
+      <label for="wheelchair">Wheelchair</label> \
+      <input type="checkbox" name="wheelchair" v-model="order.additional_needs.wheelchair"> \
+    </div>  \
     <button class="normal green" v-on:click="sendOrder">Continue</button> \
   </div>',
   methods: {
     sendOrder: function (event) {
       event.preventDefault();
 
-      if (this.validate(this.order)) {
+      if (this.validate(this.order) && this.date.date != undefined && this.date.time != undefined) {
         var date = this.date.date.split("-");
         var time = this.date.time.split(":");
 
@@ -120,22 +141,7 @@ const order_form_v = Vue.component('order-form-v', {
       }
     },
     validate: function (order) {
-      // TODO: Fix validate function so that it also checks date, capacity and additonal needs
-      return (order.route.from != null && order.route.to != null);
-    }
-  }
-});
-
-const order_confirmation_v = Vue.component('order-confirmation-v', {
-  props: ['app'],
-  template: '\
-  <div class="order-confirmation">\
-    <h1>Taxi ordered!</h1>\
-    <button class="green" v-on:click="confirmOrder(true, $event)">CLICK HERE TO CONFIRM</button>\
-  </div>',
-  methods: {
-    confirmOrder: function (response, event) {
-      app.sendConfirmation(response);
+      return (order.route.from != '' && order.route.to != '');
     }
   }
 });
@@ -202,10 +208,10 @@ const trip_details_v = Vue.component('trip-details-v', {
   <div class="order-found-v">\
   <div class="car">\
     <h1>Booking details</h1>\
-    <img src="trip.driver.vehicle.image_url" alt="">\
+    <img :src="trip.driver.vehicle.image_url" alt="">\
     <div>\
       <label>Car model</label>\
-      <input type="text" value="trip.driver.vehicle.name" disabled>\
+      <input type="text" :value="trip.driver.vehicle.name" disabled>\
     </div>\
     <div class="meta">\
       <div>\
@@ -250,48 +256,79 @@ const trip_details_v = Vue.component('trip-details-v', {
 })
 
 const order_found_v = Vue.component('order-found-v', {
+  props: ['app'],
+  data: function () {
+    const trip = this.app.temporary.currentOrder;
+    const date = MWDate.format(trip.route.time);
+    const eta = MWDate.timeUntil(trip.route.time).split(":");
+    return {
+      trip: trip,
+      date: date.date + ' ' + date.time,
+      eta: eta[0] + ':' + eta[1]
+    }
+  },
   template: '\
   <div class="order-found-v">\
     <div class="car">\
       <h1>Taxi found!</h1>\
-      <img src="img/mercedes.jpg" alt="">\
+      <img :src="trip.driver.vehicle.image_url" alt="">\
       <div>\
         <label>Car model</label>\
-        <input type="text" value="Mercedes SUV" disabled>\
+        <input type="text" :value="trip.driver.vehicle.name" disabled>\
       </div>\
       <div class="meta">\
         <div>\
-          <label>Arrival time</label>\
-          <input type="text" value="22 minutes" disabled>\
+          <label>Time until pickup</label>\
+          <input type="text" :value="eta" disabled>\
         </div>\
         <div>\
           <label>Total travel time</label>\
-          <input type="text" value="1:05" disabled>\
+          <input type="text" :value="trip.duration" disabled>\
         </div>\
       </div>\
     </div>\
     <div class="map"></div>\
     <div>\
       <label for="from">From</label>\
-      <input type="text" name="from" value="From...">\
+      <input type="text" name="from" :value="trip.route.from" disabled>\
     </div>\
     <div>\
       <label for="to">To</label>\
-      <input type="text" name="to" value="To...">\
+      <input type="text" name="to" :value="trip.route.to" disabled>\
     </div>\
     <div>\
       <label for="date">Date</label>\
-      <input type="text" name="to" value="24th January">\
+      <input type="text" name="date" :value="date" disabled>\
     </div>\
     <div>\
       <label for="date">Price</label>\
-      <input type="text" name="to" value="500 :-">\
+      <input type="text" name="price" :value="trip.price" disabled>\
     </div>\
-    <button class="normal green">Order</button>\
+    <button class="normal green" v-on:click="confirmOrder(true, $event)">Order</button>\
+  </div>',
+  methods: {
+    confirmOrder: function (response, event) {
+      this.app.sendConfirmation(response);
+    }
+  }
+});
+
+const titlebar_v = Vue.component('titlebar-v', {
+  props: ['app'],
+  template: '\
+  <div class="titlebar">\
+    <img class="user" src="/img/kevin.jpg" alt="">\
+    <img class="logo" src="/img/logo_black.svg" alt="">\
+    <img class="menu" src="/img/menu.svg" alt="">\
   </div>'
 });
 
-const menu_v = Vue.component('menu-v', {
+const submenu_v = Vue.component('submenu-v', {
   props: ['app'],
-  template: '<ul><li v-for="item in app.menu">{{ item.name }}</li></ul>'
+  template: '\
+  <div class="submenu">\
+    <img class="left" src="/img/left.svg" alt="">\
+    <img class="right" src="/img/right.svg" alt="">\
+    <p class="small">Index</p>\
+  </div>'
 });

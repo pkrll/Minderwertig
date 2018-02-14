@@ -10,6 +10,7 @@ class MWDate {
   static toUnixTime(date, time) {
     return new Date(date[0], date[1] - 1, date[2], time[0], time[1]).getTime();
   }
+
   /**
    * Formats the specified date and returns an object with the properties date and time.
    *
@@ -21,7 +22,7 @@ class MWDate {
     const date = new Date(timestamp);
 
     const formattedDate = this.styleDate(date);
-    const hour   = this.styleComponent(date.getHours());
+    const hour = this.styleComponent(date.getHours());
     const minute = this.styleComponent(date.getMinutes());
 
     return {
@@ -29,6 +30,7 @@ class MWDate {
       time: hour + ':' + minute
     }
   }
+
   /**
    * Calculates time in hours and minutes until the specified time.
    *
@@ -40,8 +42,8 @@ class MWDate {
     console.log(timestamp);
     const timeleft = timestamp - new Date().getTime();
     // The hours and minutes only
-    var minutes = Math.floor(timeleft/(1000*60));
-    var hours   = Math.floor(timeleft/(1000*60*60));
+    var minutes = Math.floor(timeleft / (1000 * 60));
+    var hours = Math.floor(timeleft / (1000 * 60 * 60));
 
     if (minutes > 59) {
       minutes = Math.floor(minutes % 60);
@@ -49,6 +51,7 @@ class MWDate {
 
     return this.styleComponent(hours) + ':' + this.styleComponent(minutes);
   }
+
   /**
    * Styles a date component (integer). Adds a leading zero, if missing.
    *
@@ -62,6 +65,7 @@ class MWDate {
 
     return component;
   }
+
   /**
    * Styles the day component of a date.
    *
@@ -79,12 +83,13 @@ class MWDate {
       return "Yesterday";
     }
 
-    const year   = date.getFullYear();
-    const month  = this.months[date.getMonth()];
-    const day    = this.styleComponent(date.getDate());
+    const year = date.getFullYear();
+    const month = this.months[date.getMonth()];
+    const day = this.styleComponent(date.getDate());
 
     return day + ' ' + month + ' ' + year;
   }
+
   /**
    * Checks if the specified date is today.
    *
@@ -93,10 +98,11 @@ class MWDate {
    */
   static isToday(timestamp) {
     var today = new Date().setHours(0, 0, 0, 0);
-    var date  = new Date(timestamp).setHours(0, 0, 0, 0);
+    var date = new Date(timestamp).setHours(0, 0, 0, 0);
 
     return (date == today);
   }
+
   /**
    * Checks if the specified date was yesterday.
    *
@@ -110,6 +116,7 @@ class MWDate {
 
     return (date.toDateString() == yesterday.toDateString());
   }
+
   /**
    * Checks if the specified date is tomorrow.
    *
@@ -126,5 +133,6 @@ class MWDate {
 
 
 }
+
 // The months
 MWDate.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

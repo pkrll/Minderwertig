@@ -108,6 +108,10 @@ class Store {
     this.orders[order.id] = order;
   }
 
+  updateOrder(order) {
+    this.orders[order.id] = order;
+  }
+
   getOrder(id) {
     return this.orders[id];
   }
