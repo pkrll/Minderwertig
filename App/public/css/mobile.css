@@ -297,17 +297,23 @@ button.small {
 }
 
 circle#left {
-  animation: pulse 1.75s ease infinite;
+  -webkit-animation: pulse 1.75s ease infinite;
+  -o-animation:      pulse 1.75s ease infinite;
+  animation:         pulse 1.75s ease infinite;
 }
 
 circle#mid {
-  animation:       pulse 1.75s ease infinite;
-  animation-delay: 0.25s;
+  -webkit-animation: pulse 1.75s ease infinite;
+  -o-animation:      pulse 1.75s ease infinite;
+  animation:         pulse 1.75s ease infinite;
+  animation-delay:   0.25s;
 }
 
 circle#right {
-  animation:       pulse 1.75s ease infinite;
-  animation-delay: 0.5s;
+  -webkit-animation: pulse 1.75s ease infinite;
+  -o-animation:      pulse 1.75s ease infinite;
+  animation:         pulse 1.75s ease infinite;
+  animation-delay:   0.5s;
 }
 
 @keyframes pulse {
