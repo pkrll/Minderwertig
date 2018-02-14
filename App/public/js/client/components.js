@@ -1,18 +1,3 @@
-const login_view_v = Vue.component('login-view-v', {
-  props: ['app'],
-  template: ' \
-  <div> \
-    <button>Logga in med Facebook</button> \
-    <button v-on:click="loginEmail">Logga in med E-mail</button> \
-  </div>',
-  methods: {
-    loginEmail: function (event) {
-      event.preventDefault();
-      router.push('/client/login/email');
-    }
-  }
-});
-
 // Client waiting for taxi to be found
 const order_wait_v = Vue.component('order-wait-v', {
   props: ['app'],
@@ -72,7 +57,7 @@ const order_form_v = Vue.component('order-form-v', {
       date: {}
     }
   },
-  mounted: function() {
+  mounted: function () {
     const picker = flatpickr("#datepicker", {});
   },
   template: '\
@@ -225,7 +210,22 @@ const order_found_v = Vue.component('order-found-v', {
   }
 });
 
-const menu_v = Vue.component('menu-v', {
+const titlebar_v = Vue.component('titlebar-v', {
   props: ['app'],
-  template: '<ul><li v-for="item in app.menu">{{ item.name }}</li></ul>'
+  template: '\
+  <div class="titlebar">\
+    <img class="user" src="/img/kevin.jpg" alt="">\
+    <img class="logo" src="/img/logo_black.svg" alt="">\
+    <img class="menu" src="/img/menu.svg" alt="">\
+  </div>'
+});
+
+const submenu_v = Vue.component('submenu-v', {
+  props: ['app'],
+  template: '\
+  <div class="submenu">\
+    <img class="left" src="/img/left.svg" alt="">\
+    <img class="right" src="/img/right.svg" alt="">\
+    <p class="small">Index</p>\
+  </div>'
 });
