@@ -183,10 +183,10 @@ const order_found_v = Vue.component('order-found-v', {
   <div class="order-found-v">\
     <div class="car">\
       <h1>Taxi found!</h1>\
-      <img src="img/mercedes.jpg" alt="">\
+      <img :src="trip.driver.vehicle.image_url" alt="">\
       <div>\
         <label>Car model</label>\
-        <input type="text" value="Mercedes SUV" disabled>\
+        <input type="text" :value="trip.driver.vehicle.name" disabled>\
       </div>\
       <div class="meta">\
         <div>\
