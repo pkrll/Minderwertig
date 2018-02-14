@@ -13,6 +13,18 @@ const login_view_v = Vue.component('login-view-v', {
   }
 });
 
+// Client menu
+const client_menu_v = Vue.component('client-menu-v', {
+    props: ['app'],
+    template: '\
+      <div class="client-menu-v"> \
+         <h2>Menu</h2> \
+         <h1>Order trip</h1> \
+         <h1>My bookings</h1> \
+         <h1>Log out</h1> \
+      </div>'
+});
+    
 // Client waiting for taxi to be found
 const order_wait_v = Vue.component('order-wait-v', {
   props: ['app'],
