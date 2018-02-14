@@ -64,6 +64,14 @@ const router = new VueRouter({
         submenu: submenu_v,
         main: trip_details_v
       }
-    }
+    },
+    {
+      path: '/client/order/done',
+      components: {
+        titlebar: titlebar_v,
+        submenu: submenu_v,
+        main: order_done_v
+      }
+    },
   ]
 });

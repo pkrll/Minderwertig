@@ -34,7 +34,6 @@ const created = function () {
   socket.on('trip/new', function (trip) {
     delete this.temporary.currentOrder;
     this.account.trips[trip.id] = trip;
-    router.push('/client/trips');
   }.bind(this));
   /**
    * Invoked when client receives an error from the server.
