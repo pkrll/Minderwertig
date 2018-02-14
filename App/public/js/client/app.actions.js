@@ -47,7 +47,6 @@ const actions = {
   },
 
   removeTrip: function(id) {
-    console.log(id);
     delete this.account.trips[id];
   }
 }
