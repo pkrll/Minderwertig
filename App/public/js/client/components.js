@@ -110,8 +110,11 @@ const order_form_v = Vue.component('order-form-v', {
       <input type="text" name="to" placeholder="To..." v-model="order.route.to"> \
     </div> \
     <div> \
-      <label for="from">Date</label> \
+      <label for="date">Date</label> \
       <input class="mono" type="text" name="date" id="datepicker" v-model="date.date" placeholder="Tap to pick date"> \
+    </div>\
+    <div>\
+      <label for="time">Time</label> \
       <input class="mono" type="time" name="date" v-model="date.time" placeholder="Tap to pick time"> \
     </div> \
     <div> \
