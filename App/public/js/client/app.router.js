@@ -6,7 +6,7 @@ const router = new VueRouter({
       components: {
         titlebar: null,
         submenu: null,
-        main: login_email_v
+        main: order_done_v
       }
     },
     {

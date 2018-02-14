@@ -322,8 +322,8 @@ const order_found_v = Vue.component('order-found-v', {
 
 const order_done_v = Vue.component('order-done-v', {
   template: '\
-    <div class="order-wait-v"> \
-        <img src=""> \
+    <div class="order-done-v order-wait-v"> \
+        <img src="/img/checkbox.svg" alt=""> \
         <h1>Trip ordered!</h1> \
         <h2>Your trip is saved under my bookings.</h2> \
       <button class="green">Continue</button> \

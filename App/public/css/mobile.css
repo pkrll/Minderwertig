@@ -286,6 +286,12 @@ button.small {
   margin-top: 20px;
 }
 
+.order-done-v img {
+  width:   80px;
+  margin:  40px auto 20px auto;
+  display: block;
+}
+
 /* component: trip-v */
 
 .trip-v {
