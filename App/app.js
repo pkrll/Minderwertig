@@ -76,20 +76,27 @@ io.on('connection', function (socket) {
    *
    * @param  {Object} confirmation The confirmation object.
    */
-  socket.on('client/order/confirmation', function (confirmation) {
-    console.log("CLIENT: Order confirmation received");
+   socket.on('client/order/confirmation', function (data) {
+       console.log("CLIENT: Order confirmation received");
 
-    if (confirmation.response == true) {
-      // Retrieve the order and add it as a trip
-      // This will change the object's id when adding as a trip
-      var order = store.getOrder(confirmation.id);
-      store.addTrip(order);
-      sendToDispatchers('trip/new', order);
-      socket.emit('trip/new', order);
-    }
-    // Remove the order from the list of orders in store
-    store.removeOrder(data.id);
-  });
+       if (data.response == true) {
+         // Retrieve the order and add it as a trip
+         // This will change the object's id when adding as a trip
+         var order = store.getOrder(data.id);
+
+         // If the order does not exists, send back an error.
+         if (order == undefined) {
+           socket.emit('error', {message: "An error has occurred. Order was not found"});
+           return;
+         }
+
+         store.addTrip(order);
+         sendToDispatchers('trip/new', order);
+         socket.emit('trip/new', order);
+       }
+       // Remove the order from the list of orders in store
+       store.removeOrder(data.id);
+     });
 
   // ----------------------------------------
   //  DISPATCHER
@@ -114,15 +121,43 @@ io.on('connection', function (socket) {
   socket.on('dispatcher/trip/proposal', function (proposal) {
     console.log("DISPATCHER: New trip proposal received...");
     // FIXME: This may have to change depending on how the data structure ends up looking
+<<<<<<< HEAD
     let client = store.getClientSocket(proposal.client.id);
     client.emit('trip/proposal', proposal);
+=======
+    let client = store.getClientSocket(request.client.id);
+    // Update the order
+    store.updateOrder(request);
+    client.emit('trip/proposal', request);
+>>>>>>> master
     // Remove the order from all dispatcher's order list
     sendToDispatchers('order/remove', proposal.id);
   });
 
+  // ----------------------------------------
+  //  DRIVER
+  // ----------------------------------------
+
+    socket.on('driver/login', function(request) {
+      console.log("A driver has logged on!");
+      let account = store.retrieveDriver(request.username, request.password);
+
+      if (account != null) {
+        socket.emit('login/success', account);
+        store.addDriverSocket(account.id, socket);
+        console.log("DRIVER: Login successful!");
+      } else {
+        socket.emit('login/failure', "Wrong username or password!");
+        console.log("DRIVER: Login failed!");
+      }
+    });
 });
 
+<<<<<<< HEAD
 // Start the server
+=======
+
+>>>>>>> master
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));
 });

@@ -1,3 +1,5 @@
+'use strict'
+
 const fs = require('fs');
 
 class Store {
@@ -103,6 +105,10 @@ class Store {
 
   addOrder(order) {
     order.id = this.getNewOrderId();
+    this.orders[order.id] = order;
+  }
+
+  updateOrder(order) {
     this.orders[order.id] = order;
   }
 

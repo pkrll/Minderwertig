@@ -12,14 +12,7 @@
           "y": 0
         }
       },
-      "trips": [
-        {
-          "trip_id": 1,
-          "time": "12:00",
-          "from": "Stockholm",
-          "to": "Uppsala"
-        }
-      ]
+      "trips": {}
     },
     {
       "id": 2,
@@ -39,7 +32,7 @@
   "drivers": [
     {
       "id": 1,
-      "email": "c@a.se",
+      "username": "frank",
       "password": "foo",
       "metadata": {
         "name": "Frank Franksson",
