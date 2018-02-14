@@ -28,10 +28,10 @@ const client_menu_v = Vue.component('client-menu-v', {
             router.push('/client/trips');
         },
         logoutRedirect: function (event) {
-            router.push('/client/logout');
+            this.app.logout();
         },
         orderTripRedirect: function (event) {
-          router.push('/client/order');
+            router.push('/client/order');
         }
       }
 });
