@@ -14,7 +14,7 @@ const actions = {
    */
   logout: function () {
     this.account = null;
-    router.push('/client/login');
+    router.push('/client');
   },
   /**
    * Sends a booking request to the server.
