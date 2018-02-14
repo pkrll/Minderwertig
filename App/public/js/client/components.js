@@ -78,8 +78,13 @@ const order_form_v = Vue.component('order-form-v', {
   props: ['app'],
   data: function () {
     return {
+      show_additional_needs: false,
       order: {
-        route: {}
+        route: {},
+        additional_needs: {
+          wheelchair: false,
+          pet: false
+        }
       },
       date: {}
     }
@@ -112,17 +117,16 @@ const order_form_v = Vue.component('order-form-v', {
     </div> \
     <div> \
       <label for="special-needs">Additional needs</label> \
-      <input type="checkbox" name="special-needs"> \
+      <input type="checkbox" name="special-needs" v-model="show_additional_needs"> \
     </div> \
-    <div> \
+    <div v-show="show_additional_needs"> \
       <label for="pet">Pet</label> \
-      <input type="checkbox" name="pet"> \    \
-     </div> \
-     <div> \
+      <input type="checkbox" name="pet" v-model="order.additional_needs.pet"> \
+    </div> \
+    <div v-show="show_additional_needs"> \
       <label for="wheelchair">Wheelchair</label> \
-      <input type="checkbox" name="wheelchair"> \
+      <input type="checkbox" name="wheelchair" v-model="order.additional_needs.wheelchair"> \
     </div>  \
-    <input type="checkbox" \
     <button class="normal green" v-on:click="sendOrder">Continue</button> \
   </div>',
   methods: {
