@@ -52,3 +52,9 @@ The dispatcher application is reached from ``localhost:PORT/dispatcher`` where `
 Configurations can be found in the ``config.js`` file:
 
 * ``Port`` (default: 1335)
+
+### Documentation
+
+* [Git guidelines](https://github.com/pkrll/Minderwertig/blob/master/Documentation/Guidelines/git.md)
+* [Styleguide](https://github.com/pkrll/Minderwertig/blob/master/Documentation/Guidelines/styleguide.md)
+* [Data Structures](https://github.com/pkrll/Minderwertig/blob/master/Documentation/Guidelines/data-structures.md)
