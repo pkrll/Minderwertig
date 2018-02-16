@@ -18,10 +18,10 @@ Clone this repository:
 $ git clone https://github.com/pkrll/Minderwertig
 ```
 
-``cd`` in to the folder, and run npm install in the ``App/`` directory to install the project dependencies.
+``cd`` in to the folder, and run ``npm install`` in the root directory to install the project dependencies.
 
 ```bash
-$ cd Minderwertig/App
+$ cd Minderwertig
 $ npm install
 ```
 
@@ -31,7 +31,7 @@ $ npm install
 
 #### Running the server
 
-In the ``App/`` folder, run the command ``node app`` to start up the server.
+In the root folder, run the command ``node app`` (or ``nodemon app``) to start up the server.
 
 #### Running the client
 
