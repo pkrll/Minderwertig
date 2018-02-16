@@ -39,16 +39,27 @@ const actions = {
     let message = {id: this.temporary.currentOrder.id, response: response};
     socket.emit('client/order/confirmation', message);
   },
-
+  /**
+   * Assings the specified trip to the current trip variable and
+   * redirects to trip view.
+   *
+   * @param  {Object} trip The trip to view.
+   */
   displayTripDetails: function (trip) {
     this.temporary.currentTrip = trip;
     router.push('/client/trip');
   },
-
+  /**
+   * Removes a trip from the list of trips.
+   *
+   * @param  {Object} id Id of the trip to remove.
+   */
   removeTrip: function (id) {
     delete this.account.trips[id];
   },
-
+  /**
+   * Toggles the menu.
+   */
   toggleMenu: function () {
     this.menuIsActive = !this.menuIsActive;
   }

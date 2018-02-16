@@ -195,7 +195,7 @@ const trip_v = Vue.component('trip-v', {
   </div>',
   methods: {
     displayTripDetails: function () {
-      app.displayTripDetails(this.trip);
+      this.app.displayTripDetails(this.trip);
     }
   }
 });
