@@ -19,6 +19,7 @@ const router = new VueRouter({
     },
     {
       path: '/client/order',
+      name: 'order',
       components: {
         titlebar: titlebar_v,
         submenu: submenu_v,

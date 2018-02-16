@@ -35,7 +35,14 @@ const order_wait_v = Vue.component('order-wait-v', {
         <h1>Searching for trip</h1> \
         <p>This could take several minutes...</p> \
       <button class="orange">Cancel</button> \
-    </div>'
+    </div>',
+    beforeRouteLeave (to, from, next) {
+      if (to.name == 'order') {
+        this.app.cancelOrder(null);
+      }
+
+      next();
+    }
 });
 
 // Logging in screen
@@ -348,8 +355,16 @@ const submenu_v = Vue.component('submenu-v', {
   props: ['app'],
   template: '\
   <div class="submenu">\
-    <img class="left" src="/img/left.svg" alt="" v-show="this.$route.meta.hasLeftArrow">\
-    <img class="right" src="/img/right.svg" alt=""  v-show="this.$route.meta.hasRightArrow">\
+    <img class="left" src="/img/left.svg" alt="" v-show="this.$route.meta.hasLeftArrow" v-on:click="goBack">\
+    <img class="right" src="/img/right.svg" alt="" v-show="this.$route.meta.hasRightArrow" v-on:click="goForward">\
     <p class="small">{{this.$route.meta.title}}</p>\
-  </div>'
+  </div>',
+  methods: {
+    goBack: function () {
+      router.go(-1);
+    },
+    goForward: function () {
+      router.go(1);
+    }
+  }
 });
