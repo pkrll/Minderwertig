@@ -162,7 +162,7 @@ const trips_v = Vue.component('trips-v', {
 });
 
 const trip_v = Vue.component('trip-v', {
-  props: ['trip'],
+  props: ['app', 'trip'],
   data: function () {
     const date = MWDate.format(this.trip.route.time);
     return {
@@ -348,8 +348,8 @@ const submenu_v = Vue.component('submenu-v', {
   props: ['app'],
   template: '\
   <div class="submenu">\
-    <img class="left" src="/img/left.svg" alt="">\
-    <img class="right" src="/img/right.svg" alt="">\
-    <p class="small">Index</p>\
+    <img class="left" src="/img/left.svg" alt="" v-show="this.$route.meta.hasLeftArrow">\
+    <img class="right" src="/img/right.svg" alt=""  v-show="this.$route.meta.hasRightArrow">\
+    <p class="small">{{this.$route.meta.title}}</p>\
   </div>'
 });

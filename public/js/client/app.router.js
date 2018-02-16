@@ -23,6 +23,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: order_form_v
+      },
+      meta: {
+        title: 'Order (1/3)',
+        hasLeftArrow: false,
+        hasRightArrow: false
       }
     },
     {
@@ -31,6 +36,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: order_wait_v
+      },
+      meta: {
+        title: 'Order (1/3)',
+        hasLeftArrow: true,
+        hasRightArrow: false
       }
     },
     {
@@ -39,6 +49,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: order_found_v
+      },
+      meta: {
+        title: 'Order (2/3)',
+        hasLeftArrow: true,
+        hasRightArrow: false
       }
     },
     {
@@ -47,6 +62,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: trips_v
+      },
+      meta: {
+        title: 'Trips',
+        hasLeftArrow: false,
+        hasRightArrow: false
       }
     },
     {
@@ -63,6 +83,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: trip_details_v
+      },
+      meta: {
+        title: 'Trip Details',
+        hasLeftArrow: false,
+        hasRightArrow: false
       }
     },
     {
@@ -71,6 +96,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: order_done_v
+      },
+      meta: {
+        title: 'Order (3/3)',
+        hasLeftArrow: false,
+        hasRightArrow: false
       }
     },
   ]
