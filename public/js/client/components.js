@@ -2,29 +2,22 @@
 const client_menu_v = Vue.component('client-menu-v', {
   props: ['app', 'show'],
   template: '\
-      <div class="client-menu-v" :class="{ active: app.isMenuActive }"> \
-      <img class="close" src="/img/exit.svg" @click="toggleMenu">\
+      <div class="client-menu-v" :class="{ active: this.app.menuIsActive }"> \
+      <img class="close" src="/img/exit.svg" v-on:click="this.app.toggleMenu">\
       <img class="logo" src="/img/logo_black.svg" alt="">\
          <h2>Menu</h2> \
-         <h1 v-on:click="orderTripRedirect">Order trip</h1> \
-         <h1 v-on:click="myBookingsRedirect">My bookings</h1> \
-         <h1 v-on:click="logoutRedirect">Log out</h1> \
+         <router-link to="/client/order"> \
+            <h1 v-on:click="this.app.toggleMenu">Order trip</h1> \
+         </router-link> \
+         <router-link to="/client/trips"> \
+            <h1 v-on:click="this.app.toggleMenu">My bookings</h1> \
+          </router-link> \
+         <h1 v-on:click="logout">Log out</h1> \
       </div>',
   methods: {
-    toggleMenu: function () {
-      this.app.isMenuActive = !this.app.isMenuActive;
-    },
-    myBookingsRedirect: function (event) {
-      this.toggleMenu();
-      router.push('/client/trips');
-    },
-    logoutRedirect: function (event) {
-      this.toggleMenu();
+    logout: function (event) {
+      this.app.toggleMenu();
       this.app.logout();
-    },
-    orderTripRedirect: function (event) {
-      this.toggleMenu();
-      router.push('/client/order');
     }
   }
 });

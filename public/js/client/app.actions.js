@@ -50,6 +50,6 @@ const actions = {
   },
 
   toggleMenu: function () {
-    this.isMenuActive = !this.isMenuActive;
+    this.menuIsActive = !this.menuIsActive;
   }
 };
