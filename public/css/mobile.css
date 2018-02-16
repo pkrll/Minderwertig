@@ -1,0 +1,502 @@
+* {
+  margin:      0;
+  padding:     0;
+  box-sizing:  border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+/*
+  C O L O R S
+*/
+
+.green {
+  background-color: #36c04d;
+}
+
+.red {
+  background-color: #c45125;
+}
+
+.orange {
+  background-color: #e39416;
+}
+
+.grey {
+  background-color: #f9f9f9;
+}
+
+/*
+  L A Y O U T
+*/
+
+html,
+body {
+  width:    100%;
+  height:   100%;
+  overflow: hidden;
+  position: relative;
+}
+
+body {
+  background: #f9f9f9;
+}
+
+button,
+button.small {
+  width:         100%;
+  height:        64px;
+  line-height:   64px;
+  text-align:    center;
+  color:         #fff;
+  border:        none;
+  border-radius: 5px;
+}
+
+button.small {
+  height: 48px;
+}
+
+.titlebar {
+  width:         100%;
+  height:        64px;
+  padding:       0 15px 0 15px;
+  background:    #fff;
+  position:      relative;
+  overflow:      hidden;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.titlebar .user {
+  width:         30px;
+  height:        30px;
+  border-radius: 50%;
+  top:           17px;
+  left:          15px;
+  position:      absolute;
+}
+
+.titlebar .logo {
+  display: block;
+  margin:  27px auto 0 auto;
+  height:  10px;
+}
+
+.titlebar .menu {
+  width:    35px;
+  height:   22px;
+  position: absolute;
+  top:      21px;
+  right:    15px;
+}
+
+.submenu {
+  width:         100%;
+  height:        40px;
+  background:    #f9f9f9;
+  border-bottom: 1px solid #e5e5e5;
+  position:      relative;
+}
+
+.submenu p.small {
+  color:       #7B7B7B;
+  text-align:  center;
+  line-height: 40px;
+}
+
+.submenu img {
+  height:   18px;
+  position: absolute;
+}
+
+.submenu .left {
+  top:  11px;
+  left: 15px;
+}
+
+.submenu .right {
+  top:   11px;
+  right: 15px;
+}
+
+#app {
+  width:                      100%;
+  height:                     100%;
+  overflow-y:                 scroll;
+  overflow-x:                 hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*
+  V I E W S
+ */
+
+/* component: login-email-v */
+
+.login-email-v {
+  padding:           10px;
+  position:          relative;
+  top:               50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform:    translateY(-50%);
+  -ms-transform:     translateY(-50%);
+  -o-transform:      translateY(-50%);
+  transform:         translateY(-50%);
+}
+
+.login-email-v img {
+  width:         160px;
+  margin:        0 auto;
+  display:       block;
+  margin-bottom: 20px;
+}
+
+.login-email-v h2 {
+  text-align:    center;
+  margin-bottom: 40px;
+  opacity:       0.85;
+}
+
+.login-email-v input {
+  padding:            10px;
+  width:              100%;
+  border:             1px solid rgba(0, 0, 0, 0.1);
+  border-radius:      0;
+  -webkit-appearance: none;
+}
+
+.login-email-v button {
+  margin-top: 20px;
+}
+
+/* component: order-form-v & order-found-v */
+
+.order-form-v {
+  width:      100%;
+  background: #fff;
+  padding:    0 10px 10px 10px;
+}
+
+.order-form-v div, .order-found-v div {
+  width:         100%;
+  overflow:      hidden;
+  padding:       10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.order-form-v div label, .order-found-v label {
+  margin-bottom: 5px;
+  color:         rgba(0, 0, 0, 0.5);
+  float:         left;
+}
+
+.order-form-v div input, .order-found-v input {
+  border: none;
+  clear:  both;
+  float:  left;
+}
+
+.order-form-v div input:nth-child(0) {
+  clear: none;
+}
+
+.order-form-v div select {
+  clear: both;
+  float: left;
+}
+
+.order-form-v button {
+  margin-top: 10px;
+}
+
+/* component: order-found-v */
+
+.order-found-v {
+  padding: 10px;
+}
+
+.order-found-v img {
+  margin:  0 auto;
+  display: block;
+}
+
+.order-found-v .car {
+  width:         100%;
+  background:    #fff;
+  overflow:      auto;
+  padding:       20px;
+  border-radius: 5px;
+  box-shadow:    rgba(0, 0, 0, 0.05) 0 5px 8px;
+}
+
+.order-found-v .car h1 {
+  text-align: center;
+}
+
+.order-found-v div {
+  padding-left: 0;
+}
+
+.order-found-v input {
+  background: inherit;
+}
+
+.order-found-v input:disabled {
+  opacity: 1;
+  color:   #000;
+}
+
+.order-found-v .meta {
+  border-bottom: none;
+  float:         left;
+  margin-bottom: 0;
+  padding:       10px 0 0 0;
+}
+
+.order-found-v .meta div {
+  float:         left;
+  width:         50%;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding:       0;
+}
+
+.order-found-v .map {
+  width:      100%;
+  height:     150px;
+  background: rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
+}
+
+.order-found-v button {
+  margin-top: 20px;
+}
+
+/* component: order-wait-v */
+
+.order-wait-v {
+  padding: 10px;
+}
+
+.order-wait-v h1,
+.order-wait-v p {
+  text-align: center;
+  margin:     10px;
+}
+
+.order-wait-v p {
+  opacity: 0.65;
+}
+
+.order-wait-v button {
+  margin-top: 20px;
+}
+
+.order-done-v img {
+  width:   80px;
+  margin:  40px auto 20px auto;
+  display: block;
+}
+
+.order-wait-v svg#loading {
+  width:   136px;
+  margin:  40px auto 20px auto;
+  display: block;
+}
+
+circle#left {
+  -webkit-animation: pulse 1.75s ease infinite;
+  -o-animation:      pulse 1.75s ease infinite;
+  animation:         pulse 1.75s ease infinite;
+}
+
+circle#mid {
+  -webkit-animation: pulse 1.75s ease infinite;
+  -o-animation:      pulse 1.75s ease infinite;
+  animation:         pulse 1.75s ease infinite;
+  animation-delay:   0.25s;
+}
+
+circle#right {
+  -webkit-animation: pulse 1.75s ease infinite;
+  -o-animation:      pulse 1.75s ease infinite;
+  animation:         pulse 1.75s ease infinite;
+  animation-delay:   0.5s;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* component: trip-v */
+
+.trip-v {
+  overflow:      auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position:      relative;
+}
+
+.trip-v .tab {
+  width:    8px;
+  height:   100%;
+  position: absolute;
+}
+
+.trip-v .content {
+  padding: 10px 10px 10px 18px;
+}
+
+.trip-v p.small {
+  line-height: 1;
+}
+
+.trip-v .meta {
+  margin-bottom: 5px;
+  overflow:      auto;
+}
+
+.trip-v .meta .time,
+.trip-v .meta img,
+.trip-v .meta h3 {
+  float:       left;
+  font-weight: normal;
+}
+
+.trip-v .meta img {
+  height:       15px;
+  margin-right: 8px;
+  margin-top:   2px;
+}
+
+.trip-v .meta .timeLeft {
+  float: right;
+}
+
+.trip-v .name {
+  margin-bottom: 5px;
+}
+
+.trip-v .route p.small {
+  line-height: 1.2;
+}
+
+.trip-v .route .path {
+  width:         8px;
+  height:        33px;
+  background:    rgba(0, 0, 0, 0.1);
+  float:         left;
+  border-radius: 6px;
+  position:      relative;
+  margin-right:  10px;
+}
+
+.trip-v .route .path div {
+  width:         8px;
+  height:        8px;
+  background:    rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  position:      absolute;
+  bottom:        0;
+}
+
+/* component: client-menu-v */
+.client-menu-v {
+  background:         white;
+  height:             100%;
+  width:              90%;
+  position:           absolute;
+  top:                0;
+  z-index:            999;
+  right:              0;
+  padding:            25px;
+  -webkit-transform:  translateX(100%);
+  -moz-transform:     translateX(100%);
+  -ms-transform:      translateX(100%);
+  -o-transform:       translateX(100%);
+  transform:          translateX(100%);
+  -webkit-transition: transform 0.5s ease;
+  -moz-transition:    transform 0.5s ease;
+  -ms-transition:     transform 0.5s ease;
+  -o-transition:      transform 0.5s ease;
+  transition:         transform 0.5s ease;
+}
+
+.client-menu-v .close {
+  position: absolute;
+  top:      25px;
+  right:    25px;
+}
+
+.client-menu-v .logo {
+  position: absolute;
+  bottom:   25px;
+  left:     25px;
+}
+
+.active {
+  -webkit-transform: translateX(0%);
+  -moz-transform:    translateX(0%);
+  -ms-transform:     translateX(0%);
+  -o-transform:      translateX(0%);
+  transform:         translateX(0%);
+}
+
+.client-menu-v h1 {
+  line-height: 1.75;
+  cursor:      pointer;
+}
+
+.client-menu-v h2 {
+  margin-bottom: 30px;
+  color:         grey;
+}
+
+/*
+  T Y P O G R A P H Y
+
+  Design is made with points in mind, in CSS points are usually used for print
+  and not for digital screens. The conversion is approximately correct.
+*/
+
+.mono {
+  font-family: 'Roboto Mono', monospace;
+}
+
+h1 {
+  font-size:   24px;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+h2 {
+  font-size:   20px;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+h3 {
+  font-size:   17px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+p,
+input,
+button,
+select {
+  font-size:   17px;
+  line-height: 1.4;
+}
+
+p.small,
+label {
+  font-size:   15px;
+  line-height: 1.4;
+}
