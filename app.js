@@ -21,7 +21,7 @@ require('./config/index.js')(app);
 function sendToDispatchers(message, data) {
   let dispatchers = store.getDispatcherSockets();
 
-  for (const dispatcher of dispatchers) {
+  for (let dispatcher of dispatchers) {
     console.log("Sending request to dispatcher");
     dispatcher.emit(message, data);
   }
