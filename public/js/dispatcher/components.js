@@ -2,8 +2,15 @@ const panel_view_v = Vue.component('panel-view-v', {
   props: ['app'],
   template: '\
   <div class="panel-view-v">\
-    <orders-view-v :app="app"></orders-view-v>\
-    <trips-view-v :app="app"></trips-view-v>\
+    <div class="wrapper">\
+      <div class="menu">\
+        <p class="active">Bookings</p>\
+        <p>Active trips</p>\
+        <p>Cars</p>\
+      </div>\
+      <orders-view-v :app="app"></orders-view-v>\
+      <trips-view-v :app="app"></trips-view-v>\
+    </div>\
   </div>'
 });
 
@@ -11,7 +18,7 @@ const orders_view_v = Vue.component('orders-view-v', {
   props: ['app'],
   template: '\
   <div class="orders-view-v">\
-    <card-v v-for="order in app.orders" :@click="handle(order)" :key="order.id" :trip="order" :app="app"></card-v> \
+    <card-v v-for="order in app.orders" @click="handle(order)" :key="order.id" :trip="order" :app="app"></card-v> \
   </div>',
   methods: {
     // TODO: Refactor needed
