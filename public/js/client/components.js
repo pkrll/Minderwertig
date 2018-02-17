@@ -318,7 +318,8 @@ const order_found_v = Vue.component('order-found-v', {
       <label for="date">Price</label>\
       <input type="text" name="price" :value="trip.price" disabled>\
     </div>\
-    <button class="normal green" v-on:click="confirmOrder(true, $event)">Order</button>\
+    <button class="green" v-on:click="confirmOrder(true, $event)">Order</button>\
+    <button class="grey">Cancel</button>\
   </div>',
   methods: {
     confirmOrder: function (response, event) {
