@@ -65,7 +65,7 @@ const router = new VueRouter({
         main: trips_v
       },
       meta: {
-        title: 'Trips',
+        title: 'My trips',
         hasLeftArrow: false,
         hasRightArrow: false
       }

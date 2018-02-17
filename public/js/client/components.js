@@ -10,7 +10,7 @@ const client_menu_v = Vue.component('client-menu-v', {
             <h1 v-on:click="this.app.toggleMenu">Order trip</h1> \
          </router-link> \
          <router-link to="/client/trips"> \
-            <h1 v-on:click="this.app.toggleMenu">My bookings</h1> \
+            <h1 v-on:click="this.app.toggleMenu">My trips</h1> \
           </router-link> \
          <h1 v-on:click="logout">Log out</h1> \
       </div>',
@@ -36,13 +36,13 @@ const order_wait_v = Vue.component('order-wait-v', {
         <p>This could take several minutes...</p> \
       <button class="orange">Cancel</button> \
     </div>',
-    beforeRouteLeave (to, from, next) {
-      if (to.name == 'order') {
-        this.app.cancelOrder(null);
-      }
-
-      next();
+  beforeRouteLeave(to, from, next) {
+    if (to.name == 'order') {
+      this.app.cancelOrder(null);
     }
+
+    next();
+  }
 });
 
 // Logging in screen
