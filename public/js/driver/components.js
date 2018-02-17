@@ -6,7 +6,7 @@ const login_view_v = Vue.component('login-view-v', {
     <button class="green" v-on:click="login">Logga in</button> \
   </div>',
   methods: {
-    login: function(event) {
+    login: function (event) {
       event.preventDefault();
       router.push('/driver/login');
     }
@@ -67,7 +67,7 @@ const assignments_v = Vue.component('assignments-v', {
     </ul> \
   </div>',
   methods: {
-    viewDetails: function(customer, event) {
+    viewDetails: function (customer, event) {
       app.viewAssignment(customer);
     },
   },
@@ -96,10 +96,10 @@ const details_v = Vue.component('details-v', {
   <button v-on:click="returnToAssignments" class="orange">Tillbaka</button>\
   </div>',
   methods: {
-    returnToAssignments: function() {
+    returnToAssignments: function () {
       router.push('/driver/assignments');
     },
-    beginTrip: function(assignment, event) {
+    beginTrip: function (assignment, event) {
       console.log(assignment.name);
       app.beginTrip(assignment);
     }
@@ -118,7 +118,7 @@ const trip_v = Vue.component('trip-v', {
       trip: {
         name: app.currentTrip.name,
         from: app.currentTrip.from,
-        to:   app.currentTrip.to,
+        to: app.currentTrip.to,
         time: app.currentTrip.time
       }
     }

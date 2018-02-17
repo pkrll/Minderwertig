@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = function (app) {
 
@@ -16,4 +16,4 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, '../views/dispatcher/index.html'));
   });
 
-}
+};

@@ -136,9 +136,9 @@ const order_form_v = Vue.component('order-form-v', {
     sendOrder: function (event) {
       event.preventDefault();
 
-      if (this.validate(this.order) && this.date.date != undefined && this.date.time != undefined) {
-        var date = this.date.date.split("-");
-        var time = this.date.time.split(":");
+      if (this.validate(this.order) && this.date.date !== undefined && this.date.time !== undefined) {
+        const date = this.date.date.split("-");
+        const time = this.date.time.split(":");
 
         this.order.route.time = MWDate.toUnixTime(date, time);
 
@@ -148,7 +148,7 @@ const order_form_v = Vue.component('order-form-v', {
       }
     },
     validate: function (order) {
-      return (order.route.from != '' && order.route.to != '');
+      return (order.route.from !== '' && order.route.to !== '');
     }
   }
 });
@@ -260,7 +260,7 @@ const trip_details_v = Vue.component('trip-details-v', {
       router.push('/client/trips/');
     }
   }
-})
+});
 
 const order_found_v = Vue.component('order-found-v', {
   props: ['app'],

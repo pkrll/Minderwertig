@@ -1,4 +1,4 @@
-const created = function() {
+const created = function () {
   //socket.emit('driver/login', { email: "c@a.se", password: "foo" });
 
   /**

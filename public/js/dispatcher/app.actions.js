@@ -5,7 +5,6 @@ const actions = {
    * @param  {Object} order The proposal
    */
   handleOrder: function (order) {
-    // TEmporary shit
 
     const driver = {
       "id": 1,
@@ -23,7 +22,7 @@ const actions = {
         "name": "Volvo V70",
         "image_url": "/img/mercedes.jpg"
       }
-    }
+    };
 
     order.driver = driver;
     order.duration = "02:25";

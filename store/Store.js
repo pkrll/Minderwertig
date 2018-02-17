@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const fs = require('fs');
 
@@ -46,16 +46,16 @@ class Store {
   }
 
   retrieveClient(email, password) {
-    return this.retrieveUser(email, password, this.clients);
+    return Store.retrieveUser(email, password, this.clients);
   }
 
   retrieveDriver(email, password) {
-    return this.retrieveUser(email, password, this.drivers);
+    return Store.retrieveUser(email, password, this.drivers);
   }
 
-  retrieveUser(email, password, userList) {
+  static retrieveUser(email, password, userList) {
     for (let user of userList) {
-      if (user.email == email && user.password == password) {
+      if (user.email === email && user.password === password) {
         return user;
       }
     }
@@ -75,7 +75,7 @@ class Store {
    */
   getClient(id) {
     for (let client of this.clients) {
-      if (client.uid == id) {
+      if (client.uid === id) {
         return client;
       }
     }
@@ -95,7 +95,7 @@ class Store {
    */
   getDriver(id) {
     for (let driver of this.drivers) {
-      if (driver.uid == id) {
+      if (driver.uid === id) {
         return driver;
       }
     }
@@ -152,7 +152,7 @@ class Store {
   }
 
   getNewId(object) {
-    var lastOrder = Object.keys(object).reduce(function (last, next) {
+    const lastOrder = Object.keys(object).reduce(function (last, next) {
       return Math.max(last, next);
     }, 0);
 

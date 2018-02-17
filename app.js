@@ -1,16 +1,16 @@
 'use strict';
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-var Store = require('./store/Store');
-var store = new Store();
+const Store = require('./store/Store');
+const store = new Store();
 
-require('./routes')(app)
-require('./config/index.js')(app)
+require('./routes')(app);
+require('./config/index.js')(app);
 
 /**
  * Broadcasts to all dispatchers.
@@ -21,7 +21,7 @@ require('./config/index.js')(app)
 function sendToDispatchers(message, data) {
   let dispatchers = store.getDispatcherSockets();
 
-  for (var dispatcher of dispatchers) {
+  for (const dispatcher of dispatchers) {
     console.log("Sending request to dispatcher");
     dispatcher.emit(message, data);
   }
@@ -76,27 +76,27 @@ io.on('connection', function (socket) {
    *
    * @param  {Object} confirmation The confirmation object.
    */
-   socket.on('client/order/confirmation', function (data) {
-       console.log("CLIENT: Order confirmation received");
+  socket.on('client/order/confirmation', function (data) {
+    console.log("CLIENT: Order confirmation received");
 
-       if (data.response == true) {
-         // Retrieve the order and add it as a trip
-         // This will change the object's id when adding as a trip
-         var order = store.getOrder(data.id);
+    if (data.response === true) {
+      // Retrieve the order and add it as a trip
+      // This will change the object's id when adding as a trip
+      const order = store.getOrder(data.id);
 
-         // If the order does not exists, send back an error.
-         if (order == undefined) {
-           socket.emit('error', {message: "An error has occurred. Order was not found"});
-           return;
-         }
+      // If the order does not exists, send back an error.
+      if (order === undefined) {
+        socket.emit('error', {message: "An error has occurred. Order was not found"});
+        return;
+      }
 
-         store.addTrip(order);
-         sendToDispatchers('trip/new', order);
-         socket.emit('trip/new', order);
-       }
-       // Remove the order from the list of orders in store
-       store.removeOrder(data.id);
-     });
+      store.addTrip(order);
+      sendToDispatchers('trip/new', order);
+      socket.emit('trip/new', order);
+    }
+    // Remove the order from the list of orders in store
+    store.removeOrder(data.id);
+  });
 
   // ----------------------------------------
   //  DISPATCHER
@@ -135,21 +135,21 @@ io.on('connection', function (socket) {
   //  DRIVER
   // ----------------------------------------
 
-    socket.on('driver/login', function(request) {
-      console.log("A driver has logged on!");
-      let account = store.retrieveDriver(request.username, request.password);
+  socket.on('driver/login', function (request) {
+    console.log("A driver has logged on!");
+    let account = store.retrieveDriver(request.username, request.password);
 
-      if (account != null) {
-        socket.emit('login/success', account);
-        store.addDriverSocket(account.id, socket);
-        console.log("DRIVER: Login successful!");
-      } else {
-        socket.emit('login/failure', "Wrong username or password!");
-        console.log("DRIVER: Login failed!");
-      }
-    });
+    if (account != null) {
+      socket.emit('login/success', account);
+      store.addDriverSocket(account.id, socket);
+      console.log("DRIVER: Login successful!");
+    } else {
+      socket.emit('login/failure', "Wrong username or password!");
+      console.log("DRIVER: Login failed!");
+    }
+  });
 });
 
-var server = http.listen(app.get('port'), function () {
+const server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));
 });
