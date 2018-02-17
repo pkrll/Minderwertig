@@ -39,4 +39,4 @@ const created = function () {
     Vue.set(this.trips, trip.id, trip);
   }.bind(this));
 
-}
+};

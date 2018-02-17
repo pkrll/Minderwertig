@@ -13,7 +13,7 @@ const actions = {
     this.assignmentDisplay = assignment;
     router.push('/driver/assignments/' + assignment.id);
   },
-  beginTrip: function(assignment, event) {
+  beginTrip: function (assignment, event) {
     this.currentTrip = assignment;
     router.push('/driver/trip/');
   }

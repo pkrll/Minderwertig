@@ -1,7 +1,7 @@
-'use strict'
-var socket = io();
+'use strict';
+const socket = io();
 
-var app = new Vue({
+const app = new Vue({
   router,
   el: '#app',
   data: data,

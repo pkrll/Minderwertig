@@ -8,5 +8,5 @@ const data = {
     {name: "Contact us"},
     {name: "Logout"}
   ],
-  isMenuActive: false
+  menuIsActive: false
 };

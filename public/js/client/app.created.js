@@ -43,4 +43,4 @@ const created = function () {
   socket.on('error', function (data) {
     alert(data.message);
   });
-}
+};
