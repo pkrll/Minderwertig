@@ -213,13 +213,13 @@ Always use semicolons. Except on function declarations.
 
 ```javascript
 // Function expression
-var someFunction = function() {
-  var foo = 42;
+const someFunction = function() {
+  let foo = 42;
 }; // <--- ends with semicolon
 
 // Function declaration
 function someFunction() {
-  var foo = 42;
+  let foo = 42;
 } // <--- No semicolon
 ```
 
