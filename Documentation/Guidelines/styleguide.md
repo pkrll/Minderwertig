@@ -213,24 +213,25 @@ Always use semicolons. Except on function declarations.
 
 ```javascript
 // Function expression
-var someFunction = function() {
-  var foo = 42;
+const someFunction = function() {
+  let foo = 42;
 }; // <--- ends with semicolon
 
 // Function declaration
 function someFunction() {
-  var foo = 42;
+  let foo = 42;
 } // <--- No semicolon
 ```
 
 #### Variables and Constants
-Always declare variables using the ``var`` keyword. This prevents the variable from being placed in a global context.
+Always declare variables using the ``let`` or ``const`` keyword. This prevents the variable from being placed in a global context.
 
 ```javascript
-var foo = bar;
+let currentAcceleration = 2.35; //reassignable
+const gravity = 9.82; //not reassignable
 ```
 
-Use uppercase with each word separated by an underscore when naming constants, like this: ``SOME_CONSTANT``.
+Use uppercase with each word separated by an underscore when naming **global** (outside any function scope) constants, like this: ``SOME_CONSTANT``.
 
 #### Delete
 
