@@ -231,7 +231,7 @@ let currentAcceleration = 2.35; //reassignable
 const gravity = 9.82; //not reassignable
 ```
 
-Use uppercase with each word separated by an underscore when naming constants, like this: ``SOME_CONSTANT``.
+Use uppercase with each word separated by an underscore when naming **global** (outside any function scope) constants, like this: ``SOME_CONSTANT``.
 
 #### Delete
 
