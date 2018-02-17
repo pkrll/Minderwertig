@@ -103,27 +103,23 @@ const order_form_v = Vue.component('order-form-v', {
   <div class="order-form-v"> \
     <div> \
       <label for="from">From</label> \
-      <input type="text" name="from" placeholder="From..." v-model="order.route.from"> \
+      <input type="text" name="from" placeholder="From..." v-model="order.route.from" data-validate="required"> \
     </div> \
     <div> \
       <label for="from">To</label> \
-      <input type="text" name="to" placeholder="To..." v-model="order.route.to"> \
+      <input type="text" name="to" placeholder="To..." v-model="order.route.to" data-validate="required"> \
     </div> \
     <div> \
       <label for="date">Date</label> \
-      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date" placeholder="Tap to pick date"> \
+      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date" placeholder="Tap to pick date" data-validate="required, date"> \
     </div>\
     <div>\
       <label for="time">Time</label> \
-      <input class="mono" type="time" name="date" v-model="date.time" placeholder="Tap to pick time"> \
+      <input class="mono" type="time" name="date" v-model="date.time" placeholder="Tap to pick time" data-validate="required, time"> \
     </div> \
     <div> \
-      <label for="capacity">Capacity</label> \
-      <select class="" name="capacity" v-model="order.capacity"> \
-        <option value="4" selected>4</option> \
-        <option value="7">7</option> \
-        <option value="10">10</option> \
-      </select> \
+      <label for="capacity">Passengers</label> \
+      <input type="text" name="passengers" v-model="order.passengers" placeholder="Number of passengers..." data-validate="numeric, required"> \
     </div> \
     <div> \
       <label for="special-needs">Additional needs</label> \
@@ -139,11 +135,16 @@ const order_form_v = Vue.component('order-form-v', {
     </div>  \
     <button class="normal green" v-on:click="sendOrder">Continue</button> \
   </div>',
+  computed: {
+    validate: function () {
+      console.log(this);
+    }
+  },
   methods: {
     sendOrder: function (event) {
       event.preventDefault();
 
-      if (this.validate(this.order) && this.date.date !== undefined && this.date.time !== undefined) {
+      if (MWValidate('order-form-v')) {
         const date = this.date.date.split("-");
         const time = this.date.time.split(":");
 
@@ -153,9 +154,6 @@ const order_form_v = Vue.component('order-form-v', {
       } else {
         alert("Please fill in your order!");
       }
-    },
-    validate: function (order) {
-      return (order.route.from !== '' && order.route.to !== '');
     }
   }
 });

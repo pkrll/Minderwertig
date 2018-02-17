@@ -1,4 +1,5 @@
 const created = function () {
+  socket.emit("client/login", { email: "a@a.se", password: "foo" });
   /**
    * Invoked on successful login.
    *
