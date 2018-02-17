@@ -39,7 +39,6 @@ class MWDate {
    * @return  {Object}        The time left.
    */
   static timeUntil(timestamp) {
-    console.log(timestamp);
     const timeleft = timestamp - new Date().getTime();
     // The hours and minutes only
     var minutes = Math.floor(timeleft / (1000 * 60));

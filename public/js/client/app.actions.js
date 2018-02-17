@@ -31,6 +31,14 @@ const actions = {
     socket.emit('client/order/request', order);
   },
   /**
+   * Cancels a booking requests.
+   *
+   * @param  {Object} order The booking details.
+   */
+  cancelOrder: function (order) {
+    console.log("NOT IMPLEMENTED!");
+  },
+  /**
    * Send a confirmation of the current order, stored in the Vue instance's
    * data property 'currentOrder'.
    */

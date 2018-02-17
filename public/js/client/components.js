@@ -10,7 +10,7 @@ const client_menu_v = Vue.component('client-menu-v', {
             <h1 v-on:click="this.app.toggleMenu">Order trip</h1> \
          </router-link> \
          <router-link to="/client/trips"> \
-            <h1 v-on:click="this.app.toggleMenu">My bookings</h1> \
+            <h1 v-on:click="this.app.toggleMenu">My trips</h1> \
           </router-link> \
          <h1 v-on:click="logout">Log out</h1> \
       </div>',
@@ -35,7 +35,14 @@ const order_wait_v = Vue.component('order-wait-v', {
         <h1>Searching for trip</h1> \
         <p>This could take several minutes...</p> \
       <button class="orange">Cancel</button> \
-    </div>'
+    </div>',
+  beforeRouteLeave(to, from, next) {
+    if (to.name == 'order') {
+      this.app.cancelOrder(null);
+    }
+
+    next();
+  }
 });
 
 // Logging in screen
@@ -162,7 +169,7 @@ const trips_v = Vue.component('trips-v', {
 });
 
 const trip_v = Vue.component('trip-v', {
-  props: ['trip'],
+  props: ['app', 'trip'],
   data: function () {
     const date = MWDate.format(this.trip.route.time);
     return {
@@ -348,8 +355,16 @@ const submenu_v = Vue.component('submenu-v', {
   props: ['app'],
   template: '\
   <div class="submenu">\
-    <img class="left" src="/img/left.svg" alt="">\
-    <img class="right" src="/img/right.svg" alt="">\
-    <p class="small">Index</p>\
-  </div>'
+    <img class="left" src="/img/left.svg" alt="" v-show="this.$route.meta.hasLeftArrow" v-on:click="goBack">\
+    <img class="right" src="/img/right.svg" alt="" v-show="this.$route.meta.hasRightArrow" v-on:click="goForward">\
+    <p class="small">{{this.$route.meta.title}}</p>\
+  </div>',
+  methods: {
+    goBack: function () {
+      router.go(-1);
+    },
+    goForward: function () {
+      router.go(1);
+    }
+  }
 });
