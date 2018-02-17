@@ -9,8 +9,8 @@ var io = require('socket.io')(http);
 var Store = require('./store/Store');
 var store = new Store();
 
-require('./routes.js')(app)
-require('./config.js')(app)
+require('./routes')(app)
+require('./config/index.js')(app)
 
 /**
  * Broadcasts to all dispatchers.

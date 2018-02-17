@@ -18,10 +18,10 @@ Clone this repository:
 $ git clone https://github.com/pkrll/Minderwertig
 ```
 
-``cd`` in to the folder, and run npm install in the ``App/`` directory to install the project dependencies.
+``cd`` in to the folder, and run ``npm install`` in the root directory to install the project dependencies.
 
 ```bash
-$ cd Minderwertig/App
+$ cd Minderwertig
 $ npm install
 ```
 
@@ -31,7 +31,7 @@ $ npm install
 
 #### Running the server
 
-In the ``App/`` folder, run the command ``node app`` to start up the server.
+In the root folder, run the command ``node app`` (or ``nodemon app``) to start up the server.
 
 #### Running the client
 
@@ -52,3 +52,9 @@ The dispatcher application is reached from ``localhost:PORT/dispatcher`` where `
 Configurations can be found in the ``config.js`` file:
 
 * ``Port`` (default: 1335)
+
+### Documentation
+
+* [Git guidelines](https://github.com/pkrll/Minderwertig/blob/master/Documentation/Guidelines/git.md)
+* [Styleguide](https://github.com/pkrll/Minderwertig/blob/master/Documentation/Guidelines/styleguide.md)
+* [Data Structures](https://github.com/pkrll/Minderwertig/blob/master/Documentation/Guidelines/data-structures.md)
