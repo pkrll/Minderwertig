@@ -40,7 +40,7 @@ const router = new VueRouter({
       },
       meta: {
         title: 'Order (1/3)',
-        hasLeftArrow: true,
+        hasLeftArrow: false,
         hasRightArrow: false
       }
     },
@@ -53,7 +53,7 @@ const router = new VueRouter({
       },
       meta: {
         title: 'Order (2/3)',
-        hasLeftArrow: true,
+        hasLeftArrow: false,
         hasRightArrow: false
       }
     },
