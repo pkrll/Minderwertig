@@ -26,7 +26,7 @@ let isNonEmpty = function (value) {
 }
 
 let isNumeric = function (value) {
-  return isNan(value);
+  return !isNaN(value);
 }
 
 let isValidTime = function (value) {

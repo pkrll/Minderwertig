@@ -122,7 +122,7 @@ const order_form_v = Vue.component('order-form-v', {
     </div> \
     <div> \
       <label for="capacity">Passengers</label> \
-      <input type="text" name="passengers" v-model="order.passengers" placeholder="Number of passengers..." data-validate="numeric, required"> \
+      <input type="text" name="passengers" v-model="order.passengers" placeholder="Number of passengers..." data-validate="number, required"> \
     </div> \
     <div> \
       <label for="special-needs">Additional needs</label> \
