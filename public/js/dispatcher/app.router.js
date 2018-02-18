@@ -4,9 +4,22 @@ const router = new VueRouter({
     {
       path: '/dispatcher',
       components: {
-        left: orders_view_v,
-        center: trips_view_v,
-        right: null
+        menu: menu_view_v,
+        list: orders_view_v
+      }
+    },
+    {
+      path: '/dispatcher/trips',
+      components: {
+        menu: menu_view_v,
+        list: trips_view_v
+      }
+    },
+    {
+      path: '/dispatcher/cars',
+      components: {
+        menu: menu_view_v,
+        list: cars_view_v
       }
     }
   ]
