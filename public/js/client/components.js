@@ -93,7 +93,10 @@ const order_form_v = Vue.component('order-form-v', {
           pet: false
         }
       },
-      date: {}
+      date: {
+        date: "",
+        time: ""
+      }
     }
   },
   mounted: function () {
@@ -144,13 +147,18 @@ const order_form_v = Vue.component('order-form-v', {
     sendOrder: function (event) {
       event.preventDefault();
 
+      const date = this.date.date.split("-");
+      const time = this.date.time.split(":");
+
+      const timestamp = MWDate.toUnixTime(date, time);
+
       if (MWValidate('order-form-v')) {
-        const date = this.date.date.split("-");
-        const time = this.date.time.split(":");
-
-        this.order.route.time = MWDate.toUnixTime(date, time);
-
-        app.sendOrder(this.order);
+        if (MWDate.hasPassed(timestamp)) {
+          alert("Please enter a valid date!");
+        } else {
+          this.order.route.time = timestamp;
+          app.sendOrder(this.order);
+        }
       } else {
         alert("Please fill in your order!");
       }
