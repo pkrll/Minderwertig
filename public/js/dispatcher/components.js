@@ -2,7 +2,6 @@ const panel_view_v = Vue.component('panel-view-v', {
   props: ['app'],
   template: '\
   <div class="panel-view-v">\
-    <div class="wrapper">\
       <div class="menu">\
         <p class="active">Bookings</p>\
         <p>Active trips</p>\
@@ -10,7 +9,6 @@ const panel_view_v = Vue.component('panel-view-v', {
       </div>\
       <orders-view-v :app="app"></orders-view-v>\
       <trips-view-v :app="app"></trips-view-v>\
-    </div>\
   </div>'
 });
 
