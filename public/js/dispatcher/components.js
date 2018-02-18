@@ -15,7 +15,7 @@ const panel_view_v = Vue.component('panel-view-v', {
 const orders_view_v = Vue.component('orders-view-v', {
   props: ['app'],
   template: '\
-  <div class="orders-view-v">\
+  <div class="orders-view-v active">\
     <card-v v-for="order in app.orders" @click="handle(order)" :key="order.id" :trip="order" :app="app"></card-v> \
   </div>',
   methods: {

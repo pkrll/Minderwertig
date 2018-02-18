@@ -44,3 +44,11 @@ iframe {
   height: 100%;
   float:  left;
 }
+
+.orders-view-v, .trips-view-v, .cars-view-v {
+  display: none;
+}
+
+.orders-view-v.active, .trips-view-v.active, .cars-view-v.active {
+  display: block;
+}
