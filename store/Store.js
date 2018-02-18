@@ -4,11 +4,12 @@ const fs = require('fs');
 
 class Store {
 
-  constructor() {
-    let accounts = JSON.parse(fs.readFileSync('./store/accounts.json', 'utf8'));
+  constructor(filename) {
+    this.filename = (filename != undefined) ? filename : "store.json";
+    this.accounts = JSON.parse(fs.readFileSync(this.filename, 'utf8'));
 
-    this.clients = accounts["clients"];
-    this.drivers = accounts["drivers"];
+    this.clients = this.accounts["clients"];
+    this.drivers = this.accounts["drivers"];
     // Holds all the sockets for the different type of users,
     // driver and client sockets indexed by user id.
     this.sockets = {
@@ -19,6 +20,21 @@ class Store {
 
     this.orders = {};
     this.trips = {};
+
+  }
+
+  save(callback) {
+    console.log("Saving file...");
+
+    let json = JSON.stringify(this.accounts, null, 2);
+
+    fs.writeFile(this.filename, json, 'utf8', function writeFileCallback(err) {
+      if (err != null) {
+        console.log("Could not save file: " + err);
+      }
+
+      if (callback != undefined) callback();
+    });
   }
 
   addClientSocket(id, socket) {
