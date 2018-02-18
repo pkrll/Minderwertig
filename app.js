@@ -7,10 +7,10 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 const Store = require('./store/Store');
-const store = new Store();
+const store = new Store('./store/accounts.json');
 
 require('./routes')(app);
-require('./config/index.js')(app);
+require('./config')(app);
 
 /**
  * Broadcasts to all dispatchers.
@@ -150,6 +150,11 @@ io.on('connection', function (socket) {
   });
 });
 
+function exitHandler(err) {
+  store.save(process.exit);
+}
+
 const server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));
+  process.on('SIGINT', exitHandler.bind(null));
 });
