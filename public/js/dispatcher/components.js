@@ -1,14 +1,10 @@
-const panel_view_v = Vue.component('panel-view-v', {
+const menu_view_v = Vue.component('panel-view-v', {
   props: ['app'],
   template: '\
-  <div class="panel-view-v">\
-      <div class="menu">\
-        <p class="active">Bookings</p>\
-        <p>Active trips</p>\
-        <p>Cars</p>\
-      </div>\
-      <orders-view-v :app="app"></orders-view-v>\
-      <trips-view-v :app="app"></trips-view-v>\
+  <div class="menu">\
+    <router-link to="/dispatcher" class="active">Bookings</router-link>\
+    <router-link to="/dispatcher/trips">Active trips</router-link>\
+    <router-link to="/dispatcher/cars">Cars</router-link>\
   </div>'
 });
 
@@ -30,6 +26,14 @@ const trips_view_v = Vue.component('trips-view-v', {
   props: ['app'],
   template: '\
   <div class="trips-view-v">\
+      <card-v v-for="trip in app.trips" :key="trip.id" :trip="trip" :app="app"></card-v> \
+  </div>'
+});
+
+const cars_view_v = Vue.component('cars-view-v', {
+  props: ['app'],
+  template: '\
+  <div class="cars-view-v">\
       <card-v v-for="trip in app.trips" :key="trip.id" :trip="trip" :app="app"></card-v> \
   </div>'
 });

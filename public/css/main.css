@@ -15,18 +15,19 @@
   margin-bottom: 10px;
 }
 
-.panel-view-v .menu p {
-  width:         33.3333%;
-  float:         left;
-  text-align:    center;
-  line-height:   48px;
-  font-size:     15px;
-  display:       block;
-  border-radius: 5px;
-  color:         rgba(0, 0, 0, 0.5);
+.panel-view-v .menu a {
+  width:           33.3333%;
+  float:           left;
+  text-align:      center;
+  line-height:     48px;
+  font-size:       15px;
+  display:         block;
+  border-radius:   5px;
+  color:           rgba(0, 0, 0, 0.5);
+  text-decoration: none;
 }
 
-.panel-view-v .menu p.active {
+.panel-view-v .menu a.active {
   background: #36C04D;
   color:      #fff;
 }
