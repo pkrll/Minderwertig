@@ -12,6 +12,7 @@ const orders_view_v = Vue.component('orders-view-v', {
   props: ['app'],
   template: '\
   <div class="orders-view-v active">\
+    <p class="small message" v-if="Object.keys(app.orders).length === 0">No bookings found.</p>\
     <card-v v-for="order in app.orders" @click="handle(order)" :key="order.id" :trip="order" :app="app"></card-v> \
   </div>',
   methods: {
@@ -26,7 +27,8 @@ const trips_view_v = Vue.component('trips-view-v', {
   props: ['app'],
   template: '\
   <div class="trips-view-v">\
-      <card-v v-for="trip in app.trips" :key="trip.id" :trip="trip" :app="app"></card-v> \
+    <p class="small message" v-if="Object.keys(app.trips).length === 0">No trips found.</p> \
+    <card-v v-for="trip in app.trips" :key="trip.id" :trip="trip" :app="app"></card-v> \
   </div>'
 });
 
@@ -34,7 +36,8 @@ const cars_view_v = Vue.component('cars-view-v', {
   props: ['app'],
   template: '\
   <div class="cars-view-v">\
-      <card-v v-for="trip in app.trips" :key="trip.id" :trip="trip" :app="app"></card-v> \
+    <p class="small message" v-if="Object.keys(app.trips).length === 0">No cars found.</p>\
+    <card-v v-for="trip in app.trips" :key="trip.id" :trip="trip" :app="app"></card-v> \
   </div>'
 });
 
