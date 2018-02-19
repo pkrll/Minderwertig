@@ -228,10 +228,10 @@ const trip_details_v = Vue.component('trip-details-v', {
   <div class="order-found-v">\
   <div class="car">\
     <h1>Booking details</h1>\
-    <img :src="trip.driver.vehicle.image_url" alt="">\
+    <img :src="trip.vehicle.image_url" alt="">\
     <div>\
       <label>Car model</label>\
-      <input type="text" :value="trip.driver.vehicle.name" disabled>\
+      <input type="text" :value="trip.vehicle.name" disabled>\
     </div>\
     <div class="meta">\
       <div>\
@@ -291,10 +291,10 @@ const order_found_v = Vue.component('order-found-v', {
   <div class="order-found-v">\
     <div class="car">\
       <h1>Taxi found!</h1>\
-      <img :src="trip.driver.vehicle.image_url" alt="">\
+      <img :src="trip.vehicle.image_url" alt="">\
       <div>\
         <label>Car model</label>\
-        <input type="text" :value="trip.driver.vehicle.name" disabled>\
+        <input type="text" :value="trip.vehicle.name" disabled>\
       </div>\
       <div class="meta">\
         <div>\
