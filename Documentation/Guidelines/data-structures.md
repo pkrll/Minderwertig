@@ -135,7 +135,10 @@
     "time": Int
   },
   "duration": Int,
-  "client": Account,
-  "driver": Account
+  "client_id": Int,
+  "driver_id": Int,
+  "vehicle": Vehicle,
+  "duration": Int,
+  "price": Double
 }
 ```
