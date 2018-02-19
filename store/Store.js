@@ -5,7 +5,7 @@ const fs = require('fs');
 class Store {
 
   constructor(filename) {
-    this.filename = (filename != undefined) ? filename : "store.json";
+    this.filename = (filename !== undefined) ? filename : "store.json";
     this.accounts = JSON.parse(fs.readFileSync(this.filename, 'utf8'));
 
     this.clients = this.accounts["clients"];
@@ -33,7 +33,7 @@ class Store {
         console.log("Could not save file: " + err);
       }
 
-      if (callback != undefined) callback();
+      if (callback !== undefined) callback();
     });
   }
 
