@@ -269,8 +269,7 @@ const trip_details_v = Vue.component('trip-details-v', {
   </div>',
   methods: {
     cancelReservation: function () {
-      app.removeTrip(this.trip.id);
-      router.push('/client/trips/');
+      this.app.cancelTrip(this.trip);
     }
   }
 });
