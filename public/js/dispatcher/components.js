@@ -13,14 +13,8 @@ const orders_view_v = Vue.component('orders-view-v', {
   template: '\
   <div class="orders-view-v active">\
     <p class="small message" v-if="Object.keys(app.orders).length === 0">No bookings found.</p>\
-    <card-v v-for="order in app.orders" @click="handle(order)" :key="order.id" :trip="order" :app="app"></card-v> \
-  </div>',
-  methods: {
-    // TODO: Refactor needed
-    handle: function (order) {
-      app.handleOrder(order);
-    }
-  }
+    <card-v v-for="order in app.orders" :key="order.id" :trip="order" :app="app"></card-v> \
+  </div>'
 });
 
 const trips_view_v = Vue.component('trips-view-v', {
@@ -52,7 +46,7 @@ const card_v = Vue.component('card-v', {
     }
   },
   template: '\
-  <div class="trip-v">\
+  <div class="trip-v" v-on:click="handle(trip)">\
     <div class="tab red"></div>\
     <div class="content">\
       <div class="meta">\
@@ -73,4 +67,11 @@ const card_v = Vue.component('card-v', {
       </div>\
     </div>\
   </div>',
+  methods: {
+    // TODO: Refactor needed
+    handle: function (order) {
+      console.log(order);
+      app.handleOrder(order);
+    }
+  }
 });
