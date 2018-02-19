@@ -20,8 +20,14 @@ class Store {
 
     this.orders = {};
     this.trips = {};
-
+    
+    // Load all saved trips into the trips object
+    for (let client of this.clients) {
+      Object.assign(this.trips, client.trips);
+    }
   }
+
+
 
   save(callback) {
     console.log("Saving file...");
