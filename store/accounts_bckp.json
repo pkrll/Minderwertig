@@ -1,0 +1,48 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "email": "a@a.se",
+      "password": "foo",
+      "metadata": {
+        "name": "Ardalan Samimi",
+        "image_url": "",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "trips": {}
+    },
+    {
+      "id": 2,
+      "email": "b@a.se",
+      "password": "foo",
+      "metadata": {
+        "name": "Karl Karlsson",
+        "image_url": "",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "trips": {}
+    }
+  ],
+  "drivers": [
+    {
+      "id": 1,
+      "username": "frank",
+      "password": "foo",
+      "metadata": {
+        "name": "Frank Franksson",
+        "image_url": "",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      "trips": []
+    }
+  ]
+}
