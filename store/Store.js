@@ -91,7 +91,7 @@ class Store {
    */
   getClient(id) {
     for (let client of this.clients) {
-      if (client.uid === id) {
+      if (client.id === id) {
         return client;
       }
     }
@@ -111,7 +111,7 @@ class Store {
    */
   getDriver(id) {
     for (let driver of this.drivers) {
-      if (driver.uid === id) {
+      if (driver.id === id) {
         return driver;
       }
     }
@@ -144,7 +144,8 @@ class Store {
     trip.id = this.getNewTripId();
     this.trips[trip.id] = trip;
 
-    console.log("TRIPS: " + this.trips);
+    let client = this.getClient(trip.client_id);
+    client.trips[trip.id] = trip;
   }
 
   getTrip(id) {

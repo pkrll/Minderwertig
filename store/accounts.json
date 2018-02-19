@@ -12,7 +12,29 @@
           "y": 0
         }
       },
-      "trips": {}
+      "trips": {
+        "1": {
+          "route": {
+            "from": "Here",
+            "to": "There",
+            "time": 1519147680000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "2",
+          "client_id": 1,
+          "id": 1,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "duration": "01:25",
+          "price": 120
+        }
+      }
     },
     {
       "id": 2,

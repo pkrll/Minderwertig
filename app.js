@@ -122,8 +122,8 @@ io.on('connection', function (socket) {
     console.log("DISPATCHER: New trip proposal received...");
     // FIXME: This may have to change depending on how the data structure ends up looking
 
-    let client = store.getClientSocket(request.client.id);
-    // Update the order
+    let client = store.getClientSocket(request.client_id);
+    // Update the order, with driver info
     store.updateOrder(request);
     client.emit('trip/proposal', request);
 

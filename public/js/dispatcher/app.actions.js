@@ -6,27 +6,14 @@ const actions = {
    */
   handleOrder: function (order) {
 
-    const driver = {
-      "id": 1,
-      "username": "ulfi",
-      "password": "foo",
-      "metadata": {
-        "name": "Ulf Sigvardsson",
-        "image_url": "",
-        "position": {
-          "x": 0,
-          "y": 0
-        },
-      },
-      "vehicle": {
-        "name": "Volvo V70",
-        "image_url": "/img/mercedes.jpg"
-      }
+    order.driver_id = 1;
+    order.vehicle = {
+      "name": "Volvo V70",
+      "image_url": "/img/mercedes.jpg"
     };
+    order.duration = "01:25";
+    order.price = 120.0;
 
-    order.driver = driver;
-    order.duration = "02:25";
-    order.price = 540.0;
     socket.emit('dispatcher/trip/proposal', order);
   }
 
