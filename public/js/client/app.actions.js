@@ -39,6 +39,16 @@ const actions = {
     console.log("NOT IMPLEMENTED!");
   },
   /**
+   * Cancels a trip.
+   *
+   * @param  {Object} trip The trip to cancel.
+   */
+  cancelTrip: function (trip) {
+    delete this.account.trips[trip.id];
+    router.push('/client/trips/');
+    socket.emit('client/order/cancel', trip);
+  },
+  /**
    * Send a confirmation of the current order, stored in the Vue instance's
    * data property 'currentOrder'.
    */
@@ -56,14 +66,6 @@ const actions = {
   displayTripDetails: function (trip) {
     this.temporary.currentTrip = trip;
     router.push('/client/trip');
-  },
-  /**
-   * Removes a trip from the list of trips.
-   *
-   * @param  {Object} id Id of the trip to remove.
-   */
-  removeTrip: function (id) {
-    delete this.account.trips[id];
   },
   /**
    * Toggles the menu.
