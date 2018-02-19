@@ -12,7 +12,71 @@
           "y": 0
         }
       },
-      "trips": {}
+      "trips": {
+        "1": {
+          "route": {
+            "from": "Here",
+            "to": "There",
+            "time": 1519147680000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "2",
+          "client_id": 1,
+          "id": 1,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "duration": "01:25",
+          "price": 120
+        },
+        "2": {
+          "route": {
+            "from": "Faraway",
+            "to": "Hawhaw",
+            "time": 1519161060000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "2",
+          "client_id": 1,
+          "id": 2,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "duration": "01:25",
+          "price": 120
+        },
+        "3": {
+          "route": {
+            "from": "Old Town",
+            "to": "New Town",
+            "time": 1519066440000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "2",
+          "client_id": 1,
+          "id": 3,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "duration": "01:25",
+          "price": 120
+        }
+      }
     },
     {
       "id": 2,

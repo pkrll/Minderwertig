@@ -87,7 +87,7 @@ const router = new VueRouter({
       },
       meta: {
         title: 'Trip Details',
-        hasLeftArrow: false,
+        hasLeftArrow: true,
         hasRightArrow: false
       }
     },
