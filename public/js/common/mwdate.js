@@ -8,6 +8,8 @@ class MWDate {
    * @return  {Object}      The date in milliseconds.
    */
   static toUnixTime(date, time) {
+    if (date == "" || time == "") return undefined;
+
     return new Date(date[0], date[1] - 1, date[2], time[0], time[1]).getTime();
   }
 
@@ -96,6 +98,8 @@ class MWDate {
    * @return {Boolean}        True if the date is today.
    */
   static isToday(timestamp) {
+    if (timestamp == "") return false;
+
     var today = new Date().setHours(0, 0, 0, 0);
     var date = new Date(timestamp).setHours(0, 0, 0, 0);
 
@@ -109,6 +113,8 @@ class MWDate {
    * @return {Boolean}        True if the date was yesterday.
    */
   static wasYesterday(timestamp) {
+    if (timestamp == "") return false;
+
     var yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     var date = new Date(timestamp);
@@ -123,13 +129,26 @@ class MWDate {
    * @return {Boolean}        True if the date is tomorrow.
    */
   static isTomorrow(timestamp) {
+    if (timestamp == "") return false;
+
     var tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     var date = new Date(timestamp);
 
     return (date.toDateString() == tomorrow.toDateString());
   }
+  /**
+   * Checks if the specified date has passed.
+   *
+   * @param  {Int}  timestamp The timestamp.
+   * @return {Boolean}        True if the date has passed.
+   */
+  static hasPassed(timestamp) {
+    if (timestamp == "") return false;
+    var now  = new Date().getTime();
 
+    return (now > timestamp);
+  }
 
 }
 
