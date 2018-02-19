@@ -54,6 +54,27 @@
           },
           "duration": "01:25",
           "price": 120
+        },
+        "3": {
+          "route": {
+            "from": "Old Town",
+            "to": "New Town",
+            "time": 1519066440000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "2",
+          "client_id": 1,
+          "id": 3,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "duration": "01:25",
+          "price": 120
         }
       }
     },
