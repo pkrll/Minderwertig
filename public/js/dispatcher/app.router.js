@@ -5,7 +5,8 @@ const router = new VueRouter({
       path: '/dispatcher',
       components: {
         menu: menu_view_v,
-        list: orders_view_v
+        list: orders_view_v,
+        myMap: map_view_v,
       }
     },
     {
