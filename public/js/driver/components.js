@@ -7,7 +7,7 @@ const titlebar_v = Vue.component('titlebar-v', {
     <img class="logo" src="/img/logo_black.svg" alt="">\
     <img class="menu" src="/img/menu.svg" v-on:click="app.toggleMenu" alt="">\
   </div>\
-  <client-menu-v :app="app"></client-menu-v>\
+  <driver-menu-v :app="app"></driver-menu-v>\
   </div>'
 });
 
@@ -18,11 +18,11 @@ const driver_menu_v = Vue.component('driver-menu-v', {
       <img class="close" src="/img/exit.svg" v-on:click="this.app.toggleMenu">\
       <img class="logo" src="/img/logo_black.svg" alt="">\
          <h2>Menu</h2> \
-         <router-link to="/client/order"> \
-            <h1 v-on:click="this.app.toggleMenu">Order trip</h1> \
-         </router-link> \
-         <router-link to="/client/trips"> \
+         <router-link to="/driver/assignments"> \
             <h1 v-on:click="this.app.toggleMenu">My trips</h1> \
+         </router-link> \
+         <router-link to="/driver/trips"> \
+            <h1 v-on:click="this.app.toggleMenu">New trips</h1> \
           </router-link> \
          <h1 v-on:click="logout">Log out</h1> \
       </div>',
