@@ -6,5 +6,5 @@ const app = new Vue({
   el: '#app',
   data: data,
   created: created,
-  methods: actions
+  methods: actions,
 });
