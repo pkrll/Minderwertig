@@ -39,6 +39,7 @@ const menu_v = Vue.component('menu-v', {
   template: '<ul><li v-for="item in app.menu">{{ item.name }}</li></ul>'
 });
 
+/* Remove this component once trips_v is done */
 const assignments_v = Vue.component('assignments-v', {
   props: ['app'],
   template: '\
