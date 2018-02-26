@@ -1,3 +1,26 @@
+const driver_menu_v = Vue.component('driver-menu-v', {
+  props: ['app', 'show'],
+  template: '\
+      <div class="client-menu-v" :class="{ active: this.app.menuIsActive }"> \
+      <img class="close" src="/img/exit.svg" v-on:click="this.app.toggleMenu">\
+      <img class="logo" src="/img/logo_black.svg" alt="">\
+         <h2>Menu</h2> \
+         <router-link to="/client/order"> \
+            <h1 v-on:click="this.app.toggleMenu">Order trip</h1> \
+         </router-link> \
+         <router-link to="/client/trips"> \
+            <h1 v-on:click="this.app.toggleMenu">My trips</h1> \
+          </router-link> \
+         <h1 v-on:click="logout">Log out</h1> \
+      </div>',
+  methods: {
+    logout: function (event) {
+      this.app.toggleMenu();
+      this.app.logout();
+    }
+  }
+});
+
 // Logging in screen
 const login_load_v = Vue.component('login-v', {
   props: ['app'],

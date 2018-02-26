@@ -1,4 +1,3 @@
-// Client menu
 const client_menu_v = Vue.component('client-menu-v', {
   props: ['app', 'show'],
   template: '\
