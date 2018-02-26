@@ -1,19 +1,3 @@
-const login_view_v = Vue.component('login-view-v', {
-  props: ['app'],
-  template: ' \
-  <div> \
-  <h2>Kontrollpanel för chaufför</h2> \
-    <button class="green" v-on:click="login">Logga in</button> \
-  </div>',
-  methods: {
-    login: function (event) {
-      event.preventDefault();
-      router.push('/driver/login');
-    }
-  }
-});
-
-
 // Logging in screen
 const login_load_v = Vue.component('login-v', {
   props: ['app'],
