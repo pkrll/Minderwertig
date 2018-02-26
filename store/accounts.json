@@ -96,7 +96,7 @@
   "drivers": [
     {
       "id": 1,
-      "username": "frank",
+      "email": "frank",
       "password": "foo",
       "metadata": {
         "name": "Frank Franksson",

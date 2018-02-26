@@ -16,6 +16,8 @@ const actions = {
   beginTrip: function (assignment, event) {
     this.currentTrip = assignment;
     router.push('/driver/trip/');
+  },
+  toggleMenu: function () {
+    this.menuIsActive = !this.menuIsActive;
   }
-
 }
