@@ -1,3 +1,16 @@
+const titlebar_v = Vue.component('titlebar-v', {
+  props: ['app'],
+  template: '\
+  <div>\
+  <div class="titlebar">\
+    <img class="user" src="/img/kevin.jpg" alt="">\
+    <img class="logo" src="/img/logo_black.svg" alt="">\
+    <img class="menu" src="/img/menu.svg" v-on:click="app.toggleMenu" alt="">\
+  </div>\
+  <client-menu-v :app="app"></client-menu-v>\
+  </div>'
+});
+
 const driver_menu_v = Vue.component('driver-menu-v', {
   props: ['app', 'show'],
   template: '\
