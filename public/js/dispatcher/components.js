@@ -85,7 +85,7 @@ const map_view_v = Vue.component('map-view-v', {
   mounted: function () {
    // set up the map
    this.map = L.map('my-Map').setView([59.8415,17.648], 11);
-   console.log(this.map);
+    
    // create the tile layer with correct attribution
    var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
