@@ -36,7 +36,6 @@ const router = new VueRouter({
         main: details_v
       }
     },
-
     {
       path: '/driver/trip',
       components: {

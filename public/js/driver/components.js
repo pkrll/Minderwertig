@@ -138,3 +138,41 @@ const details_v = Vue.component('details-v', {
     }
   }
 });
+
+const trip_active_v = Vue.component('trip-active-v', {
+  props: ['app', 'trip'],
+  data: function () {
+    const date = MWDate.format(this.trip.route.time);
+    return {
+      date: date.date,
+      time: date.time,
+      eta: MWDate.timeUntil(this.trip.route.time)
+    }
+  },
+  template: '\
+  <div class="trip-active-v">\
+    <div class="trip-v" v-on:click="displayTripDetails">\
+      <div class="content">\
+        <div class="meta">\
+          <div class="timeLeft">\
+            <img src="/img/clock.svg" alt="">\
+            <h3 class="mono">{{eta}}</h3>\
+          </div>\
+        </div>\
+        <h3 class="name">John Doe</h3>\
+        <div class="route">\
+          <div class="path"><div></div></div>\
+          <p class="small">{{trip.route.from}}</p>\
+          <p class="small">{{trip.route.to}}</p>\
+        </div>\
+      </div>\
+      <button class="orange">Pause</button>\
+      <button class="red">Cancel</button>\
+    </div>\
+  </div>',
+  methods: {
+    displayTripDetails: function () {
+      this.app.displayTripDetails(this.trip);
+    }
+  }
+});
