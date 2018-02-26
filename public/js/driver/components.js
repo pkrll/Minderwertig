@@ -21,6 +21,24 @@ const driver_menu_v = Vue.component('driver-menu-v', {
   }
 });
 
+const submenu_v = Vue.component('submenu-v', {
+  props: ['app'],
+  template: '\
+  <div class="submenu">\
+    <img class="left" src="/img/left.svg" alt="" v-show="this.$route.meta.hasLeftArrow" v-on:click="goBack">\
+    <img class="right" src="/img/right.svg" alt="" v-show="this.$route.meta.hasRightArrow" v-on:click="goForward">\
+    <p class="small">{{this.$route.meta.title}}</p>\
+  </div>',
+  methods: {
+    goBack: function () {
+      router.go(-1);
+    },
+    goForward: function () {
+      router.go(1);
+    }
+  }
+});
+
 // Logging in screen
 const login_load_v = Vue.component('login-v', {
   props: ['app'],
