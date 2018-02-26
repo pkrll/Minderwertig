@@ -60,9 +60,9 @@ const assignments_v = Vue.component('assignments-v', {
     <h2>Mina körningar</h2> \
     <ul v-for="item in app.assignments"> \
       <li>{{ item.name }}</li> \
-      <li>{{ item.from }}</li> \
-      <li>{{ item.to }}</li> \
-      <li>{{ item.time }}</li> \
+      <li>{{ item.route.from }}</li> \
+      <li>{{ item.route.to }}</li> \
+      <li>{{ item.route.time }}</li> \
       <button v-on:click="viewDetails(item, $event)" class="orange">Detaljer</button> \
     </ul> \
   </div>',
@@ -79,9 +79,9 @@ const details_v = Vue.component('details-v', {
     return {
       details: {
         name: app.assignmentDisplay.name,
-        from: app.assignmentDisplay.from,
-        to: app.assignmentDisplay.to,
-        time: app.assignmentDisplay.time
+        from: app.assignmentDisplay.route.from,
+        to: app.assignmentDisplay.route.to,
+        time: app.assignmentDisplay.route.time
       }
     }
   },

@@ -15,6 +15,7 @@ const actions = {
   },
   beginTrip: function (assignment, event) {
     this.currentTrip = assignment;
+    socket.emit('driver/begin', assignment);
     router.push('/driver/trip/');
   }
 
