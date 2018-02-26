@@ -30,5 +30,6 @@ const data = {
     {name: "New reservations"},
     {name: "Settings"},
     {name: "Logout"}
-  ]
+  ],
+  menuIsActive: false
 }
