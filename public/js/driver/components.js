@@ -35,9 +35,11 @@ const login_v = Vue.component('login-v', {
     }
   },
   template: '\
-  <div> \
-    <input type="username" v-model="credentials.username"> \
-    <input type="password" v-model="credentials.password"> \
+  <div class="login-email-v">\
+    <img src="/img/logo_black_full.svg" alt="">\
+    <h2>Driver area</h2>\
+    <input type="username" placeholder="E-mail..." v-model="credentials.username"> \
+    <input type="password" placeholder="Password..." v-model="credentials.password"> \
     <button class="green" v-on:click="login">Logga in</button> \
   </div>',
   methods: {

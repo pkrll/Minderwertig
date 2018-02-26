@@ -5,13 +5,6 @@ const router = new VueRouter({
       path: '/driver',
       components: {
         titlebar: null,
-        main: login_view_v
-      }
-    },
-    {
-      path: '/driver/login/',
-      components: {
-        titlebar: null,
         main: login_v
       }
     },
