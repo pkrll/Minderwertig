@@ -230,3 +230,13 @@ const trip_active_v = Vue.component('trip-active-v', {
     }
   }
 });
+
+const trip_done_v = Vue.component('trip-done-v', {
+  props: ['app'],
+  template: '\
+  <div class="order-done-v order-wait-v"> \
+      <img src="/img/checkbox.svg" alt=""> \
+      <h1>Trip done!</h1> \
+    <router-link to="/driver/trips"><button class="green">Continue</button></router-link> \
+  </div>'
+});
