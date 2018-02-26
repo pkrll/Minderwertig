@@ -35,21 +35,21 @@ In the root folder, run the command ``node app`` (or ``nodemon app``) to start u
 
 #### Running the client
 
-The client application is reached from ``localhost:PORT/client`` where ``PORT`` is the port number set in the [``config.js``](#configurations) file.
+The client application is reached from ``localhost:PORT/client`` where ``PORT`` is the port number set in the [``config/index.js``](#configurations) file.
 
 
 #### Running the driver
 
-The driver application is reached from ``localhost:PORT/driver`` where ``PORT`` is the port number set in the [``config.js``](#configurations) file.
+The driver application is reached from ``localhost:PORT/driver`` where ``PORT`` is the port number set in the [``config/index.js``](#configurations) file.
 
 
 #### Running the dispatcher
 
-The dispatcher application is reached from ``localhost:PORT/dispatcher`` where ``PORT`` is the port number set in the [``config.js``](#configurations) file.
+The dispatcher application is reached from ``localhost:PORT/dispatcher`` where ``PORT`` is the port number set in the [``config/index.js``](#configurations) file.
 
 ### Configurations
 
-Configurations can be found in the ``config.js`` file:
+Configurations can be found in ``config/index.js``:
 
 * ``Port`` (default: 1335)
 
