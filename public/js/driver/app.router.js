@@ -26,7 +26,7 @@ const router = new VueRouter({
       path: '/driver/assignments',
       components: {
         titlebar: menu_v,
-        main: assignments_v
+        main: trips_v
       }
     },
     {

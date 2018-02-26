@@ -43,7 +43,6 @@ const assignments_v = Vue.component('assignments-v', {
   props: ['app'],
   template: '\
   <div>\
-    <h2>Mina körningar</h2> \
     <ul v-for="item in app.assignments"> \
       <li>{{ item.name }}</li> \
       <li>{{ item.from }}</li> \
@@ -57,6 +56,53 @@ const assignments_v = Vue.component('assignments-v', {
       app.viewAssignment(customer);
     },
   },
+});
+
+const trips_v = Vue.component('trips-v', {
+  props: ['app'],
+  template: '\
+  <div class="trips-v">\
+    <trip-v v-for="trip in app.assignments" :key="trip.id" v-bind:trip="trip" v-bind:app="app"></trip-v>\
+  </div>'
+});
+
+const trip_v = Vue.component('trip-v', {
+  props: ['app', 'trip'],
+  data: function () {
+    const date = MWDate.format(this.trip.route.time);
+    return {
+      date: date.date,
+      time: date.time,
+      eta: MWDate.timeUntil(this.trip.route.time)
+    }
+  },
+  template: '\
+  <div class="trip-v" v-on:click="displayTripDetails">\
+    <div class="tab red"></div>\
+    <div class="content">\
+      <div class="meta">\
+        <div class="time">\
+          <img src="/img/pin.svg" alt="">\
+          <h3 class="mono">{{time}}</h3>\
+        </div>\
+        <div class="timeLeft">\
+          <img src="/img/clock.svg" alt="">\
+          <h3 class="mono">{{eta}}</h3>\
+        </div>\
+      </div>\
+      <h3 class="name">{{date}}</h3>\
+      <div class="route">\
+        <div class="path"><div></div></div>\
+        <p class="small">{{trip.route.from}}</p>\
+        <p class="small">{{trip.route.to}}</p>\
+      </div>\
+    </div>\
+  </div>',
+  methods: {
+    displayTripDetails: function () {
+      this.app.displayTripDetails(this.trip);
+    }
+  }
 });
 
 const details_v = Vue.component('details-v', {
@@ -89,39 +135,5 @@ const details_v = Vue.component('details-v', {
       console.log(assignment.name);
       app.beginTrip(assignment);
     }
-  }
-});
-
-const trip_v = Vue.component('trip-v', {
-  props: ['app'],
-  data: function () {
-    return {
-      timer: {
-        seconds: 0,
-        minutes: 0,
-        hours: 0,
-      },
-      trip: {
-        name: app.currentTrip.name,
-        from: app.currentTrip.from,
-        to: app.currentTrip.to,
-        time: app.currentTrip.time
-      }
-    }
-  },
-  template: '\
-  <div>\
-  <h2>Pågående resa</h2>\
-  <h2><time>00:00:00</time></h2>\
-  <p>{{trip.name}}</p>\
-  <p>From: {{trip.from}}</p>\
-  <p>To: {{trip.to}}</p>\
-  <p>{{trip.time}}</p>\
-  <button v-on:click="finishTrip" class="green">Avsluta resa</button>\
-  </div>',
-  methods: {
-    finishTrip: function () {
-      console.log("bajs");
-    },
   }
 });
