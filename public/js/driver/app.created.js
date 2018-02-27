@@ -1,5 +1,5 @@
 const created = function () {
-  //socket.emit('driver/login', { email: "c@a.se", password: "foo" });
+  socket.emit('driver/login', { username: "frank", password: "foo" });
 
   /**
    * Invoked on successful login.

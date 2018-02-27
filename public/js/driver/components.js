@@ -155,7 +155,7 @@ const trip_v = Vue.component('trip-v', {
   </div>',
   methods: {
     displayTripDetails: function () {
-      this.app.displayTripDetails(this.trip);
+     this.app.viewAssignment(this.trip);
     }
   }
 });
@@ -163,61 +163,85 @@ const trip_v = Vue.component('trip-v', {
 const details_v = Vue.component('details-v', {
   props: ['app'],
   data: function () {
+    const date = MWDate.format(app.assignmentDisplay.route.time);
     return {
       details: {
         name: app.assignmentDisplay.name,
         from: app.assignmentDisplay.route.from,
         to: app.assignmentDisplay.route.to,
-        time: app.assignmentDisplay.route.time
+        date: date.date,
+        time: date.time,
+        eta: MWDate.timeUntil(app.assignmentDisplay.route.time)
       }
     }
   },
   template: '\
-  <div>\
-  <h2>Orderdetaljer</h2>\
-  <p>{{details.name}}</p>\
-  <p>From: {{details.from}}</p>\
-  <p>To: {{details.to}}</p>\
-  <p>{{details.time}}</p>\
-  <button v-on:click="beginTrip(details, $event)" class="green">Starta resa</button> \
-  <button v-on:click="returnToAssignments" class="orange">Tillbaka</button>\
+  <div class="trip-details-v">\
+    <div class="tab red"></div>\
+    <div class="content">\
+      <div class="meta">\
+        <div class="name">\
+          <h3>{{details.name}}</h3>\
+        </div>\
+        <div class="time">\
+          <img src="/img/pin.svg" alt="">\
+          <h3 class="mono">{{details.time}}</h3>\
+        </div>\
+        <div class="timeLeft">\
+          <img src="/img/clock.svg" alt="">\
+          <h3 class="mono">{{details.eta}}</h3>\
+        </div>\
+      </div>\
+      <h3 class="name">{{details.date}}</h3>\
+      <div class="route">\
+        <div class="path"><div></div></div>\
+        <p class="small">{{details.from}}</p>\
+        <p class="small">{{details.to}}</p>\
+      </div>\
+      <button v-on:click="beginTrip(details, $event)" class="green">Start trip</button> \
+      <button v-on:click="returnToAssignments" class="orange">Back</button>\
+    </div>\
   </div>',
+
   methods: {
     returnToAssignments: function () {
       router.push('/driver/assignments');
     },
     beginTrip: function (assignment, event) {
-      console.log(assignment.name);
-      app.beginTrip(assignment);
+      app.beginTrip();
     }
   }
 });
 
 const trip_active_v = Vue.component('trip-active-v', {
-  props: ['app', 'trip'],
+  props: ['app'],
   data: function () {
-    const date = MWDate.format(this.trip.route.time);
+    const date = MWDate.format(app.currentTrip.route.time);
     return {
-      date: date.date,
-      time: date.time,
-      eta: MWDate.timeUntil(this.trip.route.time)
+      details: {
+        route: {
+          date: date.date,
+          time: date.time,
+          eta: MWDate.timeUntil(app.currentTrip.route.time)
+        },
+      }
     }
   },
   template: '\
   <div class="trip-active-v">\
-    <div class="trip-v" v-on:click="displayTripDetails">\
+    <div class="trip-v">\
       <div class="content">\
         <div class="meta">\
-          <div class="timeLeft">\
+          <div class="timePassed">\
             <img src="/img/clock.svg" alt="">\
-            <h3 class="mono">{{eta}}</h3>\
+            <h3 class="mono">Timer</h3>\
           </div>\
         </div>\
         <h3 class="name">John Doe</h3>\
         <div class="route">\
           <div class="path"><div></div></div>\
-          <p class="small">{{trip.route.from}}</p>\
-          <p class="small">{{trip.route.to}}</p>\
+          <p class="small">{{app.currentTrip.route.from}}</p>\
+          <p class="small">{{app.currentTrip.route.to}}</p>\
         </div>\
       </div>\
       <button class="orange">Pause</button>\
@@ -225,8 +249,8 @@ const trip_active_v = Vue.component('trip-active-v', {
     </div>\
   </div>',
   methods: {
-    displayTripDetails: function () {
-      this.app.displayTripDetails(this.trip);
+    returnToAssignments: function () {
+      router.push('/driver/assignments');
     }
   }
 });

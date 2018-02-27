@@ -9,7 +9,7 @@ const data = {
       route: {
         from: "Studentvägen 23, 532 32, Uppsala",
         to:   "Drottninggatan 23, 532 32, Stockholm",
-        time: "12:45"
+        time: 1521936000000,
       },
       duration: 1,
       client_id: 1,
@@ -22,7 +22,7 @@ const data = {
       route: {
         from: "Storgatan 2, 532 32, Uppsala",
         to:   "Västertorg 14, 532 32, Stockholm",
-        time: "14:00"
+        time: 1522022400000,
       },
       duration: 1,
       client_id: 2,
@@ -35,7 +35,7 @@ const data = {
       route: {
         from: "Lillgatan 34, 532 32, Uppsala",
         to:   "Kungsgatan 1, 532 32, Stockholm",
-        time: "15:30"
+        time: 1522108800000,
       },
       duration: 1,
       client_id: 3,

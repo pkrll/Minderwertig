@@ -13,10 +13,11 @@ const actions = {
     this.assignmentDisplay = assignment;
     router.push('/driver/assignments/' + assignment.id);
   },
-  beginTrip: function (assignment, event) {
-    this.currentTrip = assignment;
-    socket.emit('driver/begin', assignment);
-    router.push('/driver/trip/');
+  beginTrip: function (event) {
+    console.log(this.assignmentDisplay);
+    this.currentTrip = this.assignmentDisplay;
+    socket.emit('driver/begin', {id: this.currentTrip.id});
+    router.push('/driver/trip/active');
   },
   toggleMenu: function () {
     this.menuIsActive = !this.menuIsActive;
