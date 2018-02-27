@@ -125,7 +125,14 @@ const trip_v = Vue.component('trip-v', {
   props: ['app', 'trip'],
   data: function () {
     const date = MWDate.format(this.trip.route.time);
+    let status = "red";
+
+   if (this.app.currentTrip) {
+      status = (this.trip.id == app.currentTrip.id) ? 'green' : 'red';
+    }
+
     return {
+      status: status,
       date: date.date,
       time: date.time,
       eta: MWDate.timeUntil(this.trip.route.time)
@@ -133,7 +140,7 @@ const trip_v = Vue.component('trip-v', {
   },
   template: '\
   <div class="trip-v" v-on:click="displayTripDetails">\
-    <div class="tab red"></div>\
+    <div class="tab" v-bind:class="[status]"></div>\
     <div class="content">\
       <div class="meta">\
         <div class="time">\
