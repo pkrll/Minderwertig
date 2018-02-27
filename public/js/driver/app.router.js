@@ -5,13 +5,7 @@ const router = new VueRouter({
       path: '/driver',
       components: {
         titlebar: null,
-        main: login_view_v
-      }
-    },
-    {
-      path: '/driver/login/',
-      components: {
-        titlebar: null,
+        submenu: null,
         main: login_v
       }
     },
@@ -19,6 +13,7 @@ const router = new VueRouter({
       path: '/driver/login/wait',
       components: {
         titlebar: null,
+        submenu: null,
         main: login_load_v
       }
     },
@@ -26,14 +21,16 @@ const router = new VueRouter({
       path: '/driver/login/fail',
       components: {
         titlebar: null,
+        submenu: null,
         main: login_fail_v
       }
     },
     {
       path: '/driver/assignments',
       components: {
-        titlebar: menu_v,
-        main: assignments_v
+        titlebar: titlebar_v,
+        submenu: submenu_v,
+        main: trips_v
       }
     },
     {
@@ -43,7 +40,6 @@ const router = new VueRouter({
         main: details_v
       }
     },
-
     {
       path: '/driver/trip',
       components: {
