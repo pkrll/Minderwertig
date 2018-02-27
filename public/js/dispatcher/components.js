@@ -80,12 +80,12 @@ const card_v = Vue.component('card-v', {
 const map_view_v = Vue.component('map-view-v', {
   props: ['app'],
   template: '\
-  <div id="my-Map"> \
+  <div id="my-Map" class="map"> \
   </div>',
   mounted: function () {
    // set up the map
    this.map = L.map('my-Map').setView([59.8415,17.648], 11);
-    
+
    // create the tile layer with correct attribution
    var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';

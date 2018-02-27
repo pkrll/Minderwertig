@@ -83,7 +83,8 @@ const router = new VueRouter({
       components: {
         titlebar: titlebar_v,
         submenu: submenu_v,
-        main: trip_details_v
+        main: trip_details_v,
+        myMap: map_view_v
       },
       meta: {
         title: 'Trip Details',

@@ -177,11 +177,18 @@ button.small {
   padding:    0 10px 10px 10px;
 }
 
-.order-form-v div, .order-found-v div {
+.order-form-v div /*, order-found-v div */ {
   width:         100%;
   overflow:      hidden;
   padding:       10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.order-found-v div {
+  width:         100%;
+  padding:       10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  overflow:      hidden;
 }
 
 .order-form-v div label, .order-found-v label {
@@ -263,9 +270,10 @@ button.small {
 
 .order-found-v .map {
   width:      100%;
-  height:     150px;
+  height:     200px;
   background: rgba(0, 0, 0, 0.25);
   margin-top: 10px;
+  overflow:   visible;
 }
 
 .order-found-v button {

@@ -40,7 +40,7 @@
   font-size: 14px;
 }
 
-#my-Map {
+.map {
   width:  70%;
   height: 100%;
   float:  left;
