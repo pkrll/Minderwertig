@@ -64,6 +64,8 @@ A good rule of thumb is to make a new commit as soon as you can explain the chan
 
 Not only does this make it easier to roll back individual changes if needed, it also allows for you to share code with your colleagues.
 
+![](assets/commit.png)
+
 #### **3.2)** Related changes are related
 
 Each ``commit`` should preferably include related changes. For instance, if you've squashed a nasty bug, this should be an individual commit.
