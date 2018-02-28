@@ -239,11 +239,8 @@ const trip_active_v = Vue.component('trip-active-v', {
     <div class="trip-v">\
       <div class="content">\
         <div class="meta">\
-          <div class="timePassed">\
-            <img src="/img/clock.svg" alt="">\
-            <h3 class="mono">Timer</h3>\
-          </div>\
         </div>\
+        <elapsed-time-v></elapsed-time-v>\
         <h3 class="name">John Doe</h3>\
         <div class="route">\
           <div class="path"><div></div></div>\
@@ -269,5 +266,44 @@ const trip_done_v = Vue.component('trip-done-v', {
       <img src="/img/checkbox.svg" alt=""> \
       <h1>Trip done!</h1> \
     <router-link to="/driver/trips"><button class="green">Continue</button></router-link> \
+  </div>'
+});
+
+
+const elapsed_time_v = Vue.component('elapsed-time-v', {
+  props : ['app'],
+  data: function() {
+    return {
+      now: Math.trunc((new Date()).getTime() / 1000),
+      begun: Math.trunc((new Date()).getTime() / 1000),
+      }
+  },
+  mounted: function() {
+    window.setInterval(() => {
+        this.now = Math.trunc((new Date()).getTime() / 1000);
+    },1000);
+  },
+  computed: {
+    seconds() {
+        return (this.now - this.begun) % 60;
+    },
+    minutes() {
+        return Math.trunc((this.now - this.begun) / 60) % 60;
+    },
+    hours() {
+        return Math.trunc((this.now - this.begun) / 60 / 60) % 24;
+    }
+  },
+  template: '\
+  <div>\
+  <h3>Elapsed time</h3>\
+  <div class="timer">\
+    <p>Hours</p>\
+    <p>Minutes</p>\
+    <p>Seconds</p>\
+    <p class="digit">{{hours}}</p>\
+    <p class="digit">{{minutes}}</p>\
+    <p class="digit">{{seconds}}</p>\
+  </div>\
   </div>'
 });
