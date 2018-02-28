@@ -2,9 +2,9 @@ const menu_view_v = Vue.component('panel-view-v', {
   props: ['app'],
   template: '\
   <div class="menu">\
-    <router-link to="/dispatcher" class="active">Bookings</router-link>\
-    <router-link to="/dispatcher/trips">Active trips</router-link>\
-    <router-link to="/dispatcher/cars">Cars</router-link>\
+    <router-link to="/dispatcher" v-bind:class="{active: this.$route.meta.tabIndex == 1 }">Bookings</router-link>\
+    <router-link to="/dispatcher/trips" v-bind:class="{active: this.$route.meta.tabIndex == 2 }">Active trips</router-link>\
+    <router-link to="/dispatcher/cars" v-bind:class="{active: this.$route.meta.tabIndex == 3 }">Cars</router-link>\
   </div>'
 });
 
@@ -85,7 +85,7 @@ const map_view_v = Vue.component('map-view-v', {
   mounted: function () {
    // set up the map
    this.map = L.map('my-Map').setView([59.8415,17.648], 11);
-    
+
    // create the tile layer with correct attribution
    var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
