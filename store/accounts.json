@@ -75,6 +75,69 @@
           },
           "duration": "01:25",
           "price": 120
+        },
+        "4": {
+          "route": {
+            "from": "Bajs",
+            "to": "Hajs",
+            "time": 1519826460000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "2",
+          "client_id": 1,
+          "id": 4,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "duration": "01:25",
+          "price": 120
+        },
+        "5": {
+          "route": {
+            "from": "Jess",
+            "to": "Ness",
+            "time": 1519849320000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "2",
+          "client_id": 1,
+          "id": 5,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "duration": "01:25",
+          "price": 120
+        },
+        "6": {
+          "route": {
+            "from": "A",
+            "to": "B",
+            "time": 1519827300000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "2",
+          "client_id": 1,
+          "id": 6,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "duration": "01:25",
+          "price": 120
         }
       }
     },
@@ -106,7 +169,29 @@
           "y": 0
         }
       },
-      "trips": []
+      "trips": {
+        "6": {
+          "route": {
+            "from": "A",
+            "to": "B",
+            "time": 1519827300000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "2",
+          "client_id": 1,
+          "id": 6,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "duration": "01:25",
+          "price": 120
+        }
+      }
     }
   ]
 }
