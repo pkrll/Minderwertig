@@ -93,32 +93,20 @@ const menu_v = Vue.component('menu-v', {
   template: '<ul><li v-for="item in app.menu">{{ item.name }}</li></ul>'
 });
 
-/* Remove this component once trips_v is done */
-const assignments_v = Vue.component('assignments-v', {
-  props: ['app'],
-  template: '\
-  <div>\
-    <ul v-for="item in app.assignments"> \
-      <li>{{ item.name }}</li> \
-      <li>{{ item.route.from }}</li> \
-      <li>{{ item.route.to }}</li> \
-      <li>{{ item.route.time }}</li> \
-      <button v-on:click="viewDetails(item, $event)" class="orange">Detaljer</button> \
-    </ul> \
-  </div>',
-  methods: {
-    viewDetails: function (customer, event) {
-      app.viewAssignment(customer);
-    },
-  },
-});
-
 const trips_v = Vue.component('trips-v', {
   props: ['app'],
   template: '\
   <div class="trips-v">\
+    <active-trip-v v-if="app.currentTrip != null" v-bind:app="app"></active-trip-v>\
     <trip-v v-for="trip in app.assignments" :key="trip.id" v-bind:trip="trip" v-bind:app="app"></trip-v>\
   </div>'
+});
+
+const active_trip_v = Vue.component('active-trip-v', {
+  props: ['app'],
+  template: '\
+    <trip-v :key="app.currentTrip.id" v-bind:trip="app.currentTrip" v-bind:app="app"></trip-v>\
+  '
 });
 
 const trip_v = Vue.component('trip-v', {
@@ -205,7 +193,7 @@ const details_v = Vue.component('details-v', {
         <p class="small">{{details.from}}</p>\
         <p class="small">{{details.to}}</p>\
       </div>\
-      <button v-on:click="beginTrip(details, $event)" class="green">Start trip</button> \
+      <button v-if="app.currentTrip ==null" v-on:click="beginTrip(details, $event)" class="green">Start trip</button> \
       <button v-on:click="returnToAssignments" class="orange">Back</button>\
     </div>\
   </div>',
@@ -220,27 +208,20 @@ const details_v = Vue.component('details-v', {
   }
 });
 
-const trip_active_v = Vue.component('trip-active-v', {
+const trip_active_details_v = Vue.component('trip-active-details-v', {
   props: ['app'],
   data: function () {
-    const date = MWDate.format(app.currentTrip.route.time);
     return {
-      details: {
-        route: {
-          date: date.date,
-          time: date.time,
-          eta: MWDate.timeUntil(app.currentTrip.route.time)
-        },
-      }
+      start: MWDate.format(app.currentTrip.start),
     }
   },
   template: '\
-  <div class="trip-active-v">\
+  <div class="trip-active-details-v">\
     <div class="trip-v">\
       <div class="content">\
         <div class="meta">\
         </div>\
-        <elapsed-time-v></elapsed-time-v>\
+        <elapsed-time-v :began="1000"></elapsed-time-v>\
         <h3 class="name">John Doe</h3>\
         <div class="route">\
           <div class="path"><div></div></div>\
@@ -273,9 +254,10 @@ const trip_done_v = Vue.component('trip-done-v', {
 const elapsed_time_v = Vue.component('elapsed-time-v', {
   props : ['app'],
   data: function() {
+          console.log(app.currentTrip.start);
     return {
       now: Math.trunc((new Date()).getTime() / 1000),
-      begun: Math.trunc((new Date()).getTime() / 1000),
+      start: app.currentTrip.start,
       }
   },
   mounted: function() {
@@ -285,22 +267,22 @@ const elapsed_time_v = Vue.component('elapsed-time-v', {
   },
   computed: {
     seconds() {
-        return (this.now - this.begun) % 60;
+        return (this.now - this.start) % 60;
     },
     minutes() {
-        return Math.trunc((this.now - this.begun) / 60) % 60;
+        return Math.trunc((this.now - this.start) / 60) % 60;
     },
     hours() {
-        return Math.trunc((this.now - this.begun) / 60 / 60) % 24;
+        return Math.trunc((this.now - this.start) / 60 / 60) % 24;
     }
   },
   template: '\
   <div>\
   <h3>Elapsed time</h3>\
   <div class="timer">\
-    <p>Hours</p>\
-    <p>Minutes</p>\
-    <p>Seconds</p>\
+    <p>H</p>\
+    <p>M</p>\
+    <p>S</p>\
     <p class="digit">{{hours}}</p>\
     <p class="digit">{{minutes}}</p>\
     <p class="digit">{{seconds}}</p>\
