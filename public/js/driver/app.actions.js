@@ -13,8 +13,7 @@ const actions = {
     this.assignmentDisplay = assignment;
     if (assignment == this.currentTrip) {
       router.push('/driver/trip/active');
-    }
-    else {
+    } else {
       router.push('/driver/assignments/' + assignment.id);
     }
 
