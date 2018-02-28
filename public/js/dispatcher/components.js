@@ -2,29 +2,9 @@ const menu_view_v = Vue.component('panel-view-v', {
   props: ['app'],
   template: '\
   <div class="menu">\
-    <router-link to="/dispatcher" class="active">Bookings</router-link>\
-    <router-link to="/dispatcher/trips">Active trips</router-link>\
-    <router-link to="/dispatcher/cars">Cars</router-link>\
-  </div>'
-});
-
-const menu_view_trip_v = Vue.component('panel-view-v', {
-  props: ['app'],
-  template: '\
-  <div class="menu">\
-    <router-link to="/dispatcher">Bookings</router-link>\
-    <router-link to="/dispatcher/trips" class="active">Active trips</router-link>\
-    <router-link to="/dispatcher/cars">Cars</router-link>\
-  </div>'
-});
-
-const menu_view_cars_v = Vue.component('panel-view-v', {
-  props: ['app'],
-  template: '\
-  <div class="menu">\
-    <router-link to="/dispatcher">Bookings</router-link>\
-    <router-link to="/dispatcher/trips">Active trips</router-link>\
-    <router-link to="/dispatcher/cars" class="active">Cars</router-link>\
+    <router-link to="/dispatcher" v-bind:class="{active: this.$route.meta.tabIndex == 1 }">Bookings</router-link>\
+    <router-link to="/dispatcher/trips" v-bind:class="{active: this.$route.meta.tabIndex == 2 }">Active trips</router-link>\
+    <router-link to="/dispatcher/cars" v-bind:class="{active: this.$route.meta.tabIndex == 3 }">Cars</router-link>\
   </div>'
 });
 
