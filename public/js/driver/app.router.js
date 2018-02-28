@@ -36,15 +36,17 @@ const router = new VueRouter({
     {
       path: '/driver/assignments/:id',
       components: {
-        titlebar: menu_v,
+        titlebar: titlebar_v,
+        submenu: submenu_v,
         main: details_v
       }
     },
     {
-      path: '/driver/trip',
+      path: '/driver/trip/active',
       components: {
-        titlebar: menu_v,
-        main: trip_v
+        titlebar: titlebar_v,
+        submenu: submenu_v,
+        main: trip_active_v
       }
     }
   ]

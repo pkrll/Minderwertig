@@ -131,6 +131,11 @@ io.on('connection', function (socket) {
     sendToDispatchers('order/remove', request.id);
   });
 
+  socket.on('driver/begin', function(trip) {
+    console.log("DISPATCHER: Trip began.");
+    sendToDispatchers('trip/begin', trip);
+  });
+
   // ----------------------------------------
   //  DRIVER
   // ----------------------------------------
