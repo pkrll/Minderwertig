@@ -46,7 +46,7 @@ const router = new VueRouter({
       components: {
         titlebar: titlebar_v,
         submenu: submenu_v,
-        main: trip_active_v
+        main: trip_active_details_v
       }
     }
   ]

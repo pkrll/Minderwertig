@@ -11,15 +11,27 @@ const actions = {
 
   viewAssignment: function (assignment) {
     this.assignmentDisplay = assignment;
-    router.push('/driver/assignments/' + assignment.id);
+    if (assignment == this.currentTrip) {
+      router.push('/driver/trip/active');
+    }
+    else {
+      router.push('/driver/assignments/' + assignment.id);
+    }
+
   },
   beginTrip: function (event) {
-    console.log(this.assignmentDisplay);
     this.currentTrip = this.assignmentDisplay;
+    var index = this.assignments.indexOf(this.assignmentDisplay);
+    this.assignments.splice(index,1);
+    this.currentTrip.start = Math.trunc((new Date()).getTime() / 1000);
+
     socket.emit('driver/begin', {id: this.currentTrip.id});
     router.push('/driver/trip/active');
   },
   toggleMenu: function () {
     this.menuIsActive = !this.menuIsActive;
+  },
+  displayCurrentTrip: function() {
+    console.log("hej");
   }
 }
