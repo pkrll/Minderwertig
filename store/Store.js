@@ -145,11 +145,16 @@ class Store {
   }
 
   addTrip(trip) {
+    if (trip == null) return;
+
     trip.id = this.getNewTripId();
     this.trips[trip.id] = trip;
 
     let client = this.getClient(trip.client_id);
-    client.trips[trip.id] = trip;
+    let driver = this.getDriver(trip.driver_id);
+
+    if (client) client.trips[trip.id] = trip;
+    if (driver) driver.trips[trip.id] = trip;
   }
 
   getTrip(id) {
@@ -161,10 +166,14 @@ class Store {
   }
 
   removeTrip(id) {
+    if (id == null) return;
+
     let client = this.getClient(this.trips[id].client_id);
-    delete client.trips[id];
     let driver = this.getDriver(this.trips[id].driver_id);
-    delete driver.trips[id];
+
+    if (client) delete client.trips[id];
+    if (driver) delete driver.trips[id];
+
     delete this.trips[id];
   }
 
