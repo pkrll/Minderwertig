@@ -399,11 +399,14 @@ const fard_view_v = Vue.component('fard-view-v', {
   props: ['app'],
   template: ' \
   <div> \
-  <div> \
-  <router-link to="/client/fardtjanst"> <button class="orange"> Färdtjänst </button> <router-link> \
-  </div> \
-  <div> \
-  <router-link to="/client/order"> <button class="green"> Minderwertig Taxi </button> </router-link> \
-  </div> \
+    <div> \
+      <h1> Val av transporttjänst </h1> \
+    </div> \
+    <div> \
+      <router-link to="/client/fardtjanst"> <button class="blue"> Färdtjänst </button> <router-link> \
+    </div> \
+    <div> \
+      <router-link to="/client/order"> <button class="green"> Minderwertig Taxi </button> </router-link> \
+    </div> \
   </div>' ,
 });
