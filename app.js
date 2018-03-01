@@ -151,6 +151,12 @@ io.on('connection', function (socket) {
   //  DRIVER
   // ----------------------------------------
 
+  socket.on('driver/done', function (trip) {
+      console.log("Trip finished.");
+      store.removeTrip(trip.id);
+
+  });
+
   socket.on('driver/login', function (request) {
     console.log("A driver has logged on!");
     let account = store.retrieveDriver(request.username, request.password);

@@ -2,47 +2,7 @@ const data = {
   account: {},
   assignmentDisplay: {},
   currentTrip: null,
-  assignments: [
-    {
-      id: 1,
-      name: "Karl Andersson",
-      route: {
-        from: "Studentvägen 23, 532 32, Uppsala",
-        to:   "Drottninggatan 23, 532 32, Stockholm",
-        time: new Date('2018-02-28T17:25'),
-      },
-      duration: 1,
-      client_id: 1,
-      driver_id: 1,
-      vehicle: "Volvo V70",
-    },
-    {
-      id: 2,
-      name: "Sune Karlsson",
-      route: {
-        from: "Storgatan 2, 532 32, Uppsala",
-        to:   "Västertorg 14, 532 32, Stockholm",
-        time: new Date('2018-02-28T22:25'),
-      },
-      duration: 1,
-      client_id: 2,
-      driver_id: 1,
-      vehicle: "Volvo V70",
-    },
-    {
-      id: 3,
-      name: "Anna Svensson",
-      route: {
-        from: "Lillgatan 34, 532 32, Uppsala",
-        to:   "Kungsgatan 1, 532 32, Stockholm",
-        time: new Date('2018-03-01T14:25'),
-      },
-      duration: 1,
-      client_id: 3,
-      driver_id: 1,
-      vehicle: "Volvo V70",
-    },
-  ],
+  assignments: [],
   menu: [
     {name: "My assignments"},
     {name: "New reservations"},

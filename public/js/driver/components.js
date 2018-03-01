@@ -229,11 +229,13 @@ const trip_active_details_v = Vue.component('trip-active-details-v', {
           <p class="small">{{app.currentTrip.route.to}}</p>\
         </div>\
       </div>\
-      <button class="orange">Pause</button>\
-      <button class="red">Cancel</button>\
+      <button class="green" v-on:click="finishTrip">Finish</button>\
     </div>\
   </div>',
   methods: {
+    finishTrip: function () {
+      app.finishTrip();
+    },
     returnToAssignments: function () {
       router.push('/driver/assignments');
     }

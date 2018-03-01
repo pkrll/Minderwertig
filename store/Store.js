@@ -161,7 +161,11 @@ class Store {
   }
 
   removeTrip(id) {
-    delete this.trips[id]
+    let client = this.getClient(this.trips[id].client_id);
+    delete client.trips[id];
+    let driver = this.getDriver(this.trips[id].driver_id);
+    delete driver.trips[id];
+    delete this.trips[id];
   }
 
   getNewTripId() {
