@@ -1,7 +1,7 @@
 const data = {
   account: {},
   assignmentDisplay: {},
-  currentTrip: {},
+  currentTrip: null,
   assignments: [
     {
       id: 1,
@@ -9,7 +9,7 @@ const data = {
       route: {
         from: "Studentvägen 23, 532 32, Uppsala",
         to:   "Drottninggatan 23, 532 32, Stockholm",
-        time: 1521936000000,
+        time: new Date('2018-02-28T17:25'),
       },
       duration: 1,
       client_id: 1,
@@ -22,7 +22,7 @@ const data = {
       route: {
         from: "Storgatan 2, 532 32, Uppsala",
         to:   "Västertorg 14, 532 32, Stockholm",
-        time: 1522022400000,
+        time: new Date('2018-02-28T22:25'),
       },
       duration: 1,
       client_id: 2,
@@ -35,7 +35,7 @@ const data = {
       route: {
         from: "Lillgatan 34, 532 32, Uppsala",
         to:   "Kungsgatan 1, 532 32, Stockholm",
-        time: 1522108800000,
+        time: new Date('2018-03-01T14:25'),
       },
       duration: 1,
       client_id: 3,
