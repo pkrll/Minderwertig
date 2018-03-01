@@ -46,7 +46,7 @@
 }
 
 .orders-view-v, .trips-view-v, .cars-view-v {
-  display: none;
+  display: block;
 }
 
 .orders-view-v.active, .trips-view-v.active, .cars-view-v.active {
