@@ -9,6 +9,15 @@ const actions = {
     socket.emit('driver/login', credentials);
   },
 
+  sendPosition: function () {
+    let data = {
+      id: this.account.id,
+      position: this.position
+    }
+
+    socket.emit('driver/position', data);
+  },
+
   viewAssignment: function (assignment) {
     this.assignmentDisplay = assignment;
     if (assignment == this.currentTrip) {
