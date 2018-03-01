@@ -7,7 +7,7 @@ const created = function () {
    */
   socket.on('login/success', function (account) {
     this.account = account;
-    router.push('/client/order');
+    router.push('/client/select');
   }.bind(this));
   /**
    * Invoked when login has failed.

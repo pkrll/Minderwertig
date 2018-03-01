@@ -105,5 +105,13 @@ const router = new VueRouter({
         hasRightArrow: false
       }
     },
+    {
+      path: '/client/select',
+      components: {
+        titlebar: titlebar_v,
+        submenu: submenu_v,
+        main: fard_view_v
+      }
+    }
   ]
 });

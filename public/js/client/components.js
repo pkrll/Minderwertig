@@ -383,7 +383,7 @@ const map_view_v = Vue.component('map-view-v', {
   mounted: function () {
    // set up the map
    this.map = L.map('my-Map').setView([59.8415,17.648], 11);
-   
+
    // create the tile layer with correct attribution
    var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
@@ -393,4 +393,17 @@ const map_view_v = Vue.component('map-view-v', {
    }).addTo(this.map);
  }
 
+});
+
+const fard_view_v = Vue.component('fard-view-v', {
+  props: ['app'],
+  template: ' \
+  <div> \
+  <div> \
+  <router-link to="/client/fardtjanst"> <button class="orange"> Färdtjänst </button> <router-link> \
+  </div> \
+  <div> \
+  <router-link to="/client/order"> <button class="green"> Minderwertig Taxi </button> </router-link> \
+  </div> \
+  </div>' ,
 });
