@@ -70,7 +70,7 @@ const card_v = Vue.component('card-v', {
   methods: {
     // TODO: Refactor needed
     handle: function (order) {
-      app.handleOrder(order);
+      app.selectOrder(order);
     }
   }
 });

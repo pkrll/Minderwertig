@@ -47,10 +47,21 @@ const created = function () {
     let driverId = data.id;
     let position = data.position;
 
-    this.markers[driverId] = new google.maps.Marker({
-      position: position,
-      map: this.map,
-      title: 'TAXI!'
-    });
+    if (this.markers[driverId] == null) {
+      this.markers[driverId] = new google.maps.Marker({
+        position: position,
+        map: this.map,
+        title: 'TAXI!'
+      });
+
+      this.markers[driverId].addListener('click', function() {
+        this.assignDriverToCurrentOrder(driverId);
+      }.bind(this));
+    } else {
+      this.markers[driverId].setPosition(position);
+    }
+
+
+
   }.bind(this));
 };

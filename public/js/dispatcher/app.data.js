@@ -2,5 +2,6 @@ const data = {
   orders: [],
   trips: {},
   cars: {},
-  markers: {}
+  markers: {},
+  temporary: {}
 };

@@ -8,11 +8,12 @@ var app = new Vue({
   created: created,
   methods: actions,
   mounted: function() {
+    clearInterval(this.sendPosition);
     navigator.geolocation.getCurrentPosition(function (position) {
       this.position = { lat: position.coords.latitude,
                         lng: position.coords.longitude
                       };
-      setInterval(this.sendPosition, 5000);
+      setInterval(this.sendPosition, 1000);
     }.bind(this));
   }
 });
