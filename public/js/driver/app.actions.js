@@ -27,6 +27,11 @@ const actions = {
     socket.emit('driver/begin', {id: this.currentTrip.id});
     router.push('/driver/trip/active');
   },
+  finishTrip: function () {
+    socket.emit('driver/done', app.currentTrip);
+    app.currentTrip = null;
+    router.push('/driver/assignments');
+  },
   toggleMenu: function () {
     this.menuIsActive = !this.menuIsActive;
   },
