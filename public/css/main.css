@@ -41,9 +41,8 @@
 }
 
 #my-Map {
-  width:  70%;
   height: 100%;
-  float:  left;
+  overflow: hidden;
 }
 
 .orders-view-v, .trips-view-v, .cars-view-v {
