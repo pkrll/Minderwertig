@@ -93,6 +93,17 @@ io.on('connection', function (socket) {
       store.addTrip(order);
       sendToDispatchers('trip/new', order);
       socket.emit('trip/new', order);
+      // TODO: Perhaps we should prettify this shit
+      let driverSocket = store.getDriverSocket(order.driver_id);
+      let driverObject = store.getDriver(order.driver_id);
+
+      if (driverSocket != null) {
+        driverSocket.emit('trip/new', order);
+      }
+
+      if (driverObject != null) {
+        driverObject.trips[order.id] = order;
+      }
     }
     // Remove the order from the list of orders in store
     store.removeOrder(data.id);

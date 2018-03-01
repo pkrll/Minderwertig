@@ -31,6 +31,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: trips_v
+      },
+      meta: {
+        title: 'My trips',
+        hasLeftArrow: false,
+        hasRightArrow: false
       }
     },
     {
@@ -39,6 +44,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: details_v
+      },
+      meta: {
+        title: '',
+        hasLeftArrow: true,
+        hasRightArrow: false
       }
     },
     {
@@ -47,6 +57,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: trip_active_details_v
+      },
+      meta: {
+        title: 'Ongoing trip',
+        hasLeftArrow: true,
+        hasRightArrow: false
       }
     }
   ]
