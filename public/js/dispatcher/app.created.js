@@ -39,7 +39,18 @@ const created = function () {
     Vue.set(this.trips, trip.id, trip);
   }.bind(this));
 
-  socket.on('trip/begin', function(trip) {
+  socket.on('trip/begin', function (trip) {
     console.log("Dispatcher received note of begun trip");
-  })
+  }.bind(this));
+
+  socket.on('position/driver', function (data) {
+    let driverId = data.id;
+    let position = data.position;
+
+    this.markers[driverId] = new google.maps.Marker({
+      position: position,
+      map: this.map,
+      title: 'TAXI!'
+    });
+  }.bind(this));
 };
