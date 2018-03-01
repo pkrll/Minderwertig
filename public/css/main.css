@@ -40,10 +40,9 @@
   font-size: 14px;
 }
 
-.map {
-  width:  70%;
+#my-Map {
   height: 100%;
-  float:  left;
+  overflow: hidden;
 }
 
 .orders-view-v, .trips-view-v, .cars-view-v {
@@ -57,4 +56,43 @@
 .orders-view-v .message, .trips-view-v .message, .cars-view-v .message {
   text-align: center;
   margin-top: 40px;
+}
+
+video {
+  width:      auto;
+  height:     auto;
+  position:   absolute;
+  min-width:  100%;
+  min-height: 100%;
+  z-index:    -1;
+}
+
+ul.main {
+  padding:     40px;
+  list-style:  none;
+  line-height: 1.5;
+}
+
+ul.main img {
+  width:         120px;
+  margin-bottom: 40px;
+}
+
+.main a {
+  width:              100%;
+  text-align:         center;
+  font-size:          32px;
+  font-weight:        600;
+  text-decoration:    none;
+  color:              #fff;
+  opacity:            0.75;
+  -webkit-transition: opacity 0.5s ease;
+  -moz-transition:    opacity 0.5s ease;
+  -ms-transition:     opacity 0.5s ease;
+  -o-transition:      opacity 0.5s ease;
+  transition:         opacity 0.5s ease;
+}
+
+.main a:hover {
+  opacity: 1;
 }

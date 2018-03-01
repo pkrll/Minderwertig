@@ -1,5 +1,7 @@
 ![](hero.jpg)
 # Minderwertig
+[![Heroku App Status](http://heroku-shields.herokuapp.com/minderwertig)](https://minderwertig.herokuapp.com)
+
 A taxi booking system created as a student project for the course *System Design with a User Perspective* at Uppsala University.
 
 Minderwertig is a web application (Javascript/Vue).

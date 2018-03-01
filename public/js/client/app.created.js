@@ -7,6 +7,15 @@ const created = function () {
    */
   socket.on('login/success', function (account) {
     this.account = account;
+
+    for (let trip in account.trips) {
+      let time = account.trips[trip].route.time;
+      
+      if (MWDate.hasPassed(time)) {
+        delete this.account.trips[trip];
+      }
+    }
+
     router.push('/client/select');
   }.bind(this));
   /**

@@ -1,5 +1,5 @@
 const created = function () {
-  //socket.emit('driver/login', { email: "c@a.se", password: "foo" });
+  socket.emit('driver/login', { username: "frank", password: "foo" });
 
   /**
    * Invoked on successful login.
@@ -8,6 +8,12 @@ const created = function () {
    */
   socket.on('login/success', function (account) {
     this.account = account;
+
+    // TODO: Fix this shit later
+    for (let id in account.trips) {
+      this.assignments.push(account.trips[id]);
+    }
+
     router.push('/driver/assignments');
   }.bind(this));
   /**
@@ -24,7 +30,7 @@ const created = function () {
    *
    * @param  {Object} data The booking details.
    */
-  socket.on('order/booking', function (data) {
-    console.log(data);
-  });
+  socket.on('trip/new', function (data) {
+    this.assignments.push(data);
+  }.bind(this));
 }

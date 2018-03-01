@@ -39,4 +39,7 @@ const created = function () {
     Vue.set(this.trips, trip.id, trip);
   }.bind(this));
 
+  socket.on('trip/begin', function(trip) {
+    console.log("Dispatcher received note of begun trip");
+  })
 };
