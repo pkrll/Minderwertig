@@ -14,7 +14,7 @@ const actions = {
       id: this.account.id,
       position: this.position
     }
-
+    console.log("Sending position");
     socket.emit('driver/position', data);
   },
 

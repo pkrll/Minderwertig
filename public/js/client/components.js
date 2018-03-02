@@ -179,51 +179,52 @@ const trip_details_v = Vue.component('trip-details-v', {
       trip: this.app.temporary.currentTrip,
       date: date.date,
       time: date.time,
-      eta: MWDate.timeUntil(this.app.temporary.currentTrip.route.time)
+      eta: MWDate.timeUntil(this.app.temporary.currentTrip.route.time),
+      duration: MWDate.convertFromSeconds(this.app.temporary.currentTrip.duration)
     }
   },
   template: '\
   <div class="order-found-v">\
-  <div class="car">\
-    <h1>Booking details</h1>\
-    <img :src="trip.vehicle.image_url" alt="">\
+    <div class="car">\
+      <h1>Booking details</h1>\
+      <img :src="trip.vehicle.image_url" alt="">\
+      <div>\
+        <label>Car model</label>\
+        <input type="text" :value="trip.vehicle.name" disabled>\
+      </div>\
+      <div class="meta">\
+        <div>\
+          <label>Arrival time</label>\
+          <input type="text" :value="eta" disabled>\
+        </div>\
+        <div>\
+          <label>Total travel time</label>\
+          <input type="text" :value="duration" disabled>\
+        </div>\
+      </div>\
+    </div>\
+    <div class="map" id="my-Map"></div>\
     <div>\
-      <label>Car model</label>\
-      <input type="text" :value="trip.vehicle.name" disabled>\
+      <label for="from">From</label>\
+      <input type="text" name="from" :value="trip.route.from" disabled>\
     </div>\
-    <div class="meta">\
-      <div>\
-        <label>Arrival time</label>\
-        <input type="text" :value="eta" disabled>\
-      </div>\
-      <div>\
-        <label>Total travel time</label>\
-        <input type="text" :value="trip.duration" disabled>\
-      </div>\
+    <div>\
+      <label for="to">To</label>\
+      <input type="text" name="to" :value="trip.route.to" disabled>\
     </div>\
-  </div>\
-  <div class="map" id="my-Map"></div>\
-  <div>\
-    <label for="from">From</label>\
-    <input type="text" name="from" :value="trip.route.from" disabled>\
-  </div>\
-  <div>\
-    <label for="to">To</label>\
-    <input type="text" name="to" :value="trip.route.to" disabled>\
-  </div>\
-  <div>\
-    <label for="date">Date</label>\
-    <input type="text" name="to" :value="date">\
-  </div>\
-  <div>\
-    <label for="time">Time</label>\
-    <input type="text" name="to" :value="time">\
-  </div>\
-  <div>\
-    <label for="date">Price</label>\
-    <input type="number" name="to" :value="trip.price">\
-  </div>\
-  <button class="normal red" v-on:click="cancelReservation">Cancel trip</button>\
+    <div>\
+      <label for="date">Date</label>\
+      <input type="text" name="to" :value="date">\
+    </div>\
+    <div>\
+      <label for="time">Time</label>\
+      <input type="text" name="to" :value="time">\
+    </div>\
+    <div>\
+      <label for="date">Price</label>\
+      <input type="number" name="to" :value="trip.price">\
+    </div>\
+    <button class="normal red" v-on:click="cancelReservation">Cancel trip</button>\
   </div>',
   methods: {
     cancelReservation: function () {
@@ -241,7 +242,8 @@ const order_found_v = Vue.component('order-found-v', {
     return {
       trip: trip,
       date: date.date + ' ' + date.time,
-      eta: eta[0] + ':' + eta[1]
+      eta: eta[0] + ':' + eta[1],
+      duration: MWDate.convertFromSeconds(trip.duration)
     }
   },
   template: '\
@@ -260,7 +262,7 @@ const order_found_v = Vue.component('order-found-v', {
         </div>\
         <div>\
           <label>Total travel time</label>\
-          <input type="text" :value="trip.duration" disabled>\
+          <input type="text" :value="duration" disabled>\
         </div>\
       </div>\
     </div>\
