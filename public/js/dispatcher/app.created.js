@@ -10,6 +10,12 @@ const created = function () {
     this.orders = data.orders;
     this.trips = data.trips;
     this.cars = data.cars;
+
+    for (let index in this.cars) {
+      let driverId = this.cars[index].id;
+      let position = this.cars[index].position;
+      this.addDriverMarkerToMap(driverId, position);
+    }
   }.bind(this));
   /**
    * Invoked when a new order request has been received.
@@ -38,30 +44,20 @@ const created = function () {
     // This ensures that the trips property is reactive
     Vue.set(this.trips, trip.id, trip);
   }.bind(this));
-
+  /**
+   * Invoked when a driver has begun a trip.
+   *
+   * @param  {[type]} trip The trip.
+   */
   socket.on('trip/begin', function (trip) {
     console.log("Dispatcher received note of begun trip");
   }.bind(this));
-
+  /**.
+   * Invoked when a driver position has been updated.
+   *
+   * @param  {[type]} data The data containing the id of the driver and their position.
+   */
   socket.on('position/driver', function (data) {
-    let driverId = data.id;
-    let position = data.position;
-
-    if (this.markers[driverId] == null) {
-      this.markers[driverId] = new google.maps.Marker({
-        position: position,
-        map: this.map,
-        title: 'TAXI!'
-      });
-
-      this.markers[driverId].addListener('click', function() {
-        this.assignDriverToCurrentOrder(driverId);
-      }.bind(this));
-    } else {
-      this.markers[driverId].setPosition(position);
-    }
-
-
-
+    this.addDriverMarkerToMap(data.id, data.position);
   }.bind(this));
 };
