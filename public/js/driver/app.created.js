@@ -1,5 +1,5 @@
 const created = function () {
-  socket.emit('driver/login', { username: "frank", password: "foo" });
+  // socket.emit('driver/login', { username: "frank", password: "foo" });
 
   /**
    * Invoked on successful login.
@@ -14,6 +14,8 @@ const created = function () {
       this.assignments.push(account.trips[id]);
     }
 
+    this.sendPosition();
+    
     router.push('/driver/assignments');
   }.bind(this));
   /**

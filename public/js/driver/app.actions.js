@@ -10,12 +10,14 @@ const actions = {
   },
 
   sendPosition: function () {
-    let data = {
-      id: this.account.id,
-      position: this.position
-    }
-    console.log("Sending position");
-    socket.emit('driver/position', data);
+    if (this.account == null) return;
+
+    clearInterval(this.sendPosition);
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+      this.position = { lat: position.coords.latitude, lng: position.coords.longitude };
+      socket.emit('driver/position', { id: this.account.id, position: this.position });
+    }.bind(this));
   },
 
   viewAssignment: function (assignment) {
