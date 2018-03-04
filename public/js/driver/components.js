@@ -221,7 +221,7 @@ const trip_active_details_v = Vue.component('trip-active-details-v', {
       <div class="content">\
         <div class="meta">\
         </div>\
-        <elapsed-time-v :began="1000"></elapsed-time-v>\
+        <elapsed-time-v></elapsed-time-v>\
         <h3 class="name">John Doe</h3>\
         <div class="route">\
           <div class="path"><div></div></div>\
