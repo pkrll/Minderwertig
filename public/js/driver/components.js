@@ -211,8 +211,10 @@ const details_v = Vue.component('details-v', {
 const trip_active_details_v = Vue.component('trip-active-details-v', {
   props: ['app'],
   data: function () {
+    const date = MWDate.format(app.currentTrip.route.time);
     return {
       start: MWDate.format(app.currentTrip.start),
+      time: date.time
     }
   },
   template: '\
@@ -220,6 +222,10 @@ const trip_active_details_v = Vue.component('trip-active-details-v', {
     <div class="trip-v">\
       <div class="content">\
         <div class="meta">\
+          <div class="time">\
+            <img src="/img/pin.svg" alt="">\
+            <h3 class="mono">{{time}}</h3>\
+          </div>\
           <elapsed-time-v :began="1000"></elapsed-time-v>\
         </div>\
         <h3 class="name">John Doe</h3>\
