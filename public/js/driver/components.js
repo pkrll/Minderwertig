@@ -171,7 +171,7 @@ const details_v = Vue.component('details-v', {
     }
   },
   template: '\
-  <div class="trip-details-v">\
+  <div class="trip-details-v trip-v">\
     <div class="tab red"></div>\
     <div class="content">\
       <div class="meta">\
@@ -220,8 +220,8 @@ const trip_active_details_v = Vue.component('trip-active-details-v', {
     <div class="trip-v">\
       <div class="content">\
         <div class="meta">\
+          <elapsed-time-v :began="1000"></elapsed-time-v>\
         </div>\
-        <elapsed-time-v :began="1000"></elapsed-time-v>\
         <h3 class="name">John Doe</h3>\
         <div class="route">\
           <div class="path"><div></div></div>\
@@ -279,15 +279,9 @@ const elapsed_time_v = Vue.component('elapsed-time-v', {
     }
   },
   template: '\
-  <div>\
-  <h3>Elapsed time</h3>\
-  <div class="timer">\
-    <p>H</p>\
-    <p>M</p>\
-    <p>S</p>\
-    <p class="digit">{{hours}}</p>\
-    <p class="digit">{{minutes}}</p>\
-    <p class="digit">{{seconds}}</p>\
+  <div class="timeLeft">\
+    <img src="/img/clock.svg" alt="">\
+    <h3 class="mono">{{hours}}:{{minutes}}:{{seconds}}</h3>\
   </div>\
   </div>'
 });
