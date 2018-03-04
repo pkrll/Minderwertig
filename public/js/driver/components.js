@@ -115,7 +115,7 @@ const trip_v = Vue.component('trip-v', {
     const date = MWDate.format(this.trip.route.time);
     let status = "red";
 
-   if (this.app.currentTrip) {
+    if (this.app.currentTrip) {
       status = (this.trip.id == app.currentTrip.id) ? 'green' : 'red';
     }
 
@@ -150,7 +150,7 @@ const trip_v = Vue.component('trip-v', {
   </div>',
   methods: {
     displayTripDetails: function () {
-     this.app.viewAssignment(this.trip);
+      this.app.viewAssignment(this.trip);
     }
   }
 });
@@ -254,28 +254,34 @@ const trip_done_v = Vue.component('trip-done-v', {
 
 
 const elapsed_time_v = Vue.component('elapsed-time-v', {
-  props : ['app'],
-  data: function() {
-          console.log(app.currentTrip.start);
+  props: ['app'],
+  data: function () {
+    console.log(app.currentTrip.start);
     return {
       now: Math.trunc((new Date()).getTime() / 1000),
       start: app.currentTrip.start,
-      }
+    }
   },
-  mounted: function() {
+  mounted: function () {
     window.setInterval(() => {
-        this.now = Math.trunc((new Date()).getTime() / 1000);
-    },1000);
+      this.now = Math.trunc((new Date()).getTime() / 1000);
+    }, 1000);
   },
   computed: {
     seconds() {
-        return (this.now - this.start) % 60;
+      let temp = (this.now - this.start) % 60;
+      if (temp < 10) temp = '0' + temp;
+      return temp;
     },
     minutes() {
-        return Math.trunc((this.now - this.start) / 60) % 60;
+      let temp = Math.trunc((this.now - this.start) / 60) % 60;
+      if (temp < 10) temp = '0' + temp;
+      return temp;
     },
     hours() {
-        return Math.trunc((this.now - this.start) / 60 / 60) % 24;
+      let temp = Math.trunc((this.now - this.start) / 60 / 60) % 24;
+      if (temp < 10) temp = '0' + temp;
+      return temp;
     }
   },
   template: '\
