@@ -468,6 +468,11 @@ circle#right {
   color:         grey;
 }
 
+.client-menu-v a {
+  text-decoration: none;
+  color:           inherit;
+}
+
 /* component: trip-active-details-v */
 
 .trip-active-details-v .trip-v .content {
