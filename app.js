@@ -112,7 +112,9 @@ io.on('connection', function (socket) {
     console.log("A dispatcher has logged on!");
     store.addDispatcherSocket(socket);
 
-    socket.emit("login/success", {orders: store.getOrders(), trips: store.getTrips(), cars: []});
+    socket.emit("login/success", {
+      orders: store.getOrders(), trips: store.getTrips(), cars: store.getAllDrivers()
+    });
   });
   /**
    * Listener for ``dispatcher/trip/proposal``.
@@ -134,20 +136,9 @@ io.on('connection', function (socket) {
     sendToDispatchers('order/remove', request.id);
   });
 
-  socket.on('driver/begin', function(trip) {
-    console.log("DISPATCHER: Trip began.");
-    sendToDispatchers('trip/begin', trip);
-  });
-
   // ----------------------------------------
   //  DRIVER
   // ----------------------------------------
-
-  socket.on('driver/done', function (trip) {
-      console.log("Trip finished.");
-      store.removeTrip(trip.id);
-
-  });
 
   socket.on('driver/login', function (request) {
     console.log("A driver has logged on!");
@@ -162,6 +153,24 @@ io.on('connection', function (socket) {
       console.log("DRIVER: Login failed!");
     }
   });
+
+  socket.on('driver/position', function (data) {
+    console.log("Setting position for driver " + data.id);
+    store.setDriverPosition(data.id, data.position);
+    sendToDispatchers('position/driver', data);
+  });
+
+  socket.on('driver/done', function (trip) {
+      console.log("Trip finished.");
+      store.removeTrip(trip.id);
+
+  });
+
+  socket.on('driver/begin', function(trip) {
+    console.log("DISPATCHER: Trip began.");
+    sendToDispatchers('trip/begin', trip);
+  });
+
 });
 
 function exitHandler(err) {

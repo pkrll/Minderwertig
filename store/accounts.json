@@ -6,119 +6,9 @@
       "password": "foo",
       "metadata": {
         "name": "Ardalan Samimi",
-        "image_url": "",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
+        "image_url": ""
       },
-      "trips": {
-        "1": {
-          "route": {
-            "from": "Here",
-            "to": "There",
-            "time": 1519147680000
-          },
-          "additional_needs": {
-            "wheelchair": false,
-            "pet": false
-          },
-          "passengers": "2",
-          "client_id": 1,
-          "id": 1,
-          "driver_id": 1,
-          "vehicle": {
-            "name": "Volvo V70",
-            "image_url": "/img/mercedes.jpg"
-          },
-          "duration": "01:25",
-          "price": 120
-        },
-        "2": {
-          "route": {
-            "from": "Faraway",
-            "to": "Hawhaw",
-            "time": 1519161060000
-          },
-          "additional_needs": {
-            "wheelchair": false,
-            "pet": false
-          },
-          "passengers": "2",
-          "client_id": 1,
-          "id": 2,
-          "driver_id": 1,
-          "vehicle": {
-            "name": "Volvo V70",
-            "image_url": "/img/mercedes.jpg"
-          },
-          "duration": "01:25",
-          "price": 120
-        },
-        "3": {
-          "route": {
-            "from": "Old Town",
-            "to": "New Town",
-            "time": 1519066440000
-          },
-          "additional_needs": {
-            "wheelchair": false,
-            "pet": false
-          },
-          "passengers": "2",
-          "client_id": 1,
-          "id": 3,
-          "driver_id": 1,
-          "vehicle": {
-            "name": "Volvo V70",
-            "image_url": "/img/mercedes.jpg"
-          },
-          "duration": "01:25",
-          "price": 120
-        },
-        "4": {
-          "route": {
-            "from": "Bajs",
-            "to": "Hajs",
-            "time": 1519826460000
-          },
-          "additional_needs": {
-            "wheelchair": false,
-            "pet": false
-          },
-          "passengers": "2",
-          "client_id": 1,
-          "id": 4,
-          "driver_id": 1,
-          "vehicle": {
-            "name": "Volvo V70",
-            "image_url": "/img/mercedes.jpg"
-          },
-          "duration": "01:25",
-          "price": 120
-        },
-        "5": {
-          "route": {
-            "from": "Jess",
-            "to": "Ness",
-            "time": 1519849320000
-          },
-          "additional_needs": {
-            "wheelchair": false,
-            "pet": false
-          },
-          "passengers": "2",
-          "client_id": 1,
-          "id": 5,
-          "driver_id": 1,
-          "vehicle": {
-            "name": "Volvo V70",
-            "image_url": "/img/mercedes.jpg"
-          },
-          "duration": "01:25",
-          "price": 120
-        }
-      }
+      "trips": {}
     },
     {
       "id": 2,
@@ -126,11 +16,7 @@
       "password": "foo",
       "metadata": {
         "name": "Karl Karlsson",
-        "image_url": "",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
+        "image_url": ""
       },
       "trips": {}
     }
@@ -142,11 +28,11 @@
       "password": "foo",
       "metadata": {
         "name": "Frank Franksson",
-        "image_url": "",
-        "position": {
-          "x": 0,
-          "y": 0
-        }
+        "image_url": ""
+      },
+      "position": {
+        "lat": 0,
+        "lng": 0
       },
       "trips": {}
     }

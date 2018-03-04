@@ -66,7 +66,23 @@ class MWDate {
 
     return component;
   }
+  /**
+   * Convert seconds to hours and minutes.
+   *
+   * @param  {[type]} seconds The number of seconds to convert.
+   */
+  static convertFromSeconds(seconds) {
+    var output  = '';
+    var hours   = Math.floor(seconds / 3600);
+    var minutes = Math.floor((seconds % 3600) / 60);
+    var seconds = Math.round(seconds % 60);
 
+    output += (hours > 0)   ? MWDate.styleComponent(hours) + ':' : '00:';
+    output += (minutes > 0) ? MWDate.styleComponent(minutes) + ':' : '00:';
+    output += (seconds > 0) ? MWDate.styleComponent(seconds) : '00';
+
+    return output;
+  }
   /**
    * Styles the day component of a date.
    *

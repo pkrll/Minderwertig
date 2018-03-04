@@ -7,4 +7,19 @@ const app = new Vue({
   data: data,
   created: created,
   methods: actions,
+  mounted: function () {
+    this.position = {lat: 0, lng: 0};
+
+    this.map = new google.maps.Map(document.getElementById('my-Map'), {
+      zoom: 10,
+      center: this.position
+    });
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+      this.position = { lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                      };
+      this.map.setCenter(this.position);
+    }.bind(this));
+  }
 });

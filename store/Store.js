@@ -123,6 +123,13 @@ class Store {
     return null;
   }
 
+  setDriverPosition(id, position) {
+    let driver = this.getDriver(id);
+    console.log("Driver: " + driver);
+    console.log(position);
+    driver.position = position;
+  }
+
   addOrder(order) {
     order.id = this.getNewOrderId();
     this.orders[order.id] = order;
