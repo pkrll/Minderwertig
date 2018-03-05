@@ -11,7 +11,7 @@ const menu_view_v = Vue.component('panel-view-v', {
 const orders_view_v = Vue.component('orders-view-v', {
   props: ['app'],
   template: '\
-  <div class="orders-view-v active">\
+  <div class="orders-view-v">\
     <p class="small message" v-if="Object.keys(app.orders).length === 0">No bookings found.</p>\
     <card-v v-for="order in app.orders" :key="order.id" :trip="order" :app="app"></card-v> \
   </div>'
@@ -30,8 +30,8 @@ const cars_view_v = Vue.component('cars-view-v', {
   props: ['app'],
   template: '\
   <div class="cars-view-v">\
-    <p class="small message" v-if="Object.keys(app.trips).length === 0">No cars found.</p>\
-    <card-v v-for="trip in app.trips" :key="trip.id" :trip="trip" :app="app"></card-v> \
+    <p class="small message" v-if="Object.keys(app.cars).length === 0">No cars found.</p>\
+    <cars-card-v v-for="car in app.cars" :key="car.id" :car="car" :app="app"></cars-card-v> \
   </div>'
 });
 
@@ -70,29 +70,40 @@ const card_v = Vue.component('card-v', {
   methods: {
     // TODO: Refactor needed
     handle: function (order) {
-      console.log(order);
-      app.handleOrder(order);
+      app.selectOrder(order);
     }
   }
 });
 
+const cars_card_v = Vue.component('cars-card-v', {
+  props: ['app', 'car'],
+  template: '\
+  <div class="trip-v">\
+    <div class="tab red"></div>\
+    <div class="content">\
+      <div class="meta">\
+        <div class="time">\
+          <img src="/img/pin.svg" alt="">\
+          <h3 class="mono">Something</h3>\
+        </div>\
+        <div class="timeLeft">\
+          <img src="/img/clock.svg" alt="">\
+          <h3 class="mono">Something else</h3>\
+        </div>\
+      </div>\
+      <h3 class="name">Bla</h3>\
+      <div class="route">\
+        <div class="path"><div></div></div>\
+        <p class="small">Bli</p>\
+        <p class="small">Blo</p>\
+      </div>\
+    </div>\
+  </div>'
+});
 
 const map_view_v = Vue.component('map-view-v', {
   props: ['app'],
   template: '\
-  <div id="my-Map" class="map"> \
-  </div>',
-  mounted: function () {
-   // set up the map
-   this.map = L.map('my-Map').setView([59.8415,17.648], 11);
-
-   // create the tile layer with correct attribution
-   var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
-   var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-   L.tileLayer(osmUrl, {
-       attribution: osmAttrib,
-       maxZoom: 18
-   }).addTo(this.map);
- }
-
+  <div id="my-Map"> \
+  </div>'
 });

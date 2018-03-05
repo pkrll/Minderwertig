@@ -93,17 +93,9 @@ io.on('connection', function (socket) {
       store.addTrip(order);
       sendToDispatchers('trip/new', order);
       socket.emit('trip/new', order);
-      // TODO: Perhaps we should prettify this shit
-      let driverSocket = store.getDriverSocket(order.driver_id);
-      let driverObject = store.getDriver(order.driver_id);
 
-      if (driverSocket != null) {
-        driverSocket.emit('trip/new', order);
-      }
-
-      if (driverObject != null) {
-        driverObject.trips[order.id] = order;
-      }
+      let driver = store.getDriverSocket(order.driver_id);
+      if (driver != null) driver.emit('trip/new', order);
     }
     // Remove the order from the list of orders in store
     store.removeOrder(data.id);
@@ -120,7 +112,9 @@ io.on('connection', function (socket) {
     console.log("A dispatcher has logged on!");
     store.addDispatcherSocket(socket);
 
-    socket.emit("login/success", {orders: store.getOrders(), trips: store.getTrips(), cars: []});
+    socket.emit("login/success", {
+      orders: store.getOrders(), trips: store.getTrips(), cars: store.getAllDrivers()
+    });
   });
   /**
    * Listener for ``dispatcher/trip/proposal``.
@@ -142,20 +136,9 @@ io.on('connection', function (socket) {
     sendToDispatchers('order/remove', request.id);
   });
 
-  socket.on('driver/begin', function(trip) {
-    console.log("DISPATCHER: Trip began.");
-    sendToDispatchers('trip/begin', trip);
-  });
-
   // ----------------------------------------
   //  DRIVER
   // ----------------------------------------
-
-  socket.on('driver/done', function (trip) {
-      console.log("Trip finished.");
-      store.removeTrip(trip.id);
-
-  });
 
   socket.on('driver/login', function (request) {
     console.log("A driver has logged on!");
@@ -170,6 +153,24 @@ io.on('connection', function (socket) {
       console.log("DRIVER: Login failed!");
     }
   });
+
+  socket.on('driver/position', function (data) {
+    console.log("Setting position for driver " + data.id);
+    store.setDriverPosition(data.id, data.position);
+    sendToDispatchers('position/driver', data);
+  });
+
+  socket.on('driver/done', function (trip) {
+      console.log("Trip finished.");
+      store.removeTrip(trip.id);
+
+  });
+
+  socket.on('driver/begin', function(trip) {
+    console.log("DISPATCHER: Trip began.");
+    sendToDispatchers('trip/begin', trip);
+  });
+
 });
 
 function exitHandler(err) {

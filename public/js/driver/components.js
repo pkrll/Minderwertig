@@ -115,7 +115,7 @@ const trip_v = Vue.component('trip-v', {
     const date = MWDate.format(this.trip.route.time);
     let status = "red";
 
-   if (this.app.currentTrip) {
+    if (this.app.currentTrip) {
       status = (this.trip.id == app.currentTrip.id) ? 'green' : 'red';
     }
 
@@ -150,7 +150,7 @@ const trip_v = Vue.component('trip-v', {
   </div>',
   methods: {
     displayTripDetails: function () {
-     this.app.viewAssignment(this.trip);
+      this.app.viewAssignment(this.trip);
     }
   }
 });
@@ -171,7 +171,7 @@ const details_v = Vue.component('details-v', {
     }
   },
   template: '\
-  <div class="trip-details-v">\
+  <div class="trip-details-v trip-v">\
     <div class="tab red"></div>\
     <div class="content">\
       <div class="meta">\
@@ -211,8 +211,10 @@ const details_v = Vue.component('details-v', {
 const trip_active_details_v = Vue.component('trip-active-details-v', {
   props: ['app'],
   data: function () {
+    const date = MWDate.format(app.currentTrip.route.time);
     return {
       start: MWDate.format(app.currentTrip.start),
+      time: date.time
     }
   },
   template: '\
@@ -220,8 +222,12 @@ const trip_active_details_v = Vue.component('trip-active-details-v', {
     <div class="trip-v">\
       <div class="content">\
         <div class="meta">\
+          <div class="time">\
+            <img src="/img/pin.svg" alt="">\
+            <h3 class="mono">{{time}}</h3>\
+          </div>\
+          <elapsed-time-v :began="1000"></elapsed-time-v>\
         </div>\
-        <elapsed-time-v :began="1000"></elapsed-time-v>\
         <h3 class="name">John Doe</h3>\
         <div class="route">\
           <div class="path"><div></div></div>\
@@ -254,40 +260,40 @@ const trip_done_v = Vue.component('trip-done-v', {
 
 
 const elapsed_time_v = Vue.component('elapsed-time-v', {
-  props : ['app'],
-  data: function() {
-          console.log(app.currentTrip.start);
+  props: ['app'],
+  data: function () {
+    console.log(app.currentTrip.start);
     return {
       now: Math.trunc((new Date()).getTime() / 1000),
       start: app.currentTrip.start,
-      }
+    }
   },
-  mounted: function() {
+  mounted: function () {
     window.setInterval(() => {
-        this.now = Math.trunc((new Date()).getTime() / 1000);
-    },1000);
+      this.now = Math.trunc((new Date()).getTime() / 1000);
+    }, 1000);
   },
   computed: {
     seconds() {
-        return (this.now - this.start) % 60;
+      let temp = (this.now - this.start) % 60;
+      if (temp < 10) temp = '0' + temp;
+      return temp;
     },
     minutes() {
-        return Math.trunc((this.now - this.start) / 60) % 60;
+      let temp = Math.trunc((this.now - this.start) / 60) % 60;
+      if (temp < 10) temp = '0' + temp;
+      return temp;
     },
     hours() {
-        return Math.trunc((this.now - this.start) / 60 / 60) % 24;
+      let temp = Math.trunc((this.now - this.start) / 60 / 60) % 24;
+      if (temp < 10) temp = '0' + temp;
+      return temp;
     }
   },
   template: '\
-  <div>\
-  <h3>Elapsed time</h3>\
-  <div class="timer">\
-    <p>H</p>\
-    <p>M</p>\
-    <p>S</p>\
-    <p class="digit">{{hours}}</p>\
-    <p class="digit">{{minutes}}</p>\
-    <p class="digit">{{seconds}}</p>\
+  <div class="timeLeft">\
+    <img src="/img/clock.svg" alt="">\
+    <h3 class="mono">{{hours}}:{{minutes}}:{{seconds}}</h3>\
   </div>\
   </div>'
 });

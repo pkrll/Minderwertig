@@ -9,6 +9,17 @@ const actions = {
     socket.emit('driver/login', credentials);
   },
 
+  sendPosition: function () {
+    if (this.account == null) return;
+
+    clearInterval(this.sendPosition);
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+      this.position = { lat: position.coords.latitude, lng: position.coords.longitude };
+      socket.emit('driver/position', { id: this.account.id, position: this.position });
+    }.bind(this));
+  },
+
   viewAssignment: function (assignment) {
     this.assignmentDisplay = assignment;
     if (assignment == this.currentTrip) {

@@ -46,7 +46,7 @@ const router = new VueRouter({
         main: details_v
       },
       meta: {
-        title: '',
+        title: 'Assignment',
         hasLeftArrow: true,
         hasRightArrow: false
       }
