@@ -349,7 +349,6 @@ const order_found_v = Vue.component('order-found-v', {
         </div>\
       </div>\
     </div>\
-    <div class="map"></div>\
     <div>\
       <label for="from">From</label>\
       <input type="text" name="from" :value="trip.route.from" disabled>\
@@ -416,4 +415,20 @@ const submenu_v = Vue.component('submenu-v', {
       router.go(1);
     }
   }
+});
+
+const fard_view_v = Vue.component('fard-view-v', {
+  props: ['app'],
+  template: ' \
+  <div> \
+    <div> \
+      <h1> Val av transporttjänst </h1> \
+    </div> \
+    <div> \
+      <router-link to="/client/fardtjanst"> <button class="blue"> Färdtjänst </button> </router-link> \
+    </div> \
+    <div> \
+      <router-link to="/client/order"> <button class="green"> Minderwertig Taxi </button> </router-link> \
+    </div> \
+  </div>' ,
 });

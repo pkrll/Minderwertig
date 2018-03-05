@@ -115,6 +115,13 @@ const router = new VueRouter({
         title: 'Ongoing trip',
         hasLeftArrow: true,
         hasRightArrow: false
+    },
+    {
+      path: '/client/select',
+      components: {
+        titlebar: titlebar_v,
+        submenu: submenu_v,
+        main: fard_view_v
       }
     }
   ]

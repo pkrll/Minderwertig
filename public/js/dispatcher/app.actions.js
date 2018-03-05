@@ -5,7 +5,9 @@ const actions = {
    * @param  {Object} order The proposal
    */
   handleOrder: function (order) {
+    this.directionsDisplay.set('directions', null);
     socket.emit('dispatcher/trip/proposal', order);
+    this.temporary.currentOrder = null;
   },
   /**
    * Shows the route of the order.
@@ -16,12 +18,10 @@ const actions = {
     this.temporary.currentOrder = order;
 
     if (order.route.geo) {
-      let directionsService = new google.maps.DirectionsService;
-      let directionsDisplay = new google.maps.DirectionsRenderer;
+      this.directionsDisplay.set('directions', null);
+      this.directionsDisplay.setMap(this.map);
 
-      directionsDisplay.setMap(this.map);
-
-      directionsService.route({
+      this.directionsService.route({
         origin: this.temporary.currentOrder.route.geo.from,
         destination: this.temporary.currentOrder.route.geo.to,
         waypoints: [],
@@ -29,7 +29,7 @@ const actions = {
         travelMode: 'DRIVING'
       }, function (response, status) {
         if (status === 'OK') {
-          directionsDisplay.setDirections(response);
+          this.directionsDisplay.setDirections(response);
           this.temporary.currentOrder.price = this.calculatePrice(response.routes[0].legs[0].distance.value);
           this.temporary.currentOrder.duration = response.routes[0].legs[0].duration.value;
         }
@@ -43,12 +43,10 @@ const actions = {
    */
   selectTrip: function (trip) {
     if (trip.route.geo) {
-      let directionsService = new google.maps.DirectionsService;
-      let directionsDisplay = new google.maps.DirectionsRenderer;
+      this.directionsDisplay.set('directions', null);
+      this.directionsDisplay.setMap(this.map);
 
-      directionsDisplay.setMap(this.map);
-
-      directionsService.route({
+      this.directionsService.route({
         origin: trip.route.geo.from,
         destination: trip.route.geo.to,
         waypoints: [],
@@ -56,8 +54,7 @@ const actions = {
         travelMode: 'DRIVING'
       }, function (response, status) {
         if (status === 'OK') {
-          directionsDisplay.setDirections(response);
-          console.log(response);
+          this.directionsDisplay.setDirections(response);
         }
       }.bind(this));
     }
