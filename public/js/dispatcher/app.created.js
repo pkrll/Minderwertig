@@ -60,4 +60,9 @@ const created = function () {
   socket.on('position/driver', function (data) {
     this.addDriverMarkerToMap(data.id, data.position);
   }.bind(this));
+
+  socket.on('trip/done', function(id) {
+    console.log("DISPATCHER: Trip done.");
+    Vue.delete(this.trips, id);
+  }.bind(this));
 };
