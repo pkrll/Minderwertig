@@ -342,10 +342,57 @@ const fard_view_v = Vue.component('fard-view-v', {
       <h1> Val av transporttjänst </h1> \
     </div> \
     <div> \
-      <router-link to="/client/fardtjanst"> <button class="blue"> Färdtjänst </button> </router-link> \
-    </div> \
-    <div> \
       <router-link to="/client/order"> <button class="green"> Minderwertig Taxi </button> </router-link> \
     </div> \
+    <div> \
+      <router-link to="/client/fardtjanst"> <button class="blue"> Färdtjänst </button> </router-link> \
+    </div> \
   </div>' ,
+});
+
+const fard_orderform_v = Vue.component('fard-orderform-v', {
+  props: ['app'],
+  data: fard_orderform_v_data,
+  template: '\
+  <div class="fard-orderform-v"> \
+    <div> \
+      <label for="from">From</label> \
+      <input type="text" id="from" name="from" placeholder="From..." v-model="order.route.from" data-validate="required"> \
+    </div> \
+    <div> \
+      <label for="from">To</label> \
+      <input type="text" id="to" name="to" placeholder="To..." v-model="order.route.to" data-validate="required"> \
+    </div> \
+    <div> \
+      <label for="date">Date</label> \
+      <input class="mono" type="text" name="date" id="datepicker" v-model="date.date" placeholder="Tap to pick date" data-validate="required, date"> \
+    </div>\
+    <div>\
+      <label for="time">Time</label> \
+      <input class="mono" type="time" name="date" v-model="date.time" placeholder="Tap to pick time" data-validate="required, time"> \
+    </div> \
+    <div> \
+      <label for="capacity">1 Passenger</label> \
+      <input type="checkbox" disabled="disabled" checked="checked"> </input> \
+    </div> \
+    <div> \
+      <label for="special-needs">Additional needs</label> \
+      <input type="checkbox" name="special-needs" v-model="show_additional_needs"> \
+    </div> \
+    <div v-show="show_additional_needs"> \
+      <label for="assistpet">Assist Pet</label> \
+      <input type="checkbox" name="assistpet" v-model="order.additional_needs.assistpet"> \
+    </div> \
+    <div v-show="show_additional_needs"> \
+      <label for="wheelchair">Wheelchair</label> \
+      <input type="checkbox" name="wheelchair" v-model="order.additional_needs.wheelchair"> \
+    </div>  \
+    <div v-show="show_additional_needs"> \
+      <label for="crutches">Crutches</label> \
+      <input type="checkbox" name="crutches" v-model="order.additional_needs.crutches"> \
+    </div>  \
+    <button class="normal green" v-on:click="sendOrder">Continue</button> \
+  </div>',
+  methods: order_form_v_methods,
+  mounted: order_form_v_mounted
 });

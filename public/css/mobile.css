@@ -183,6 +183,46 @@ button.small {
   margin-top: 20px;
 }
 
+/* component: fard-orderform-v */
+.fard-orderform-v {
+  width:      100%;
+  background: #fff;
+  padding:    0 10px 10px 10px;
+}
+
+.fard-orderform-v div {
+  width:         100%;
+  overflow:      hidden;
+  padding:       10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.fard-orderform-v div label {
+  margin-bottom: 5px;
+  color:         rgba(0, 0, 0, 0.5);
+  float:         left;
+}
+
+.fard-orderform-v div input {
+  border:        none;
+  clear:         both;
+  float:         left;
+}
+
+
+.fard-orderform-v div input:nth-child(0) {
+  clear: none;
+}
+
+.fard-orderform-v div select {
+  clear: both;
+  float: left;
+}
+
+.fard-orderform-v button {
+  margin-top: 10px;
+}
+
 /* component: order-form-v & order-found-v */
 
 .order-form-v {

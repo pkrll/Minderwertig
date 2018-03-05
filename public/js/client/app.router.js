@@ -111,6 +111,14 @@ const router = new VueRouter({
         submenu: submenu_v,
         main: fard_view_v
       }
-    }
+    },
+    {
+      path: '/client/fardtjanst',
+      components: {
+        titlebar: titlebar_v,
+        submenu: submenu_v,
+        main: fard_orderform_v
+      }
+    },
   ]
 });
