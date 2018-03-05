@@ -98,7 +98,7 @@ const actions = {
   },
 
   calculatePrice: function (distanceInMeters) {
-    return 50 + (15 * (distanceInMeters / 1000));
+    return Math.round(50 + (15 * (distanceInMeters / 1000)));
   }
 
 }
