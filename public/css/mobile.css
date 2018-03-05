@@ -229,6 +229,7 @@ button.small {
   background-position: 94% 20%;
   color:               #fff;
   margin:              10px 0 10px;
+  border-radius:       5px;
 }
 
 .fard-orderform-v .misc h2 {
