@@ -337,16 +337,10 @@ const submenu_v = Vue.component('submenu-v', {
 const fard_view_v = Vue.component('fard-view-v', {
   props: ['app'],
   template: ' \
-  <div> \
-    <div> \
-      <h1> Val av transporttjänst </h1> \
-    </div> \
-    <div> \
-      <router-link to="/client/order"> <button class="green"> Minderwertig Taxi </button> </router-link> \
-    </div> \
-    <div> \
-      <router-link to="/client/fardtjanst"> <button class="blue"> Färdtjänst </button> </router-link> \
-    </div> \
+  <div class="fard-view-v">\
+      <h1>Choose way of travel</h1> \
+      <router-link to="/client/order"> <button class="green">Minderwertig Taxi</button> </router-link> \
+      <router-link to="/client/fardtjanst"> <button class="blue">County Taxi</button></router-link> \
   </div>' ,
 });
 

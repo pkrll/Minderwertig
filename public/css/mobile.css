@@ -28,7 +28,7 @@
 
 /* Temporary blue color */
 .blue {
-  background-color: #5F9EA0;
+  background-color: #005389;
 }
 
 /*
@@ -204,11 +204,10 @@ button.small {
 }
 
 .fard-orderform-v div input {
-  border:        none;
-  clear:         both;
-  float:         left;
+  border: none;
+  clear:  both;
+  float:  left;
 }
-
 
 .fard-orderform-v div input:nth-child(0) {
   clear: none;
@@ -231,7 +230,7 @@ button.small {
   padding:    0 10px 10px 10px;
 }
 
-.order-form-v div, .order-found-v div  {
+.order-form-v div, .order-found-v div {
   width:         100%;
   overflow:      hidden;
   padding:       10px;
@@ -545,6 +544,28 @@ circle#right {
 
 .trip-details-v button {
   margin-top: 10px;
+}
+
+/* component: fard-view-v */
+
+.fard-view-v {
+  padding:    10px;
+  text-align: center;
+  position:          relative;
+  top:               calc(50% - 104px);
+  -webkit-transform: translateY(-50%);
+  -moz-transform:    translateY(-50%);
+  -ms-transform:     translateY(-50%);
+  -o-transform:      translateY(-50%);
+  transform:         translateY(-50%);
+}
+
+.fard-view-v h1 {
+  margin-bottom: 40px;
+}
+
+.fard-view-v button {
+  margin-bottom: 10px;
 }
 
 /*
