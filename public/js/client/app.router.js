@@ -123,6 +123,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: fard_orderform_v
+      },
+      meta: {
+        title: 'Order (1/3)',
+        hasLeftArrow: false,
+        hasRightArrow: false
       }
     },
   ]
