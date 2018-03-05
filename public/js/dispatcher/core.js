@@ -20,6 +20,10 @@ const app = new Vue({
                         lng: position.coords.longitude
                       };
       this.map.setCenter(this.position);
+
+      this.directionsService = new google.maps.DirectionsService;
+      this.directionsDisplay = new google.maps.DirectionsRenderer;
+
     }.bind(this));
   }
 });

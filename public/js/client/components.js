@@ -128,22 +128,24 @@ const trips_v = Vue.component('trips-v', {
   template: '\
   <div class="trips-v">\
     <active-trip-v v-if="app.activeTrip != null" v-bind:app="app"></active-trip-v>\
-    <trip-v v-for="trip in app.account.trips" :key="trip.id" v-bind:trip="trip" v-bind:app="app"></trip-v>\
+    <trip-v v-for="trip in app.account.trips" :key="trip.id" v-bind:trip="trip" v-bind:app="app" v-bind:status="false"></trip-v>\
   </div>'
 });
 
 const active_trip_v = Vue.component('active-trip-v', {
   props: ['app'],
   template: '\
-    <trip-v :key="app.activeTrip.id" v-bind:trip="app.activeTrip" v-bind:app="app"></trip-v>\
+    <trip-v :key="app.activeTrip.id" v-bind:trip="app.activeTrip" v-bind:app="app" v-bind:status="true"></trip-v>\
     '
 });
 
 const trip_v = Vue.component('trip-v', {
-  props: ['app', 'trip'],
+  props: ['app', 'trip', 'status'],
   data: function () {
     const date = MWDate.format(this.trip.route.time);
+
     return {
+      color: (this.status) ? 'green' : 'red',
       date: date.date,
       time: date.time,
       eta: MWDate.timeUntil(this.trip.route.time)
@@ -151,7 +153,7 @@ const trip_v = Vue.component('trip-v', {
   },
   template: '\
   <div class="trip-v" v-on:click="displayTripDetails">\
-    <div class="tab red"></div>\
+    <div class="tab" v-bind:class="[color]"></div>\
     <div class="content">\
       <div class="meta">\
         <div class="time">\
@@ -348,7 +350,6 @@ const order_found_v = Vue.component('order-found-v', {
         </div>\
       </div>\
     </div>\
-    <div class="map"></div>\
     <div>\
       <label for="from">From</label>\
       <input type="text" name="from" :value="trip.route.from" disabled>\
@@ -415,4 +416,20 @@ const submenu_v = Vue.component('submenu-v', {
       router.go(1);
     }
   }
+});
+
+const fard_view_v = Vue.component('fard-view-v', {
+  props: ['app'],
+  template: ' \
+  <div> \
+    <div> \
+      <h1> Val av transporttjänst </h1> \
+    </div> \
+    <div> \
+      <router-link to="/client/fardtjanst"> <button class="blue"> Färdtjänst </button> </router-link> \
+    </div> \
+    <div> \
+      <router-link to="/client/order"> <button class="green"> Minderwertig Taxi </button> </router-link> \
+    </div> \
+  </div>' ,
 });

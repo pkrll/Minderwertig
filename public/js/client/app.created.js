@@ -16,7 +16,7 @@ const created = function () {
       }
     }
 
-    router.push('/client/order');
+    router.push('/client/select');
   }.bind(this));
   /**
    * Invoked when login has failed.
