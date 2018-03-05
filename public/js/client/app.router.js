@@ -115,6 +115,7 @@ const router = new VueRouter({
         title: 'Ongoing trip',
         hasLeftArrow: true,
         hasRightArrow: false
+      }
     },
     {
       path: '/client/select',
