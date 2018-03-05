@@ -110,6 +110,11 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: fard_view_v
+      },
+      meta: {
+        title: 'Select',
+        hasLeftArrow: false,
+        hasRightArrow: false
       }
     },
     {
