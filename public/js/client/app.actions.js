@@ -65,7 +65,12 @@ const actions = {
    */
   displayTripDetails: function (trip) {
     this.temporary.currentTrip = trip;
-    router.push('/client/trip');
+    if (trip == this.activeTrip) {
+      router.push('/client/trip/active')
+    }
+    else {
+      router.push('/client/trip');
+    }
   },
   /**
    * Toggles the menu.

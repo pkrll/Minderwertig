@@ -104,5 +104,18 @@ const router = new VueRouter({
         hasRightArrow: false
       }
     },
+    {
+      path: '/client/trip/active',
+      components: {
+        titlebar: titlebar_v,
+        submenu: submenu_v,
+        main: trip_active_details_v
+      },
+      meta: {
+        title: 'Ongoing trip',
+        hasLeftArrow: true,
+        hasRightArrow: false
+      }
+    }
   ]
 });
