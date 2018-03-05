@@ -53,4 +53,10 @@ const created = function () {
   socket.on('error', function (data) {
     alert(data.message);
   });
+
+  socket.on('trip/begin', function(id) {
+    console.log('Client began a trip.');
+    let trip = this.account.trips[id];
+    this.activeTrip = trip;
+  }.bind(this));
 };

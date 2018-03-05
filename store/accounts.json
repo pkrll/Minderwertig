@@ -8,7 +8,71 @@
         "name": "Ardalan Samimi",
         "image_url": ""
       },
-      "trips": {}
+      "trips": {
+        "1": {
+          "route": {
+            "geo": {
+              "from": {
+                "lat": 59.8585515,
+                "lng": 17.639018999999962
+              },
+              "to": {
+                "lat": 59.83940199999999,
+                "lng": 17.65084550000006
+              }
+            },
+            "from": "Stora Torget, Upp",
+            "to": "Lägerhyddsvägen 4, Uppsala, Sweden",
+            "time": 1520254800000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "1",
+          "client_id": 1,
+          "id": 1,
+          "price": 134.765,
+          "duration": 806,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          }
+        },
+        "2": {
+          "route": {
+            "geo": {
+              "from": {
+                "lat": 59.85856380000001,
+                "lng": 17.638926699999956
+              },
+              "to": {
+                "lat": 59.2752626,
+                "lng": 15.213410500000009
+              }
+            },
+            "from": "upp",
+            "to": "öre",
+            "time": 1520337600000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "1",
+          "client_id": 1,
+          "id": 2,
+          "price": 2618.405,
+          "duration": 7315,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "active": true
+        }
+      }
     },
     {
       "id": 2,
@@ -31,10 +95,74 @@
         "image_url": ""
       },
       "position": {
-        "lat": 0,
-        "lng": 0
+        "lat": 59.84151010000001,
+        "lng": 17.6469666
       },
-      "trips": {}
+      "trips": {
+        "1": {
+          "route": {
+            "geo": {
+              "from": {
+                "lat": 59.8585515,
+                "lng": 17.639018999999962
+              },
+              "to": {
+                "lat": 59.83940199999999,
+                "lng": 17.65084550000006
+              }
+            },
+            "from": "Stora Torget, Upp",
+            "to": "Lägerhyddsvägen 4, Uppsala, Sweden",
+            "time": 1520254800000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "1",
+          "client_id": 1,
+          "id": 1,
+          "price": 134.765,
+          "duration": 806,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          }
+        },
+        "2": {
+          "route": {
+            "geo": {
+              "from": {
+                "lat": 59.85856380000001,
+                "lng": 17.638926699999956
+              },
+              "to": {
+                "lat": 59.2752626,
+                "lng": 15.213410500000009
+              }
+            },
+            "from": "upp",
+            "to": "öre",
+            "time": 1520337600000
+          },
+          "additional_needs": {
+            "wheelchair": false,
+            "pet": false
+          },
+          "passengers": "1",
+          "client_id": 1,
+          "id": 2,
+          "price": 2618.405,
+          "duration": 7315,
+          "driver_id": 1,
+          "vehicle": {
+            "name": "Volvo V70",
+            "image_url": "/img/mercedes.jpg"
+          },
+          "active": true
+        }
+      }
     }
   ]
 }
