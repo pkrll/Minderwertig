@@ -166,6 +166,7 @@ io.on('connection', function (socket) {
       let client_sc = store.getClientSocket(client_id);
       store.removeTrip(trip.id);
       client_sc.emit('client/done', trip);
+      sendToDispatchers('trip/done', trip.id);
 
   });
 
