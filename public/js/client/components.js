@@ -305,7 +305,6 @@ const order_found_v = Vue.component('order-found-v', {
         </div>\
       </div>\
     </div>\
-    <map-view-v :app="app"> </map-view-v> \
     <div>\
       <label for="from">From</label>\
       <input type="text" name="from" :value="trip.route.from" disabled>\
@@ -372,26 +371,6 @@ const submenu_v = Vue.component('submenu-v', {
       router.go(1);
     }
   }
-});
-
-const map_view_v = Vue.component('map-view-v', {
-  props: ['app'],
-  template: '\
-  <div id="my-Map" class="map"> \
-  </div>',
-  mounted: function () {
-   // set up the map
-   this.map = L.map('my-Map').setView([59.8415,17.648], 11);
-
-   // create the tile layer with correct attribution
-   var osmUrl='http://{s}.tile.osm.org/{z}/{x}/{y}.png';
-   var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-   L.tileLayer(osmUrl, {
-       attribution: osmAttrib,
-       maxZoom: 18
-   }).addTo(this.map);
- }
-
 });
 
 const fard_view_v = Vue.component('fard-view-v', {
