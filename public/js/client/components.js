@@ -280,7 +280,6 @@ const trip_details_v = Vue.component('trip-details-v', {
 const elapsed_time_v = Vue.component('elapsed-time-v', {
   props: ['app'],
   data: function () {
-    console.log(app.activeTrip.start);
     return {
       now: Math.trunc((new Date()).getTime() / 1000),
       start: app.activeTrip.start,
