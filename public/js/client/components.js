@@ -402,7 +402,7 @@ const fard_view_v = Vue.component('fard-view-v', {
       <h1> Val av transporttjänst </h1> \
     </div> \
     <div> \
-      <router-link to="/client/fardtjanst"> <button class="blue"> Färdtjänst </button> <router-link> \
+      <router-link to="/client/fardtjanst"> <button class="blue"> Färdtjänst </button> </router-link> \
     </div> \
     <div> \
       <router-link to="/client/order"> <button class="green"> Minderwertig Taxi </button> </router-link> \
