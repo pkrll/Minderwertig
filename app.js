@@ -166,9 +166,15 @@ io.on('connection', function (socket) {
 
   });
 
-  socket.on('driver/begin', function(trip) {
+  socket.on('driver/begin', function(id) {
     console.log("DISPATCHER: Trip began.");
-    sendToDispatchers('trip/begin', trip);
+    sendToDispatchers('trip/begin', id);
+
+    let trip = store.getTrip(id);
+    let client_id = trip.client_id;
+    let client_sc = store.getClientSocket(client_id);
+    client_sc.emit('trip/begin', {id: trip.id});
+    trip.active = true;
   });
 
 });
