@@ -8,39 +8,7 @@
         "name": "Ardalan Samimi",
         "image_url": ""
       },
-      "trips": {
-        "2": {
-          "route": {
-            "geo": {
-              "from": {
-                "lat": 59.85856380000001,
-                "lng": 17.638926699999956
-              },
-              "to": {
-                "lat": 59.32932349999999,
-                "lng": 18.068580800000063
-              }
-            },
-            "from": "Uppsal",
-            "to": "Stock",
-            "time": 1520262000000
-          },
-          "additional_needs": {
-            "wheelchair": false,
-            "pet": false
-          },
-          "passengers": "1",
-          "client_id": 1,
-          "id": 2,
-          "price": 1107.5749999999998,
-          "duration": 3440,
-          "driver_id": 1,
-          "vehicle": {
-            "name": "Volvo V70",
-            "image_url": "/img/mercedes.jpg"
-          }
-        }
-      }
+      "trips": {}
     },
     {
       "id": 2,
@@ -66,39 +34,7 @@
         "lat": 59.8414278,
         "lng": 17.646618999999998
       },
-      "trips": {
-        "2": {
-          "route": {
-            "geo": {
-              "from": {
-                "lat": 59.85856380000001,
-                "lng": 17.638926699999956
-              },
-              "to": {
-                "lat": 59.32932349999999,
-                "lng": 18.068580800000063
-              }
-            },
-            "from": "Uppsal",
-            "to": "Stock",
-            "time": 1520262000000
-          },
-          "additional_needs": {
-            "wheelchair": false,
-            "pet": false
-          },
-          "passengers": "1",
-          "client_id": 1,
-          "id": 2,
-          "price": 1107.5749999999998,
-          "duration": 3440,
-          "driver_id": 1,
-          "vehicle": {
-            "name": "Volvo V70",
-            "image_url": "/img/mercedes.jpg"
-          }
-        }
-      }
+      "trips": {}
     }
   ]
 }

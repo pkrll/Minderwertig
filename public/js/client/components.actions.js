@@ -63,12 +63,10 @@ const order_form_v_mounted = function () {
   autocompleteFrom.addListener('place_changed', function () {
     this.order.route.geo.from.lat = autocompleteFrom.getPlace().geometry.location.lat();
     this.order.route.geo.from.lng = autocompleteFrom.getPlace().geometry.location.lng();
-    console.log(this.order.route.geo);
   }.bind(this));
 
   autocompleteTo.addListener('place_changed', function () {
     this.order.route.geo.to.lat = autocompleteTo.getPlace().geometry.location.lat();
     this.order.route.geo.to.lng = autocompleteTo.getPlace().geometry.location.lng();
-    console.log(this.order.route.geo);
   }.bind(this));
 };

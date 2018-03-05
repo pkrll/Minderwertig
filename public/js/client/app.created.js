@@ -60,4 +60,8 @@ const created = function () {
     Vue.delete (this.account.trips, data.id);
     this.activeTrip.start = Math.trunc((new Date()).getTime() / 1000);
   }.bind(this));
+
+  socket.on('client/done', function(data) {
+    this.activeTrip = null;
+  }.bind(this));
 };

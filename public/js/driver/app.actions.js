@@ -47,6 +47,6 @@ const actions = {
     this.menuIsActive = !this.menuIsActive;
   },
   displayCurrentTrip: function() {
-    
+
   }
 }

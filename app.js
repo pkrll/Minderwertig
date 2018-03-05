@@ -162,7 +162,10 @@ io.on('connection', function (socket) {
 
   socket.on('driver/done', function (trip) {
       console.log("Trip finished.");
+      let client_id = trip.client_id;
+      let client_sc = store.getClientSocket(client_id);
       store.removeTrip(trip.id);
+      client_sc.emit('client/done', trip);
 
   });
 
