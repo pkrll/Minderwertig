@@ -9,7 +9,7 @@
         "image_url": ""
       },
       "trips": {
-        "1": {
+        "2": {
           "route": {
             "geo": {
               "from": {
@@ -21,8 +21,8 @@
                 "lng": 18.068580800000063
               }
             },
-            "from": "upp",
-            "to": "stock",
+            "from": "Uppsal",
+            "to": "Stock",
             "time": 1520262000000
           },
           "additional_needs": {
@@ -31,15 +31,14 @@
           },
           "passengers": "1",
           "client_id": 1,
-          "id": 1,
+          "id": 2,
           "price": 1107.5749999999998,
           "duration": 3440,
           "driver_id": 1,
           "vehicle": {
             "name": "Volvo V70",
             "image_url": "/img/mercedes.jpg"
-          },
-          "active": true
+          }
         }
       }
     },
@@ -68,7 +67,7 @@
         "lng": 17.646618999999998
       },
       "trips": {
-        "1": {
+        "2": {
           "route": {
             "geo": {
               "from": {
@@ -80,8 +79,8 @@
                 "lng": 18.068580800000063
               }
             },
-            "from": "upp",
-            "to": "stock",
+            "from": "Uppsal",
+            "to": "Stock",
             "time": 1520262000000
           },
           "additional_needs": {
@@ -90,15 +89,14 @@
           },
           "passengers": "1",
           "client_id": 1,
-          "id": 1,
+          "id": 2,
           "price": 1107.5749999999998,
           "duration": 3440,
           "driver_id": 1,
           "vehicle": {
             "name": "Volvo V70",
             "image_url": "/img/mercedes.jpg"
-          },
-          "active": true
+          }
         }
       }
     }
