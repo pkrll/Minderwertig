@@ -13,7 +13,7 @@ const orders_view_v = Vue.component('orders-view-v', {
   template: '\
   <div class="orders-view-v">\
     <p class="small message" v-if="Object.keys(app.orders).length === 0">No bookings found.</p>\
-    <card-v v-for="order in app.orders" :key="order.id" :trip="order" :app="app"></card-v> \
+    <card-v v-for="order in app.orders" :key="order.id" :trip="order" :app="app" :isOrder="true"></card-v> \
   </div>'
 });
 
@@ -22,7 +22,7 @@ const trips_view_v = Vue.component('trips-view-v', {
   template: '\
   <div class="trips-view-v">\
     <p class="small message" v-if="Object.keys(app.trips).length === 0">No trips found.</p> \
-    <card-v v-for="trip in app.trips" :key="trip.id" :trip="trip" :app="app"></card-v> \
+    <card-v v-for="trip in app.trips" :key="trip.id" :trip="trip" :app="app" :isOrder="false"></card-v> \
   </div>'
 });
 
@@ -36,7 +36,7 @@ const cars_view_v = Vue.component('cars-view-v', {
 });
 
 const card_v = Vue.component('card-v', {
-  props: ['app', 'trip'],
+  props: ['app', 'trip', 'isOrder'],
   data: function () {
     const date = MWDate.format(this.trip.route.time);
     return {
@@ -70,7 +70,11 @@ const card_v = Vue.component('card-v', {
   methods: {
     // TODO: Refactor needed
     handle: function (order) {
-      app.selectOrder(order);
+      if (this.isOrder) {
+        app.selectOrder(order);
+      } else {
+        app.selectTrip(order);
+      }
     }
   }
 });
