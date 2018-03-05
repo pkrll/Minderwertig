@@ -222,6 +222,23 @@ button.small {
   margin-top: 10px;
 }
 
+.fard-orderform-v .misc {
+  background:          #005389;
+  background-image:    url('../img/bg_misc.svg');
+  background-repeat:   no-repeat;
+  background-position: 94% 20%;
+  color:               #fff;
+  margin:              10px 0 10px;
+}
+
+.fard-orderform-v .misc h2 {
+  margin-bottom: 10px;
+}
+
+.fard-orderform-v .misc p {
+  opacity: 0.9;
+}
+
 /* component: order-form-v & order-found-v */
 
 .order-form-v {
@@ -549,8 +566,8 @@ circle#right {
 /* component: fard-view-v */
 
 .fard-view-v {
-  padding:    10px;
-  text-align: center;
+  padding:           10px;
+  text-align:        center;
   position:          relative;
   top:               calc(50% - 104px);
   -webkit-transform: translateY(-50%);

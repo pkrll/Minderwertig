@@ -348,7 +348,11 @@ const fard_orderform_v = Vue.component('fard-orderform-v', {
   props: ['app'],
   data: fard_orderform_v_data,
   template: '\
-  <div class="fard-orderform-v"> \
+  <div class="fard-orderform-v">\
+    <div class="misc">\
+      <h2>County Taxi</h2>\
+      <p>You are about to order a taxi via Uppsala County. Read more here.</p>\
+    </div>\
     <div> \
       <label for="from">From</label> \
       <input type="text" id="from" name="from" placeholder="From..." v-model="order.route.from" data-validate="required"> \
