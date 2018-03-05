@@ -90,7 +90,7 @@ io.on('connection', function (socket) {
         return;
       }
 
-      store.addTrip(order);
+      store.addTrip(order); //Ändra detta
       sendToDispatchers('trip/new', order);
       socket.emit('trip/new', order);
 
@@ -166,15 +166,14 @@ io.on('connection', function (socket) {
 
   });
 
-  socket.on('driver/begin', function(id) {
-    console.log("DISPATCHER: Trip began.");
-    sendToDispatchers('trip/begin', id);
-
-    let trip = store.getTrip(id);
+  socket.on('driver/begin', function(data) {
+    console.log('DISPATCHER: Trip '+ data.id +' began.');
+    sendToDispatchers('trip/begin', data.id);
+    let trip = store.getTrip(data.id);
+    trip.active = true;
     let client_id = trip.client_id;
     let client_sc = store.getClientSocket(client_id);
-    client_sc.emit('trip/begin', {id: trip.id});
-    trip.active = true;
+    client_sc.emit('trip/begin', data);
   });
 
 });

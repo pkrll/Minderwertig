@@ -53,4 +53,11 @@ const created = function () {
   socket.on('error', function (data) {
     alert(data.message);
   });
+
+  socket.on('trip/begin', function(data) {
+    let trip = this.account.trips[data.id];
+    this.activeTrip = trip;
+    Vue.delete (this.account.trips, data.id);
+    this.activeTrip.start = Math.trunc((new Date()).getTime() / 1000);
+  }.bind(this));
 };

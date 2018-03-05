@@ -35,7 +35,7 @@ const actions = {
     this.assignments.splice(index,1);
     this.currentTrip.start = Math.trunc((new Date()).getTime() / 1000);
 
-    socket.emit('driver/begin', {id: this.currentTrip.id});
+    socket.emit('driver/begin', this.currentTrip);
     router.push('/driver/trip/active');
   },
   finishTrip: function () {
@@ -47,6 +47,6 @@ const actions = {
     this.menuIsActive = !this.menuIsActive;
   },
   displayCurrentTrip: function() {
-    console.log("hej");
+    
   }
 }

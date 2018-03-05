@@ -127,8 +127,16 @@ const trips_v = Vue.component('trips-v', {
   props: ['app'],
   template: '\
   <div class="trips-v">\
+    <active-trip-v v-if="app.activeTrip != null" v-bind:app="app"></active-trip-v>\
     <trip-v v-for="trip in app.account.trips" :key="trip.id" v-bind:trip="trip" v-bind:app="app"></trip-v>\
   </div>'
+});
+
+const active_trip_v = Vue.component('active-trip-v', {
+  props: ['app'],
+  template: '\
+    <trip-v :key="app.activeTrip.id" v-bind:trip="app.activeTrip" v-bind:app="app"></trip-v>\
+    '
 });
 
 const trip_v = Vue.component('trip-v', {
@@ -166,6 +174,42 @@ const trip_v = Vue.component('trip-v', {
   methods: {
     displayTripDetails: function () {
       this.app.displayTripDetails(this.trip);
+    }
+  }
+});
+
+const trip_active_details_v = Vue.component('trip-active-details-v', {
+  props: ['app'],
+  data: function () {
+    const date = MWDate.format(app.activeTrip.route.time);
+    return {
+      start: MWDate.format(app.activeTrip.start),
+      time: date.time
+    }
+  },
+  template: '\
+  <div class="trip-active-details-v">\
+    <div class="trip-v">\
+      <div class="content">\
+        <div class="meta">\
+          <div class="time">\
+            <img src="/img/pin.svg" alt="">\
+            <h3 class="mono">{{time}}</h3>\
+          </div>\
+          <elapsed-time-v></elapsed-time-v>\
+        </div>\
+        <h3 class="name">John Doe</h3>\
+        <div class="route">\
+          <div class="path"><div></div></div>\
+          <p class="small">{{app.activeTrip.route.from}}</p>\
+          <p class="small">{{app.activeTrip.route.to}}</p>\
+        </div>\
+      </div>\
+    </div>\
+  </div>',
+  methods: {
+    returnToAssignments: function () {
+      router.push('/driver/assignments');
     }
   }
 });
@@ -231,6 +275,45 @@ const trip_details_v = Vue.component('trip-details-v', {
       this.app.cancelTrip(this.trip);
     }
   }
+});
+
+const elapsed_time_v = Vue.component('elapsed-time-v', {
+  props: ['app'],
+  data: function () {
+    console.log(app.activeTrip.start);
+    return {
+      now: Math.trunc((new Date()).getTime() / 1000),
+      start: app.activeTrip.start,
+    }
+  },
+  mounted: function () {
+    window.setInterval(() => {
+      this.now = Math.trunc((new Date()).getTime() / 1000);
+    }, 1000);
+  },
+  computed: {
+    seconds() {
+      let temp = (this.now - this.start) % 60;
+      if (temp < 10) temp = '0' + temp;
+      return temp;
+    },
+    minutes() {
+      let temp = Math.trunc((this.now - this.start) / 60) % 60;
+      if (temp < 10) temp = '0' + temp;
+      return temp;
+    },
+    hours() {
+      let temp = Math.trunc((this.now - this.start) / 60 / 60) % 24;
+      if (temp < 10) temp = '0' + temp;
+      return temp;
+    }
+  },
+  template: '\
+  <div class="timeLeft">\
+    <img src="/img/clock.svg" alt="">\
+    <h3 class="mono">{{hours}}:{{minutes}}:{{seconds}}</h3>\
+  </div>\
+  </div>'
 });
 
 const order_found_v = Vue.component('order-found-v', {
