@@ -9,6 +9,17 @@ const order_form_v_data = function () {
   }
 };
 
+const fard_orderform_v_data = function () {
+  return {
+    show_additional_needs: false,
+    order: {
+      route: { geo: { from: {}, to: {} } },
+      additional_needs: { wheelchair: false, assistpet: false, crutches: false }
+    },
+    date: { date: "", time: "" }
+  }
+};
+
 const order_form_v_methods = {
   sendOrder: function (event) {
     event.preventDefault();

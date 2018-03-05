@@ -28,7 +28,7 @@
 
 /* Temporary blue color */
 .blue {
-  background-color: #5F9EA0;
+  background-color: #005389;
 }
 
 /*
@@ -183,6 +183,63 @@ button.small {
   margin-top: 20px;
 }
 
+/* component: fard-orderform-v */
+.fard-orderform-v {
+  width:      100%;
+  background: #fff;
+  padding:    0 10px 10px 10px;
+}
+
+.fard-orderform-v div {
+  width:         100%;
+  overflow:      hidden;
+  padding:       10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.fard-orderform-v div label {
+  margin-bottom: 5px;
+  color:         rgba(0, 0, 0, 0.5);
+  float:         left;
+}
+
+.fard-orderform-v div input {
+  border: none;
+  clear:  both;
+  float:  left;
+}
+
+.fard-orderform-v div input:nth-child(0) {
+  clear: none;
+}
+
+.fard-orderform-v div select {
+  clear: both;
+  float: left;
+}
+
+.fard-orderform-v button {
+  margin-top: 10px;
+}
+
+.fard-orderform-v .misc {
+  background:          #005389;
+  background-image:    url('../img/bg_misc.svg');
+  background-repeat:   no-repeat;
+  background-position: 94% 20%;
+  color:               #fff;
+  margin:              10px 0 10px;
+  border-radius:       5px;
+}
+
+.fard-orderform-v .misc h2 {
+  margin-bottom: 10px;
+}
+
+.fard-orderform-v .misc p {
+  opacity: 0.9;
+}
+
 /* component: order-form-v & order-found-v */
 
 .order-form-v {
@@ -191,7 +248,7 @@ button.small {
   padding:    0 10px 10px 10px;
 }
 
-.order-form-v div, .order-found-v div  {
+.order-form-v div, .order-found-v div {
   width:         100%;
   overflow:      hidden;
   padding:       10px;
@@ -505,6 +562,28 @@ circle#right {
 
 .trip-details-v button {
   margin-top: 10px;
+}
+
+/* component: fard-view-v */
+
+.fard-view-v {
+  padding:           10px;
+  text-align:        center;
+  position:          relative;
+  top:               calc(50% - 104px);
+  -webkit-transform: translateY(-50%);
+  -moz-transform:    translateY(-50%);
+  -ms-transform:     translateY(-50%);
+  -o-transform:      translateY(-50%);
+  transform:         translateY(-50%);
+}
+
+.fard-view-v h1 {
+  margin-bottom: 40px;
+}
+
+.fard-view-v button {
+  margin-bottom: 10px;
 }
 
 /*

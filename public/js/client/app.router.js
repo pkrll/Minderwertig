@@ -123,7 +123,25 @@ const router = new VueRouter({
         titlebar: titlebar_v,
         submenu: submenu_v,
         main: fard_view_v
+      },
+      meta: {
+        title: 'Select',
+        hasLeftArrow: false,
+        hasRightArrow: false
       }
-    }
+    },
+    {
+      path: '/client/fardtjanst',
+      components: {
+        titlebar: titlebar_v,
+        submenu: submenu_v,
+        main: fard_orderform_v
+      },
+      meta: {
+        title: 'Order (1/3)',
+        hasLeftArrow: false,
+        hasRightArrow: false
+      }
+    },
   ]
 });
